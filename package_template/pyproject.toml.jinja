@@ -30,16 +30,17 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
 ]
 
+[tool.poetry.urls]
+"Bug Tracker" = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/issues"
+
 [tool.poetry.dependencies]
 python = "^3.7.1"
 
 [tool.poetry.dev-dependencies]
 
 [tool.poetry.dependencies.calcipy]
-git = "https://github.com/kyleking/calcipy.git"
-branch = "main"
+version = "*"
 
 [tool.poetry.dev-dependencies.calcipy]
-git = "https://github.com/kyleking/calcipy.git"
-branch = "main"
+version = "*"
 extras = [ "dev", "lint", "test",]

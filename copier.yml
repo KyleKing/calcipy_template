@@ -14,11 +14,11 @@ _envops:
 # ====== TEMPLATE ======
 _answers_file: .copier-answers.yml
 _subdirectory: package_template
-# _skip_if_exists:
+_skip_if_exists:
 #   - "{{ package_name_py }}/__init__.py"
-#   - docs/README.md
-#   - LICENSE
-#   - pyproject.toml
+  - docs/README.md
+  - LICENSE
+  - pyproject.toml
 _tasks:
   - echo $PWD
   - git init
