@@ -1,0 +1,52 @@
+[build-system]
+requires = [ "poetry-core>=1.0.0",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+balanced_wrapping = true
+default_section = "THIRDPARTY"
+force_grid_wrap = 0
+length_sort = false
+line_length = 120
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.1"
+tag_format = "$version"
+version_files = [ "pyproject.toml", "{{ package_name_py }}/__init__.py",]
+
+[tool.poetry]
+name = "{{ package_name_py }}"
+version = "0.0.1"
+description = "{{ project_description }}"
+license = "MIT"
+authors = [ "{{ author_name }} <{{ author_email }}>",]
+maintainers = []
+repository = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}"
+documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/docs"
+readme = "README.md"
+include = [ "LICENSE.md",]
+keywords = []
+classifiers = [
+    # https://pypi.org/classifiers/
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7.1"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.dependencies.calcipy]
+git = "https://github.com/kyleking/calcipy.git"
+branch = "main"
+
+[tool.poetry.dev-dependencies.calcipy]
+git = "https://github.com/kyleking/calcipy.git"
+branch = "main"
+extras = [ "dev", "lint", "test",]

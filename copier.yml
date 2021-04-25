@@ -1,0 +1,75 @@
+# ====== jinja ======
+# Configure template to use standard jinja2 syntax
+# From: https://github.com/Tecnativa/doodba-copier-template/blob/stable/copier.yml#L1-L10
+_templates_suffix: .jinja
+_envops:
+  block_end_string: "%}"
+  block_start_string: "{%"
+  comment_end_string: "#}"
+  comment_start_string: "{#"
+  keep_trailing_newline: true
+  variable_end_string: "}}"
+  variable_start_string: "{{"
+
+# ====== TEMPLATE ======
+_answers_file: .copier-answers.yml
+_subdirectory: package_template
+_skip_if_exists:
+  - "{{ package_name_py }}/__init__.py"
+  - docs/README.md
+  - LICENSE
+_tasks:
+  - echo $PWD
+  - git init
+  - git status
+  - python _copier_post_generation.py
+# _migrations:
+#   - version: 0.0.1
+#     before:
+#       - rm CHANGELOG.md
+
+# ====== QUESTIONS ======
+project_name:
+  type: str
+  help: Your project name (can have spaces)
+  default: Test Project
+
+package_name_py:
+  type: str
+  help: Your Python package name (should be in `snake_case`)
+  default: "{{ project_name|lower|replace('-', '_')|replace(' ', '_') }}"
+
+project_description:
+  type: str
+  help: Your project description
+  default: This project is testing the functionality of copier_calcipy
+
+author_name:
+  type: str
+  help: Your full name
+  default: Kyle King
+
+author_email:
+  type: str
+  help: Your account email
+  default: dev.act.kyle@gmail.com
+
+repository_provider:
+  type: str
+  help: Your repository provider
+  default: https://github.com
+
+author_username:
+  type: str
+  help: "Your username for {{ repository_provider }}"
+  default: kyleking
+
+repository_namespace:
+  type: str
+  help: "Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ package_name_py }}"
+  default: "{{ author_username }}"
+
+copyright_date:
+  type: str
+  help: The copyright date
+  default: "{{ now().year }}"
