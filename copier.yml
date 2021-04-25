@@ -20,9 +20,7 @@ _skip_if_exists:
   - LICENSE
   - pyproject.toml
 _tasks:
-  - echo $PWD
   - git init
-  - git status
   - python _copier_post_generation.py
 # _migrations:
 #   - version: 0.0.1
