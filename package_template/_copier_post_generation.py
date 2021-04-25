@@ -1,14 +1,20 @@
-from pathlib import Path
+"""Post-Generation Script to be run from Copier."""
 
-# FIXME: Implement merge for pyproject.toml?
+from pathlib import Path
 
 
 def delete_myself():
+    """Delete this file after completing the main script."""
     Path(__file__).unlink()
 
 
-if __name__ == "__main__":
-    delete_myself()
+if __name__ == '__main__':
+    print("""
+Project successfully generated!
 
-    print("Project successfully generated!")
-    print("Run `poetry run doit list` to show the available actions.")
+1. Install dependencies 'poetry install'
+2. Run `poetry run doit list` to show the available actions
+
+""")
+
+    delete_myself()
