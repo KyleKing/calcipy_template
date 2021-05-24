@@ -15,7 +15,7 @@ _envops:
 _answers_file: .copier-answers.yml
 _subdirectory: package_template
 _skip_if_exists:
-#   - "{{ package_name_py }}/__init__.py"
+  - "{{ package_name_py }}/__init__.py"
   - docs/README.md
   - LICENSE
   - pyproject.toml
@@ -72,3 +72,17 @@ copyright_date:
   type: str
   help: The copyright date
   default: "{{ now().year }}"
+
+doc_dir:
+  type: str
+  help: Relative path to the documentation source file directory. Default is "docs/"
+  default: docs/
+
+codecov_token:
+  type: str
+  help: Code coverage token for uploading reports. Default is for Kyle King
+  default: d414dacb-5b8d-4c0b-94e1-42fe8393187d
+
+install_extras:
+  type: str
+  help: Optional extras to install when running in CI. Default is to install no extras
