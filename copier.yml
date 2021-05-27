@@ -16,7 +16,7 @@ _answers_file: .copier-answers.yml
 _subdirectory: package_template
 _skip_if_exists:
   - "{{ package_name_py }}/__init__.py"
-  - docs/README.md
+  - "{{ doc_dir }}/README.md"
   - LICENSE
   - pyproject.toml
 _tasks:
