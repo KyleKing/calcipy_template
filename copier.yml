@@ -31,7 +31,6 @@ _tasks:
 project_name:
   type: str
   help: Your project name (can have spaces)
-  default: Test Project
 
 package_name_py:
   type: str
@@ -41,7 +40,6 @@ package_name_py:
 project_description:
   type: str
   help: Your project description
-  default: This project is testing the functionality of copier_calcipy
 
 author_name:
   type: str
@@ -80,9 +78,8 @@ doc_dir:
 
 codecov_token:
   type: str
-  help: Code coverage token for uploading reports. Default is for Kyle King
-  default: d414dacb-5b8d-4c0b-94e1-42fe8393187d
+  help: Code coverage token for uploading reports
 
 install_extras:
   type: str
-  help: Optional extras to install when running in CI. Default is to install no extras
+  help: (Uncommon) Optional extras to install when running in CI. Example "-E dev -E lint". Typically leave blank

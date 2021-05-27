@@ -25,7 +25,6 @@ classifiers = [
     "Development Status :: 1 - Planning",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 ]
@@ -34,13 +33,17 @@ classifiers = [
 "Bug Tracker" = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/issues"
 
 [tool.poetry.dependencies]
-python = "^3.7.1"
+python = "^3.8"
 
 [tool.poetry.dev-dependencies]
 
 [tool.poetry.dependencies.calcipy]
-version = "*"
+git = "https://github.com/kyleking/calcipy.git"
+branch = "dev/development"
+rev = "ad148bc"  # Always pin to a commit
+develop = true  # Optional: will reinstall each time
 
 [tool.poetry.dev-dependencies.calcipy]
-version = "*"
-extras = [ "dev", "lint", "test",]
+git = "https://github.com/kyleking/calcipy.git"
+branch = "dev/development"
+extras = [ "dev", "lint", "test"]
