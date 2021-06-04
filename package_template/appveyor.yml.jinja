@@ -32,35 +32,41 @@ build: false
 
 # Specify commands specific to platform (cmd-Windows/sh-Linux/None-Both)
 install:
+  # Force Python to use UTF-8 encoding instead of cp1252 on Windows
+  - cmd: SET PYTHONUTF8=1
   # Set Python paths based on environment variable from matrix
   - cmd: set PATH=%PYTHON_WIN%/Scripts;%PYTHON_WIN%;%PATH%
   - python --version
   # Install pipx to manage CLI installations (poetry, codecov)
   - python -m pip install pipx
   # Manually set the path because "pipx ensurepath" needs a reload to apply
+  - pipx ensurepath
   - cmd: set PATH=%USERPROFILE%\.local\bin;%PATH%
   - sh: PATH=~/.local/bin:$PATH
   # Debug the PATH (if needed)
   - cmd: echo %PATH%
   - sh: echo $PATH
+  # Install virtualenv for poetry to create .venv
+  - python -m pip install virtualenv
   # Install poetry and configure
-  - python -m pipx install poetry
-  - poetry config --list
+  - pipx install poetry
+  - poetry config virtualenvs.create true
   - poetry config virtualenvs.in-project true
+  - poetry config --list
   # Install project-specific dependencies and extras
   - poetry install {{ install_extras if install_extras }}
 
 test_script:
-  - poetry run doit run coverage
+  - poetry run doit --continue
+  # Install codecov and upload the coverage results
+  - python -m pipx install codecov
+  - codecov
 
 deploy_script:
   - echo "Deploying..."
 
 on_success:
   - echo "On Success..."
-  # Install codecov and upload the coverage results
-  - python -m pipx install codecov
-  - codecov
 
 on_failure:
   - echo "On Error..."

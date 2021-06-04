@@ -1,33 +1,36 @@
 [build-system]
-requires = [ "poetry-core>=1.0.0",]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
 version = "0.0.1"
-tag_format = "$version"
-version_files = [ "pyproject.toml", "{{ package_name_py }}/__init__.py", , "appveyor.yml",]
+tag_format = "2021.$version"
+version_files = [
+    "pyproject.toml",
+    "{{ package_name_py }}/__init__.py",
+    "appveyor.yml",
+]
 
 [tool.poetry]
 name = "{{ package_name_py }}"
 version = "0.0.1"
 description = "{{ project_description }}"
 license = "MIT"
-authors = [ "{{ author_name }} <{{ author_email }}>",]
+authors = ["{{ author_name }} <{{ author_email }}>"]
 maintainers = []
 repository = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}"
 documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/docs"
 readme = "{{ doc_dir }}/README.md"
-include = [ "LICENSE.md",]
+include = ["LICENSE.md"]
 keywords = []
 classifiers = [
-    # https://pypi.org/classifiers/
     "Development Status :: 1 - Planning",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
-]
+] # https://pypi.org/classifiers/
 
 [tool.poetry.urls]
 "Bug Tracker" = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/issues"
@@ -40,10 +43,10 @@ python = "^3.8"
 [tool.poetry.dependencies.calcipy]
 git = "https://github.com/kyleking/calcipy.git"
 branch = "dev/development"
-rev = "ad148bc"  # Always pin to a commit
-develop = true  # Optional: will reinstall each time
+rev = "ad148bc" # Always pin to a commit
+develop = true # Optional: will reinstall each time
 
 [tool.poetry.dev-dependencies.calcipy]
 git = "https://github.com/kyleking/calcipy.git"
 branch = "dev/development"
-extras = [ "dev", "lint", "test"]
+extras = ["dev", "lint", "test"]
