@@ -38,7 +38,7 @@ project_name:
 package_name_py:
   type: str
   help: Your Python package name (should be in `snake_case`)
-  default: "{{ project_name|lower|replace('-', '_')|replace(' ', '_') }}"
+  default: "{{ project_name | lower | replace('-', '_') | replace(' ', '_') }}"
 
 project_description:
   type: str
@@ -77,7 +77,7 @@ copyright_date:
 doc_dir:
   type: str
   help: Relative path to the documentation source file directory. Default is "docs/"
-  default: docs/
+  default: docs
 
 codecov_token:
   type: str
