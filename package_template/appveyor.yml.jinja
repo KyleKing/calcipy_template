@@ -13,20 +13,23 @@ environment:
     # Use a single global Python version for pipx/poetry/etc.
     #   Nox will handle specific python version testing
     - PYTHON_WIN: C:/Python39
-      PYTHON_STACK: 3.9
+      PYENV_38: 3.8.3
+      PYENV_39: 3.9.5
 
-  APPVEYOR_SAVE_CACHE_ON_ERROR: true
+  APPVEYOR_SAVE_CACHE_ON_ERROR: false
   CODECOV_TOKEN: {{ codecov_token }}
 
   # To encrypt passwords, go to Account -> "Settings" -> "Encrypt YAML"
 
-# Must be after the declaration of "PYTHON_STACK" variable
-# yamllint disable-line rule:line-length
-# https://help.appveyor.com/discussions/questions/32001-ubuntu-python-3-as-default
-stack: python %PYTHON_STACK%
+# Python is now managed with pyenv instead of stack so that a ".venv" is created
+# > Must be after the declaration of "PYTHON_STACK" variable
+# > yamllint disable-line rule:line-length
+# > https://help.appveyor.com/discussions/questions/32001-ubuntu-python-3-as-default
+# > stack: python %PYTHON_STACK%
 
 cache:
   - .venv -> poetry.lock
+  - .nox -> poetry.lock
 
 build: false
 
@@ -34,33 +37,42 @@ build: false
 install:
   # Force Python to use UTF-8 encoding instead of cp1252 on Windows
   - cmd: SET PYTHONUTF8=1
-  # Set Python paths based on environment variable from matrix
+  # For Windows, set Python paths based on environment variable from matrix
   - cmd: set PATH=%PYTHON_WIN%/Scripts;%PYTHON_WIN%;%PATH%
+  # Use pyenv instead of the venv-based Python from AppVeyor Ubuntu
+  - sh: curl https://pyenv.run | $SHELL
+  # exec "$SHELL" causes AppVeyor to stop, so manually configure paths
+  - sh: export PYENV_ROOT="$HOME/.pyenv"
+  - sh: export PATH="$PYENV_ROOT/bin:$PATH"
+  - sh: eval "$(pyenv init --path)"
+  # Configure Python versions with pyenv
+  - sh: pyenv install $PYENV_38 --skip-existing
+  - sh: pyenv install $PYENV_39 --skip-existing
+  - sh: pyenv global $PYENV_39
+  - sh: pyenv local $PYENV_39 $PYENV_38
+  # Check global Python version
   - python --version
   # Install pipx to manage CLI installations (poetry, codecov)
   - python -m pip install pipx
   # Manually set the path because "pipx ensurepath" needs a reload to apply
-  - pipx ensurepath
   - cmd: set PATH=%USERPROFILE%\.local\bin;%PATH%
-  - sh: PATH=~/.local/bin:$PATH
-  # Debug the PATH (if needed)
+  - sh: export PATH=$HOME/.local/bin:$PATH
+  # Check the PATH
   - cmd: echo %PATH%
   - sh: echo $PATH
-  # Install virtualenv for poetry to create .venv
-  - python -m pip install virtualenv
   # Install poetry and configure
-  - pipx install poetry
-  - poetry config virtualenvs.create true
+  - python -m pipx install poetry
   - poetry config virtualenvs.in-project true
   - poetry config --list
   # Install project-specific dependencies and extras
-  - poetry install {{ install_extras if install_extras }}
+  - poetry install -E dev -E lint -E test -E commitizen_legacy
 
 test_script:
   - poetry run doit --continue
-  # Install codecov and upload the coverage results
-  - python -m pipx install codecov
-  - codecov
+  # On Windows only, install codecov and upload the coverage results
+  - cmd: poetry run doit run nox_coverage
+  - cmd: python -m pipx install codecov
+  - cmd: codecov --file coverage.json
 
 deploy_script:
   - echo "Deploying..."

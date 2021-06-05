@@ -16,11 +16,7 @@ multi_line_output = 5
 name = "cz_conventional_commits"
 version = "0.0.1"
 tag_format = "2021.$version"
-version_files = [
-    "pyproject.toml",
-    "{{ package_name_py }}/__init__.py",
-    "appveyor.yml",
-]
+version_files = ["pyproject.toml", "{{ package_name_py }}/__init__.py", "appveyor.yml"]
 
 [tool.poetry]
 name = "{{ package_name_py }}"
@@ -31,7 +27,7 @@ authors = ["{{ author_name }} <{{ author_email }}>"]
 maintainers = []
 repository = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}"
 documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/docs"
-readme = "{{ doc_dir }}/README.md"
+readme = "{{ doc_dir | rstrip('/') }}/README.md"
 include = ["LICENSE.md"]
 keywords = []
 classifiers = [
