@@ -43,16 +43,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
+calcipy = "^0.2"
 
 [tool.poetry.dev-dependencies]
-
-[tool.poetry.dependencies.calcipy]
-git = "https://github.com/kyleking/calcipy.git"
-branch = "dev/development"
-rev = "ad148bc" # Always pin to a commit
-develop = true # Optional: will reinstall each time
-
-[tool.poetry.dev-dependencies.calcipy]
-git = "https://github.com/kyleking/calcipy.git"
-branch = "dev/development"
-extras = ["dev", "lint", "test"]
+calcipy = { version = "*", extras = ["dev", "lint", "test"] }
