@@ -23,10 +23,12 @@ _skip_if_exists:
 _tasks:
   - git init
   - python _copier_post_generation.py
-# _migrations:
-#   - version: 0.0.1
-#     before:
-#       - rm CHANGELOG.md
+_migrations:
+  - version: 0.0.9
+    before:
+      - "rm {{ package_name_py }}/__init__.py"
+      - "rm -rf {{ doc_dir }}"
+      - rm pyproject.toml
 
 # ====== QUESTIONS ======
 project_name:
