@@ -2,6 +2,12 @@
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.1"
+tag_format = "2021.$version"
+version_files = ["pyproject.toml", "{{ package_name_py }}/__init__.py", "appveyor.yml"]
+
 [tool.isort]
 balanced_wrapping = true
 default_section = "THIRDPARTY"
@@ -11,12 +17,6 @@ known_first_party = "{{ package_name_py }}"
 length_sort = false
 line_length = 120
 multi_line_output = 5
-
-[tool.commitizen]
-name = "cz_conventional_commits"
-version = "0.0.1"
-tag_format = "2021.$version"
-version_files = ["pyproject.toml", "{{ package_name_py }}/__init__.py", "appveyor.yml"]
 
 [tool.poetry]
 name = "{{ package_name_py }}"
