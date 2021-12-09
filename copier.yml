@@ -26,10 +26,10 @@ _tasks:
 _migrations:
   - version: 0.0.11
     before:
-      - rm {{ package_name_py }}/__init__.py
+      - rm -f {{ package_name_py }}/__init__.py
       - rm -rf {{ doc_dir }}
-      - rm .isort.cfg
-      - rm pyproject.toml
+      - rm -f .isort.cfg
+      - rm -f pyproject.toml
 
 # ====== QUESTIONS ======
 project_name:
