@@ -84,6 +84,10 @@ codecov_token:
   type: str
   help: Code coverage token for uploading reports
 
+cname:
+  type: str
+  help: Canonical Website Name used for the documentation website
+
 install_extras:
   type: str
   help: (Uncommon) Optional extras to install when running in CI. Example "-E dev -E lint". Typically leave blank
