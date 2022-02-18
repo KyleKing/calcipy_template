@@ -55,11 +55,6 @@ repos:
         # args: ["--baseline", ".secrets.baseline"]
         exclude: "poetry.lock|cassettes/.*\\.yaml"
         stages: [push]
-  # - repo: https://github.com/sondrelg/pep585-upgrade
-  #   rev: "bcc3d077ee46c94bc1dac5f5274e2fb43de570e9"
-  #   hooks:
-  #     # PLANNED: Run when dropping Python 3.8 (& remove BeartypeDecorHint...)
-  #     - id: upgrade-type-hints
   - repo: https://github.com/lyz-code/yamlfix/
     rev: master
     hooks:
