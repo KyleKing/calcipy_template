@@ -22,7 +22,7 @@ This project scaffold is primarily for my personal use, so you may find that the
 - [pawamoy/copier-poetry](https://github.com/pawamoy/copier-poetry) or [pawamoy/copier-pdm](https://github.com/pawamoy/copier-pdm)
 - [cjolowicz/cookiecutter-hypermodern-python](https://github.com/cjolowicz/cookiecutter-hypermodern-python)
 
-## Development
+## Local Development
 
 ```sh
 # Local changes need to be committed to take effect (at a later point squash all "tmp" commits)
@@ -37,4 +37,12 @@ git add . && git commit -m "tmp" && copier . ../test_template --force --vcs-ref=
 cd test_template
 copier copy ../calcipy_template .
 copier update .
+```
+
+## Releases
+
+```sh
+# Create a new git tag for each release
+git tag --annotate 0.2.4 --message "Pre-Commit and Beartype Improvements"
+git push --tags
 ```
