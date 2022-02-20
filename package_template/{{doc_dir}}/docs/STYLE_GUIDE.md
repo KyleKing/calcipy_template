@@ -67,7 +67,7 @@ Personal Guide
     - Next Tasks
     - Blue Sky
 - Search
-    - `is:open is:issue assignee:KyleKing archived:false milestone:"blue sky"` or `no:milestone` etc.
+    - `is:open is:issue assignee:{{ author_username }} archived:false milestone:"blue sky"` or `no:milestone` etc.
 
 <details>
 <summary>Research</summary>
