@@ -55,7 +55,7 @@ repos:
           - mdformat-tables
           - mdformat-toc
           - mdformat-web
-        exclude: _.*\.md|CHANGELOG.md
+        exclude: _.*\.md|CHANGELOG\.md
   - repo: https://github.com/Yelp/detect-secrets
     rev: v1.2.0
     hooks:
@@ -63,13 +63,13 @@ repos:
       # See: https://github.com/Yelp/detect-secrets/issues/452
       - id: detect-secrets
         # args: ["--baseline", ".secrets.baseline"]
-        exclude: poetry.lock|.*/cassettes/.*\.yaml
+        exclude: poetry\.lock|.*/cassettes/.*\.yaml
         stages: [push]
   - repo: https://github.com/lyz-code/yamlfix/
     rev: 0.8.0
     hooks:
       - id: yamlfix
-        exclude: .copier-answers.yml
+        exclude: \.copier-answers\.yml
         types_or: []
         types: [file, yaml]
   - repo: local
@@ -93,4 +93,4 @@ repos:
         language: system
         entry: poetry run doit run format_toml
         types: [toml]
-        exclude: poetry.lock
+        exclude: poetry\.lock
