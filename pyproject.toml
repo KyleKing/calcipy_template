@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "calcipy_template"
-version = "0.0.1"
+version = "0.4.3"
 description = "Project scaffold for Python packages built on `calcipy`. Utilizes `copier` to keep scaffolding up to date"
 license = "Unlicense"
 authors = [ "Kyle King <dev.act.kyle@gmail.com>",]
