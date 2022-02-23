@@ -33,8 +33,8 @@ runs:
           .venv
           .nox
         # yamllint disable-line rule:line-length
-        key: {{ '${{ inputs.os }}' }}-{{ '${{ inputs.python-version }}' }}-${{ hashFiles('**/poetry.lock')
-          }}
+        key: {{ '${{ inputs.os }}' }}-{{ '${{ inputs.python-version }}' }}-{% raw %}${{ hashFiles('**/poetry.lock')
+          }}{% endraw %}
     - name: Install Dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
