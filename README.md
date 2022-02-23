@@ -41,8 +41,15 @@ copier update .
 
 ## Releases
 
+FYI: This is now replace with a Github action
+
 ```sh
 # Create a new git tag for each release
 git tag --annotate 0.2.4 --message "Pre-Commit and Beartype Improvements"
 git push --tags
 ```
+
+### Release Action
+
+- [See guide](https://commitizen-tools.github.io/commitizen/tutorials/github_actions/)
+    - Make sure that a valid Personal Access Token is attached to the repository under `Settings > Secrets > Add new secret`
