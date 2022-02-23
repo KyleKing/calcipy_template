@@ -1,3 +1,9 @@
+## 0.5.3 (2022-02-23)
+
+### Fix
+
+- correct issues with templates
+
 ## 0.5.2 (2022-02-23)
 
 ### Fix
