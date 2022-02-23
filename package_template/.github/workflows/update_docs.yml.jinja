@@ -5,11 +5,11 @@ on:  # yamllint disable-line rule:truthy
   push:
     branches: [main]
     paths:
-      - 'docs/**'
+      - {{ doc_dir }}/**
 
 jobs:
   docs:
-    runs-on: ${{ matrix.os }}
+    runs-on: {{ '${{ matrix.os }}' }}
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -18,8 +18,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/setup
         with:
-          os: ${{ matrix.os }}
-          python-version: ${{ matrix.python-version }}
+          os: {{ '${{ matrix.os }}' }}
+          python-version: {{ '${{ matrix.python-version }}' }}
 
       # PLANNED: Could output coverage file from the test suite
       - name: Build and deploy documentation

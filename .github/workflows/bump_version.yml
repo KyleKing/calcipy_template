@@ -9,7 +9,8 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   bump-version:
-    if: "!startsWith(github.event.head_commit.message, 'docs:')"
+    # Ignore the commits from this action
+    if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
     name: Bump version and make release with commitizen
     steps:
