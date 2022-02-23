@@ -1,3 +1,9 @@
+## 0.5.2 (2022-02-23)
+
+### Fix
+
+- escape curly brackets on two lines
+
 ## 0.5.1 (2022-02-23)
 
 ### Fix
