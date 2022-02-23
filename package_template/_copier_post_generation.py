@@ -8,6 +8,7 @@ def cleanup() -> None:
     """Remove files and folders that are no longer used."""
     paths = [
         Path('.pyup.yml'),
+        Path('appveyor.yml'),
     ]
     directories = [
         Path('_adr'),
