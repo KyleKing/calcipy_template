@@ -1,3 +1,9 @@
+## 0.5.1 (2022-02-23)
+
+### Fix
+
+- correctly escape brackets
+
 ## 0.5.0 (2022-02-23)
 
 ### Feat
