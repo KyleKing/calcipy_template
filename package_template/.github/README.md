@@ -10,10 +10,10 @@ The `ci_pipline.yml` Github Action is based on these excellent examples
 Additional Resources
 
 - `act`, a local GHA runner: <https://github.com/nektos/act>
-- [actions/checkout@v2](https://github.com/actions/checkout)
-- [actions/setup-python@v2](https://github.com/actions/setup-python)
-- [abatilo/actions-poetry@v2.0.0](https://github.com/abatilo/actions-poetry)
-- [actions/cache@v2](https://github.com/marketplace/actions/cache)
+- [actions/checkout](https://github.com/actions/checkout)
+- [actions/setup-python](https://github.com/actions/setup-python)
+- [abatilo/actions-poetry](https://github.com/abatilo/actions-poetry)
+- [actions/cache](https://github.com/marketplace/actions/cache)
 - [pre-commit/action](https://github.com/pre-commit/action)
 - [Github Action Syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
 
