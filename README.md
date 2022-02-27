@@ -1,6 +1,6 @@
 # Copier Calcipy
 
-Project scaffold for Python packages built on `calcipy` ([kyleking/calcipy](https://github.com/KyleKing/calcipy)). Utilizes `copier` to keep projects up to date (vs. cookie cutter which can only be used once)
+Project scaffold for Python packages built on `calcipy` ([kyleking/calcipy](https://github.com/KyleKing/calcipy)). Built with `copier` so projects can be kept up-to-date
 
 ## Quick Start
 
@@ -27,29 +27,19 @@ This project scaffold is primarily for my personal use, so you may find that the
 ```sh
 # Local changes need to be committed to take effect (at a later point squash all "tmp" commits)
 git add . && git commit -m "tmp" && copier . ../test_template --force --vcs-ref=HEAD
-# Note: ^ force skips all questions and overwrites files without asking. Uses copier question default
-# Note: ^ --force can't be used with copy or force sub-commands
+# Note: "--force" skips all questions and overwrites files without asking
 
 # For testing update from within the target directory
-# Note: make sure to commit changes in test directory before running copier
+#   Note: make sure to commit changes in test directory before running copier
 #   If not, after answering all of the questions, you may see this error and need to restart:
 #   > Destination repository is dirty; cannot continue. Please commit or stash your local changes and retry.
 cd test_template
 copier copy ../calcipy_template .
-copier update .
+copier --force update .
 ```
 
 ## Releases
 
-FYI: This is now replace with a Github action
+Any push to the repository `main` branch will trigger a version bump based on [`commitizen` rules (`fix`, `feat`, etc.)](https://commitizen-tools.github.io/commitizen/)
 
-```sh
-# Create a new git tag for each release
-git tag --annotate 0.2.4 --message "Pre-Commit and Beartype Improvements"
-git push --tags
-```
-
-### Release Action
-
-- [See guide](https://commitizen-tools.github.io/commitizen/tutorials/github_actions/)
-    - Make sure that a valid Personal Access Token is attached to the repository under `Settings > Secrets > Add new secret`
+If this repository is cloned, you will need to add a Personal Access Token to the repository under `Settings > Secrets > Add new secret` ([see guide](https://commitizen-tools.github.io/commitizen/tutorials/github_actions/))
