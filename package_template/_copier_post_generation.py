@@ -11,6 +11,7 @@ def cleanup() -> None:
         Path('.pyup.yml'),
         Path('.sourcery.yaml'),
         Path('appveyor.yml'),
+        Path('requirements.txt'),
     ]
     directories = [
         Path('_adr'),
