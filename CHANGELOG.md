@@ -1,3 +1,10 @@
+## 0.6.1 (2022-02-27)
+
+### Fix
+
+- run poetry install regardless of cache hit
+- add dispatch for manual re-runs
+
 ## 0.6.0 (2022-02-27)
 
 ### Fix
