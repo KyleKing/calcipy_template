@@ -1,3 +1,9 @@
+## 0.6.2 (2022-02-27)
+
+### Fix
+
+- try moving .doit.db outside of git for pre-commit runners
+
 ## 0.6.1 (2022-02-27)
 
 ### Fix
