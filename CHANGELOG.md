@@ -1,3 +1,14 @@
+## 0.6.0 (2022-02-27)
+
+### Fix
+
+- apply patches from Calcipy for Github Actions
+- remove AppVeyor completely
+
+### Feat
+
+- remove Sourcery and DeepSource
+
 ## 0.5.3 (2022-02-23)
 
 ### Fix
