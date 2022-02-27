@@ -7,7 +7,9 @@ from pathlib import Path
 def cleanup() -> None:
     """Remove files and folders that are no longer used."""
     paths = [
+        Path('.deepsource.toml'),
         Path('.pyup.yml'),
+        Path('.sourcery.yaml'),
         Path('appveyor.yml'),
     ]
     directories = [
