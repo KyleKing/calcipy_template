@@ -1,3 +1,9 @@
+## 0.6.4 (2022-08-02)
+
+### Refactor
+
+- update onboarding script
+
 ## 0.6.3 (2022-02-27)
 
 ### Fix
