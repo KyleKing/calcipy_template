@@ -1,16 +1,16 @@
 ---
 # ====== jinja ======
 # Configure template to use standard jinja2 syntax
-# From: https://github.com/Tecnativa/doodba-copier-template/blob/stable/copier.yml#L1-L10
+# From: https://github.com/Tecnativa/doodba-copier-template/blob/a73f1109277659121502d740c9039c09d1e7a9aa/copier.yml#L1-L10
 _templates_suffix: .jinja
 _envops:
-  block_end_string: "%}"
-  block_start_string: "{%"
-  comment_end_string: "#}"
-  comment_start_string: "{#"
+  block_end_string: '%}'
+  block_start_string: '{%'
+  comment_end_string: '#}'
+  comment_start_string: '{#'
   keep_trailing_newline: true
-  variable_end_string: "}}"
-  variable_start_string: "{{"
+  variable_end_string: '}}'
+  variable_start_string: '{{'
 
 # ====== TEMPLATE ======
 _answers_file: .copier-answers.yml
@@ -62,32 +62,31 @@ repository_provider:
 
 author_username:
   type: str
-  help: "Your username for {{ repository_provider }}"
+  help: Your username for {{ repository_provider }}
   default: kyleking
 
 repository_namespace:
   type: str
-  help: "Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ package_name_py }}"
-  default: "{{ author_username }}"
+  help: Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ package_name_py
+    }}
+  default: '{{ author_username }}'
 
 copyright_date:
   type: str
   help: The copyright date
-  default: "{{ now().year }}"
+  default: "{{ '%Y-%m-%d %H:%M:%S' | strftime }}"
 
 doc_dir:
   type: str
   help: Relative path to the documentation source file directory. Default is "docs/"
   default: docs
 
-codecov_token:
-  type: str
-  help: Code coverage token for uploading reports
-
 cname:
   type: str
-  help: Canonical Website Name used for the documentation website
+  help: Canonical Website Name used for the documentation website (i.e. {{ package_name_py
+    }}.kyleking.me)
 
 install_extras:
   type: str
-  help: (Uncommon) Optional extras to install when running in CI. Example "-E dev -E lint". Typically leave blank
+  help: (Uncommon) Optional extras to install when running in CI. Example "-E dev
+    -E lint". Typically leave blank
