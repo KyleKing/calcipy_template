@@ -73,8 +73,8 @@ repository_namespace:
 
 copyright_date:
   type: str
-  help: The copyright date
-  default: "{{ '%Y-%m-%d %H:%M:%S' | strftime }}"
+  help: The copyright year
+  default: "{{ '%Y' | strftime }}"
 
 doc_dir:
   type: str
