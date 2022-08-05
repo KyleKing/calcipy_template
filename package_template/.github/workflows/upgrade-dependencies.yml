@@ -1,0 +1,58 @@
+---
+# Based on: https://www.oddbird.net/2022/06/01/dependabot-single-pull-request/
+name: Upgrade Dependencies
+
+on:
+  workflow_dispatch:
+  schedule:
+    # First day of every month at 08:00 UTC
+    - cron: 0 8 1 * *
+
+jobs:
+  upgrade:
+    name: Upgrade & Open Pull Request
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ['3.8']
+    env:
+      # This branch will receive updates each time the workflow runs
+      # It doesn't matter if it's deleted when merged, it'll be re-created
+      BRANCH_NAME: auto-dependency-upgrades
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Upgrade Python dependencies
+        run: poetry update
+
+      - name: Detect changes
+        id: changes
+        # This output boolean tells us if the dependencies have actually changed
+        run: echo "::set-output name=count::$(git status --short | wc -l)"
+      - name: Commit & push changes
+        # Only push if changes exist
+        if: steps.changes.outputs.count > 0
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "Automated dependency upgrades"
+          git push -f origin ${{ github.ref_name }}:$BRANCH_NAME
+      - name: Open pull request if needed
+        if: steps.changes.outputs.count > 0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Only open a PR if the branch is not attached to an existing one
+        run: |-
+          PR=$(gh pr list --head $BRANCH_NAME --json number -q '.[0].number')
+          if [ -z $PR ]; then
+            gh pr create \
+            --head $BRANCH_NAME \
+            --title "Automated dependency upgrades" \
+            --body "Full log: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          else
+            echo "Pull request already exists, won't create a new one."
+          fi
