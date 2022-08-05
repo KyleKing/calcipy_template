@@ -1,3 +1,9 @@
+## 0.7.0 (2022-08-05)
+
+### Feat
+
+- sync with latest calcipy
+
 ## 0.6.4 (2022-08-02)
 
 ### Refactor
