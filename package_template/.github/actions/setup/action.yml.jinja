@@ -37,5 +37,5 @@ runs:
         key: {% raw %}${{ inputs.os }}-${{ inputs.python-version }}-${{ hashFiles('**/poetry.lock')
           }}{% endraw %}
     - name: Install Project and Dependencies
-      run: |
+      run: |-
         poetry install {{ install_extras if install_extras }}
