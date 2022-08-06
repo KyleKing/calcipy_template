@@ -1,3 +1,9 @@
+## 0.7.3 (2022-08-06)
+
+### Fix
+
+- bump minimum calcipy
+
 ## 0.7.2 (2022-08-06)
 
 ### Refactor
