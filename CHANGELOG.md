@@ -1,3 +1,9 @@
+## 0.7.2 (2022-08-06)
+
+### Refactor
+
+- use conventional commit for PR title
+
 ## 0.7.1 (2022-08-05)
 
 ### Fix
