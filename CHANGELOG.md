@@ -1,3 +1,9 @@
+## 0.7.4 (2022-08-07)
+
+### Refactor
+
+- set default for CNAME
+
 ## 0.7.3 (2022-08-06)
 
 ### Fix
