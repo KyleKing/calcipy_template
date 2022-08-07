@@ -83,8 +83,8 @@ doc_dir:
 
 cname:
   type: str
-  help: Canonical Website Name used for the documentation website (i.e. {{ package_name_py
-    }}.kyleking.me)
+  help: Canonical Website Name used for the documentation website
+  default: '{{ package_name_py }}.{{ author_username }}.me'
 
 install_extras:
   type: str
