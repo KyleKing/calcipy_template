@@ -1,3 +1,9 @@
+## 0.7.5 (2022-08-07)
+
+### Refactor
+
+- remove most suggested Github issue tags
+
 ## 0.7.4 (2022-08-07)
 
 ### Refactor
