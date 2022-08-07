@@ -9,10 +9,6 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - main
 
-defaults:
-  run:
-    shell: bash
-
 jobs:
   labeler:
     runs-on: ubuntu-latest

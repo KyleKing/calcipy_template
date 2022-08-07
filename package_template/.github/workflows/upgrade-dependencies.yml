@@ -8,10 +8,6 @@ on:
     # First day of every month at 08:00 UTC
     - cron: 0 8 1 * *
 
-defaults:
-  run:
-    shell: bash
-
 jobs:
   upgrade:
     name: Upgrade & Open Pull Request

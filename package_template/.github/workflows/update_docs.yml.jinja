@@ -9,10 +9,6 @@ on:  # yamllint disable-line rule:truthy
       - mkdocs.yml
   workflow_dispatch:  # For manual runs
 
-defaults:
-  run:
-    shell: bash
-
 jobs:
   docs:
     runs-on: {{ '${{ matrix.os }}' }}
