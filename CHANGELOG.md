@@ -1,3 +1,9 @@
+## 0.7.6 (2022-08-07)
+
+### Fix
+
+- also remove bump version default shell
+
 ## 0.7.5 (2022-08-07)
 
 ### Refactor
