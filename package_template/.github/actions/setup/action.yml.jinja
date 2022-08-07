@@ -15,11 +15,12 @@ env:
   POETRY_VIRTUALENVS_IN_PROJECT: true
   POETRY_NO_INTERACTION: 1
 
+defaults:
+  run:
+    shell: bash
+
 runs:
   using: composite
-  defaults:
-    run:
-      shell: bash
   steps:
     - name: Install Poetry {{ '${{ inputs.poetry-version }}' }}
       run: pipx install poetry=={{ '${{ inputs.poetry-version }}' }}

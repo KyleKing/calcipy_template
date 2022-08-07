@@ -8,6 +8,10 @@ on:  # yamllint disable-line rule:truthy
     branches: [main]
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash
+
 # Could be cool to allow manual specification of the version,
 #   but cz doesn't support manual versioning
 # The SemVer input could be validated in bash like this:
