@@ -86,6 +86,11 @@ cname:
   help: Canonical Website Name used for the documentation website
   default: '{{ package_name_py }}.{{ author_username }}.me'
 
+minimum_python:
+  type: str
+  help: The minimum Python version
+  default: 3.8.4
+
 install_extras:
   type: str
   help: (Uncommon) Optional extras to install when running in CI. Example "-E dev

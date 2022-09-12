@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry-core>=1.0.7"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.commitizen]
@@ -35,6 +35,7 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
 ] # https://pypi.org/classifiers/
 
 [tool.poetry.urls]
@@ -42,7 +43,7 @@ classifiers = [
 "Changelog" = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/blob/main/{{ doc_dir }}/docs/CHANGELOG.md"
 
 [tool.poetry.dependencies]
-python = "^3.8.4"
+python = "^{{ minimum_python }}"
 calcipy = ">=0.16.0"
 
 [tool.poetry.dev-dependencies]
