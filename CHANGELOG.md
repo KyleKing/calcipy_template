@@ -1,3 +1,9 @@
+## 0.8.2 (2022-09-12)
+
+### Fix
+
+- escape matrix.python-version
+
 ## 0.8.1 (2022-09-12)
 
 ### Fix
