@@ -1,3 +1,9 @@
+## 0.8.0 (2022-09-12)
+
+### Feat
+
+- support minimum_python setting
+
 ## 0.7.6 (2022-08-07)
 
 ### Fix
