@@ -1,3 +1,9 @@
+## 0.8.4 (2022-09-13)
+
+### Fix
+
+- last set of escaped brackets
+
 ## 0.8.3 (2022-09-13)
 
 ### Fix
