@@ -1,3 +1,9 @@
+## 0.9.3 (2022-09-17)
+
+### Fix
+
+- skip Ubuntu for test matrix
+
 ## 0.9.2 (2022-09-17)
 
 ### Fix
