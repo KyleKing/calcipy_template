@@ -9,7 +9,6 @@ def cleanup() -> None:
     paths = [
         Path('.deepsource.toml'),
         Path('.pyup.yml'),
-        Path('.sourcery.yaml'),
         Path('appveyor.yml'),
         Path('requirements.txt'),
     ]
