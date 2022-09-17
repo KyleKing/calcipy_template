@@ -28,7 +28,8 @@ runs:
         python-version: {{ '${{ inputs.python-version }}' }}
         cache: poetry
 
-    - uses: actions/cache@v3
+    - name: Cache Nox
+      uses: actions/cache@v3
       id: cache
       with:
         path: .nox
