@@ -1,3 +1,13 @@
+## 0.10.0 (2022-09-17)
+
+### Feat
+
+- add CodeQL workflow
+
+### Fix
+
+- remove check_safety from nox
+
 ## 0.9.5 (2022-09-17)
 
 ### Fix
