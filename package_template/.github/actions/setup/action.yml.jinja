@@ -7,7 +7,7 @@ inputs:
     required: true
   poetry-version:
     required: true
-    default: 1.1.14
+    default: 1.2.1
   python-version:
     required: true
 
@@ -36,6 +36,12 @@ runs:
         # yamllint disable-line rule:line-length
         key: {% raw %}${{ inputs.os }}-${{ inputs.python-version }}-${{ hashFiles('**/poetry.lock')
           }}{% endraw %}
+
+    - name: Poetry Debug Info
+      run: |-
+        poetry env info
+        poetry config --list
+      shell: bash
 
     - name: Install Project and Dependencies
       run: |-
