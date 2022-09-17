@@ -1,3 +1,9 @@
+## 0.9.4 (2022-09-17)
+
+### Fix
+
+- suppress unimportant yamllint length errors
+
 ## 0.9.3 (2022-09-17)
 
 ### Fix
