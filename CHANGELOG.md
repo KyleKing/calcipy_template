@@ -1,3 +1,11 @@
+## 0.9.2 (2022-09-17)
+
+### Fix
+
+- bump poetry version to match lock file
+- configurable development_branch target for dep upgrades
+- remove trailing space and cleanup comments
+
 ## 0.9.1 (2022-09-17)
 
 ### Fix
