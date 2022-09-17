@@ -1,3 +1,14 @@
+## 0.9.5 (2022-09-17)
+
+### Fix
+
+- update pre-commit files
+
+### Refactor
+
+- convert sourcery to jinja template to use min_py version
+- remove relative-import rule from sourcery
+
 ## 0.9.4 (2022-09-17)
 
 ### Fix
