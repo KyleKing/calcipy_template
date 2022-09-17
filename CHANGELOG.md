@@ -1,3 +1,9 @@
+## 0.9.1 (2022-09-17)
+
+### Fix
+
+- don't remove sourcery file post-update
+
 ## 0.9.0 (2022-09-17)
 
 ### Feat
