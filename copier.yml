@@ -32,6 +32,11 @@ _migrations:
       - rm -f pyproject.toml
 
 # ====== QUESTIONS ======
+development_branch:
+  type: str
+  help: The Github branch name used for development
+  default: main
+
 project_name:
   type: str
   help: Your project name (can have spaces)
