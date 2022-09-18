@@ -1,7 +1,8 @@
 ---
 # See: https://docs.sourcery.ai/Configuration/
 refactor:
-  python_version: '{{ minimum_python }}'
+  {% set major,minor,patch = minimum_python.split('.') %}
+  python_version: '{{ major }}.{{ minor }}'
 
 # Full Google Style Set from: https://sourcery.ai/blog/google-python-style-guide/
 rules:
