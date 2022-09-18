@@ -1,3 +1,9 @@
+## 0.10.1 (2022-09-18)
+
+### Fix
+
+- set Python version as major.minor for Sourcery
+
 ## 0.10.0 (2022-09-17)
 
 ### Feat
