@@ -1,3 +1,9 @@
+## 0.10.2 (2022-09-20)
+
+### Fix
+
+- drop nox check_security and run in doit instead
+
 ## 0.10.1 (2022-09-18)
 
 ### Fix
