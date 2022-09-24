@@ -11,6 +11,9 @@ def cleanup() -> None:
         Path('.pyup.yml'),
         Path('appveyor.yml'),
         Path('requirements.txt'),
+        Path('{{ doc_dir }}/docs/CODE_OF_CONDUCT.md'),
+        Path('{{ doc_dir }}/docs/CONTRIBUTING.md'),
+        Path('{{ doc_dir }}/docs/SECURITY.md'),
     ]
     directories = [
         Path('_adr'),
