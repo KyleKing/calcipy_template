@@ -1,3 +1,9 @@
+## 0.10.3 (2022-09-25)
+
+### Fix
+
+- remove duplicate PR Template
+
 ## 0.10.2 (2022-09-20)
 
 ### Fix
