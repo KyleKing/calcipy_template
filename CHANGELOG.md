@@ -1,3 +1,13 @@
+## 0.11.0 (2022-09-25)
+
+### Feat
+
+- add type_check to CI
+
+### Fix
+
+- correct for extra whitespace in jinja sourcery template
+
 ## 0.10.3 (2022-09-25)
 
 ### Fix
