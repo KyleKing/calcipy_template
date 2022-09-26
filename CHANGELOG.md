@@ -1,3 +1,9 @@
+## 0.12.0 (2022-09-26)
+
+### Feat
+
+- merge mypy.ini from pytest-cache-assert
+
 ## 0.11.0 (2022-09-25)
 
 ### Feat
