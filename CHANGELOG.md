@@ -1,3 +1,9 @@
+## 0.12.2 (2022-09-26)
+
+### Fix
+
+- run labeler GHA less frequently
+
 ## 0.12.1 (2022-09-26)
 
 ### Fix
