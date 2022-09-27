@@ -19,8 +19,9 @@ copier update .
 
 This project scaffold is primarily for my personal use, so you may find that there are other templates that better support your use case. I would recommend any of these:
 
-- [pawamoy/copier-poetry](https://github.com/pawamoy/copier-poetry) or [pawamoy/copier-pdm](https://github.com/pawamoy/copier-pdm)
+- [pawamoy/copier-poetry](https://github.com/pawamoy/copier-poetry) or [pawamoy/copier-pdm](https://github.com/pawamoy/copier-pdm) (both have heavily inspired this version!)
 - [cjolowicz/cookiecutter-hypermodern-python](https://github.com/cjolowicz/cookiecutter-hypermodern-python)
+- This project is built with [copier](https://github.com/copier-org/copier), but there is also [cookiecutter](https://github.com/cookiecutter/cookiecutter)/[cruft](https://github.com/cruft/cruft) and the very cool [flexlate](https://github.com/nickderobertis/flexlate) to consider
 
 ## Local Development
 
