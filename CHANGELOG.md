@@ -1,3 +1,14 @@
+## 0.13.0 (2022-09-27)
+
+### Feat
+
+- add custom styles for mkdocstrings
+- add mkdocs-based docstrings
+
+### Fix
+
+- format jinja doc_dir name
+
 ## 0.12.2 (2022-09-26)
 
 ### Fix
