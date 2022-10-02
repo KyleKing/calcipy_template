@@ -1,3 +1,9 @@
+## 0.13.1 (2022-10-02)
+
+### Fix
+
+- remove redundant sourcery rules to flake8 plugins
+
 ## 0.13.0 (2022-09-27)
 
 ### Feat
