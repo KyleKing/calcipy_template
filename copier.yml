@@ -100,3 +100,8 @@ install_extras:
   type: str
   help: (Uncommon) Optional extras to install when running in CI. Example "-E dev
     -E lint". Typically leave blank
+
+include_adrs:
+  type: bool
+  help: If True, include a subdirectory "adr" in the "doc_dir"
+  default: false
