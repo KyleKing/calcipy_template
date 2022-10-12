@@ -699,6 +699,6 @@ rules:
       - match: |
           def f(a: int, b: str):
               x()
-      - no-match: |
+      - no-match: |-
           def f(something) -> int:
               x()

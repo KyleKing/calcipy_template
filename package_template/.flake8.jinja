@@ -23,6 +23,6 @@ max-expression-complexity = 7
 max-function-length = 55
 max-line-length = 120
 max-parameters-amount = 6
-min-python-version = {{ minimum_python }}
+min-python-version = {% set major,minor,patch = minimum_python.split('.') %}{{ major }}.{{ minor }}
 per-file-ignores=test_*.py:ANN001,ANN201,DAR101,DAR201,E800,S101
 select = A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
