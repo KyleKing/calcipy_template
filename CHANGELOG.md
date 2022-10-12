@@ -1,3 +1,10 @@
+## 0.13.3 (2022-10-12)
+
+### Fix
+
+- set minimum Python version for flake8
+- remove redundant required arguments
+
 ## 0.13.2 (2022-10-05)
 
 ### Fix
