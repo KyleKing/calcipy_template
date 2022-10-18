@@ -1,3 +1,9 @@
+## 0.15.2 (2022-10-18)
+
+### Fix
+
+- the in-file-name if doesn't work with .jinja
+
 ## 0.15.1 (2022-10-18)
 
 ### Fix
