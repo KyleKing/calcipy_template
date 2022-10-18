@@ -18,6 +18,7 @@ def cleanup() -> None:
         {% if include_all %}
         {% else %}
         Path('.calcipy_packaging.lock'),
+        Path('.pre-commit-config.yaml'),
         Path('.sourcery.yaml'),
         Path('mkdocs.yml'),
         {% endif %}
