@@ -1,16 +1,5 @@
 ---
-# ====== jinja ======
-# Configure template to use standard jinja2 syntax
-# From: https://github.com/Tecnativa/doodba-copier-template/blob/a73f1109277659121502d740c9039c09d1e7a9aa/copier.yml#L1-L10
-_templates_suffix: .jinja
-_envops:
-  block_end_string: '%}'
-  block_start_string: '{%'
-  comment_end_string: '#}'
-  comment_start_string: '{#'
-  keep_trailing_newline: true
-  variable_end_string: '}}'
-  variable_start_string: '{{'
+_min_copier_version: 6.0.0
 
 # ====== TEMPLATE ======
 _answers_file: .copier-answers.yml
@@ -23,13 +12,6 @@ _skip_if_exists:
 _tasks:
   - git init
   - python _copier_post_generation.py
-_migrations:
-  - version: 0.0.11
-    before:
-      - rm -f {{ package_name_py }}/__init__.py
-      - rm -rf {{ doc_dir }}
-      - rm -f .isort.cfg
-      - rm -f pyproject.toml
 
 # ====== QUESTIONS ======
 development_branch:
