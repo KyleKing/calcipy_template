@@ -1,3 +1,10 @@
+## 0.15.3 (2022-10-18)
+
+### Fix
+
+- move auto_format from pre-commit to doit when not include_all
+- reflect auto-fixes into template files
+
 ## 0.15.2 (2022-10-18)
 
 ### Fix

@@ -3,12 +3,12 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.commitizen]
-version = "0.15.2"
+version = "0.15.3"
 version_files = ["pyproject.toml"]
 
 [tool.poetry]
 name = "calcipy_template"
-version = "0.15.2"
+version = "0.15.3"
 description = "Project scaffold for Python packages built on `calcipy`. Utilizes `copier` to keep scaffolding up to date"
 license = "MIT"
 authors = [ "Kyle King <dev.act.kyle@gmail.com>",]
