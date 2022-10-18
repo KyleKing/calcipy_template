@@ -1,5 +1,0 @@
-# {{ project_name }} ({{ package_name_py }})
-
-{{ project_description }}
-
-Documentation can be found on [Github (./docs)](./docs), [PyPi](https://pypi.org/project/{{ package_name_py }}/), or [Hosted](https://{{ cname }}/)!
