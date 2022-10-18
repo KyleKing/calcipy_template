@@ -1,3 +1,13 @@
+## 0.15.0 (2022-10-18)
+
+### Feat
+
+- add include_all to support skipping excess files
+
+### Refactor
+
+- drop hard-coded Jinja syntax
+
 ## 0.14.0 (2022-10-16)
 
 ### Feat
