@@ -1,7 +1,20 @@
 """Post-Generation Script to be run from Copier."""
 
+imporr re
 import shutil
 from pathlib import Path
+
+# Don't print any output if matching directories like:
+# /private/var/folders/1f/gd24l7210d3d8crp0clcm4440000gn/T/copier.main.update_diff.7eb725cw/.git/
+# /private/var/folders/1f/gd24l7210d3d8crp0clcm4440000gn/T/copier.main.recopy_diff.gnos2law/.git/
+
+_re_copier_dir = re.compile(f'copier\.[^\.]+\.\w+_diff\.')
+_IS_PROJ = not _re_copier_dir.search(Path(__file__).absolute().as_posix())
+
+
+def log(message: str) -> None:
+    if _IS_PROJ:
+        print(message)
 
 
 def cleanup() -> None:
@@ -29,11 +42,11 @@ def cleanup() -> None:
 
     for pth in paths:
         if pth.is_file():
-            print(f'Removing: {pth}')
+            log(f'Removing: {pth}')
             pth.unlink()  # FYI: "missing_ok" was added in 3.8, but this script is ^3.7
     for dir_pth in directories:
         if dir_pth.is_dir():
-            print(f'Deleting: {dir_pth}')
+            log(f'Deleting: {dir_pth}')
             shutil.rmtree(dir_pth)
 
 
@@ -43,12 +56,12 @@ def delete_myself() -> None:
 
 
 if __name__ == '__main__':
-    print("""
-Project successfully generated!
+    log("""
+The '{{ package_name_py }}' has been updated!
 
-1. Install dependencies 'poetry install'
+1. Check for and resolve any merge conflict errors with '*.rej' files
+1. Install dependencies 'poetry install --sync'
 2. Run `poetry run doit list` to show the available actions
-
 """)
     cleanup()
     delete_myself()
