@@ -1,3 +1,9 @@
+## 0.15.6 (2022-10-19)
+
+### Fix
+
+- further minor improvements to the post-generate script help text
+
 ## 0.15.5 (2022-10-19)
 
 ### Fix
