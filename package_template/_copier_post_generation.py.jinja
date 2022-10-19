@@ -57,11 +57,12 @@ def delete_myself() -> None:
 
 if __name__ == '__main__':
     log("""
-The '{{ package_name_py }}' has been updated!
+The '{{ package_name_py }}' package has been updated!
 
-1. Check for and resolve any merge conflict errors with '*.rej' files
-1. Install dependencies 'poetry install --sync'
-2. Run `poetry run doit list` to show the available actions
+1. Review the changes and commit. Merge conflicts will be logged by copier in '*.rej' files
+2. Install dependencies with 'poetry install --sync'
+3. Run `poetry run doit list` to show the available actions
+4. Run `poetry run doit --continue` to try running all default tasks
 """)
     cleanup()
     delete_myself()
