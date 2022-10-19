@@ -1,3 +1,9 @@
+## 0.15.4 (2022-10-19)
+
+### Fix
+
+- make the printed generation message conditional
+
 ## 0.15.3 (2022-10-18)
 
 ### Fix
