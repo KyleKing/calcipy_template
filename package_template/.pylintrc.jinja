@@ -2,7 +2,7 @@
 enable-all-extensions=yes
 fail-under=8
 ignore=tests
-py-version=3.10
+{% set major,minor,patch = minimum_python.split('.') %}py-version={{ major }}.{{ minor }}
 suggestion-mode=yes
 
 [BASIC]
