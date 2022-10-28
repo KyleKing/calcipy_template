@@ -1,3 +1,11 @@
+## 0.15.8 (2022-10-28)
+
+### Fix
+
+- merge flake8 config from pft
+- convert pylintrc to jinja for min_py
+- simpify pylintrc
+
 ## 0.15.7 (2022-10-19)
 
 ### Fix
