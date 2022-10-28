@@ -1,3 +1,9 @@
+## 0.15.9 (2022-10-28)
+
+### Fix
+
+- source documentation was only being built for calcipy
+
 ## 0.15.8 (2022-10-28)
 
 ### Fix
