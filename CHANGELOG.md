@@ -1,3 +1,9 @@
+## 0.15.10 (2022-11-06)
+
+### Fix
+
+- switch to latest repo for pyproject-fmt
+
 ## 0.15.9 (2022-10-28)
 
 ### Fix
