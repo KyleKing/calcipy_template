@@ -1,3 +1,9 @@
+## 0.15.11 (2022-11-06)
+
+### Fix
+
+- switch the actual package_template to use pyproject-fmt
+
 ## 0.15.10 (2022-11-06)
 
 ### Fix
