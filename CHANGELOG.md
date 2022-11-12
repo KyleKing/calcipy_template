@@ -1,3 +1,14 @@
+## 0.16.0 (2022-11-12)
+
+### Feat
+
+- bump minimum copier version to resolve warning
+
+### Fix
+
+- suppress TC003
+- begin excluding false positives from CodeQL
+
 ## 0.15.11 (2022-11-06)
 
 ### Fix
