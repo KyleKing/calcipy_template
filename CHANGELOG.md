@@ -1,3 +1,9 @@
+## 0.16.2 (2022-11-13)
+
+### Fix
+
+- use the project_name where appropriate
+
 ## 0.16.1 (2022-11-13)
 
 ### Fix
