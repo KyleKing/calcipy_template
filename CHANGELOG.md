@@ -1,3 +1,13 @@
+## 0.16.1 (2022-11-13)
+
+### Fix
+
+- the repository URL must use the package_name instead of python
+
+### Refactor
+
+- introduce a single variable for the repo_url
+
 ## 0.16.0 (2022-11-12)
 
 ### Feat
