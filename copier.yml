@@ -58,6 +58,11 @@ repository_namespace:
     }}
   default: '{{ author_username }}'
 
+repository_url:
+  type: str
+  help: This is an internal variable where the default should be accepted.
+  default: '{{ repository_provider }}/{{ repository_namespace }}/{{ project_name }}'
+
 copyright_date:
   type: str
   help: The copyright year
