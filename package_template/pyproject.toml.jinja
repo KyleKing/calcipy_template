@@ -24,8 +24,8 @@ description = "{{ project_description }}"
 license = "MIT"
 authors = ["{{ author_name }} <{{ author_email }}>"]
 maintainers = []
-repository = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}"
-documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/{{ doc_dir }}"
+repository = "{{ repository_provider }}/{{ repository_namespace }}/{{ project_name }}"
+documentation = "{{ repository_provider }}/{{ repository_namespace }}/{{ project_name }}/{{ doc_dir }}"
 readme = "{{ doc_dir }}/README.md"
 include = ["LICENSE.md"]
 keywords = []
@@ -40,8 +40,8 @@ classifiers = [
 ] # https://pypi.org/classifiers/
 
 [tool.poetry.urls]
-"Bug Tracker" = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/issues"
-"Changelog" = "{{ repository_provider }}/{{ repository_namespace }}/{{ package_name_py }}/blob/main/{{ doc_dir }}/docs/CHANGELOG.md"
+"Bug Tracker" = "{{ repository_provider }}/{{ repository_namespace }}/{{ project_name }}/issues"
+"Changelog" = "{{ repository_provider }}/{{ repository_namespace }}/{{ project_name }}/blob/main/{{ doc_dir }}/docs/CHANGELOG.md"
 
 [tool.poetry.dependencies]
 python = "^{{ minimum_python }}"
