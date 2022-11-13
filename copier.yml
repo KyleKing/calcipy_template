@@ -21,7 +21,7 @@ development_branch:
 
 project_name:
   type: str
-  help: Your project name (can have spaces)
+  help: Your project name (can have spaces and dashes)
 
 package_name_py:
   type: str
@@ -76,7 +76,7 @@ doc_dir:
 cname:
   type: str
   help: Canonical Website Name used for the documentation website
-  default: '{{ package_name_py }}.{{ author_username }}.me'
+  default: '{{ project_name }}.{{ author_username }}.me'
 
 minimum_python:
   type: str
