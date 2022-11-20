@@ -1,3 +1,10 @@
+## 0.17.1 (2022-11-20)
+
+### Fix
+
+- ignore end of file new line in answer file
+- correct URLs for documentation site
+
 ## 0.17.0 (2022-11-20)
 
 ### Feat
