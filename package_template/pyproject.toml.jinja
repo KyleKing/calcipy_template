@@ -2,6 +2,9 @@
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.calcipy.test]{% set major,minor,patch = minimum_python.split('.') %}
+pythons = ["{{ major }}.{{ minor }}"]
+
 [tool.commitizen]
 name = "cz_conventional_commits"
 version = "0.0.1"
@@ -45,7 +48,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^{{ minimum_python }}"
-calcipy = ">=0.20.0"
+calcipy = ">=0.21.3"
 
 [tool.poetry.dev-dependencies]
 calcipy = { version = "*", extras = ["dev", "lint", "test"] }
