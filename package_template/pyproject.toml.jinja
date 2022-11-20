@@ -28,7 +28,7 @@ license = "MIT"
 authors = ["{{ author_name }} <{{ author_email }}>"]
 maintainers = []
 repository = "{{ repository_url }}"
-documentation = "{{ repository_url }}/{{ doc_dir }}"
+documentation = "https://{{ cname }}"
 readme = "{{ doc_dir }}/README.md"
 include = ["LICENSE.md"]
 keywords = []
@@ -44,7 +44,7 @@ classifiers = [
 
 [tool.poetry.urls]
 "Bug Tracker" = "{{ repository_url }}/issues"
-"Changelog" = "{{ repository_url }}/blob/main/{{ doc_dir }}/docs/CHANGELOG.md"
+"Changelog" = "{{ repository_url }}/blob/{{ development_branch }}/{{ doc_dir }}/docs/CHANGELOG.md"
 
 [tool.poetry.dependencies]
 python = "^{{ minimum_python }}"
