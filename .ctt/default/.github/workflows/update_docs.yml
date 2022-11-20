@@ -5,25 +5,25 @@ on:  # yamllint disable-line rule:truthy
   push:
     branches: [main]
     paths:
-      - {{ doc_dir }}/**
+      - docs/**
       - mkdocs.yml
   workflow_dispatch:  # For manual runs
 
 jobs:
   docs:
-    runs-on: {{ '${{ matrix.os }}' }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: [{{ minimum_python }}]
+        python-version: [3.11.0]
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # For git-revision-date-localized-plugin
       - uses: ./.github/actions/setup
         with:
-          os: {{ '${{ matrix.os }}' }}
-          python-version: {{ '${{ matrix.python-version }}' }}
+          os: ${{ matrix.os }}
+          python-version: ${{ matrix.python-version }}
       - name: Setup Graphviz
         uses: ts-graphviz/setup-graphviz@v1
 
