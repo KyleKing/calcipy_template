@@ -1,3 +1,14 @@
+## 0.17.0 (2022-11-20)
+
+### Feat
+
+- add ctt!
+- support Python 3.11 (tomllib and calcipy.pythons)
+
+### Fix
+
+- remove tab navigation in doc site
+
 ## 0.16.3 (2022-11-13)
 
 ### Fix
