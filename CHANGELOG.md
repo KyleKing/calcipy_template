@@ -1,3 +1,9 @@
+## 0.17.2 (2022-11-21)
+
+### Fix
+
+- switch css to _styles for consistency
+
 ## 0.17.1 (2022-11-20)
 
 ### Fix
