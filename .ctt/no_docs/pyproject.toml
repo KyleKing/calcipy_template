@@ -25,10 +25,10 @@ name = "test_template"
 version = "0.0.1"
 description = "Test minimal template configuration"
 license = "MIT"
-authors = ["Carl the Template <ctt@ctt.ctt>"]
+authors = ["Carl The Template <ctt@ctt.ctt>"]
 maintainers = []
-repository = "https://github.com/org_ctt/test_template"
-documentation = "https://test_template.kyleking.me"
+repository = "https://github.com/user_ctt/test-template"
+documentation = "https://test-template.user_ctt.me"
 readme = "docs/README.md"
 include = ["LICENSE.md"]
 keywords = []
@@ -43,8 +43,8 @@ classifiers = [
 ] # https://pypi.org/classifiers/
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/org_ctt/test_template/issues"
-"Changelog" = "https://github.com/org_ctt/test_template/blob/main/docs/docs/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/user_ctt/test-template/issues"
+"Changelog" = "https://github.com/user_ctt/test-template/blob/main/docs/docs/CHANGELOG.md"
 
 [tool.poetry.dependencies]
 python = "^3.7.12"
