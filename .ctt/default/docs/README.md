@@ -53,7 +53,7 @@ If you have any security issue to report, please contact the project maintainers
 [code_tag_summary]: ./docs/CODE_TAG_SUMMARY.md
 [contributor-covenant]: https://www.contributor-covenant.org
 [developer_guide]: ./docs/DEVELOPER_GUIDE.md
-[license]: https://github.com/org_ctt/test_template/LICENSE
-[scripts]: https://github.com/org_ctt/test_template/scripts
+[license]: https://github.com/user_ctt/test-template/LICENSE
+[scripts]: https://github.com/user_ctt/test-template/scripts
 [style_guide]: ./docs/STYLE_GUIDE.md
-[tests]: https://github.com/org_ctt/test_template/tests
+[tests]: https://github.com/user_ctt/test-template/tests

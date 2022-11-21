@@ -1,10 +1,10 @@
 ---
 site_name: test_template
-site_author: Carl the Template
+site_author: Carl The Template
 site_description: test_template project documentation
-site_url: https://test_template.kyleking.me
-repo_name: org_ctt/test-template
-repo_url: https://github.com/org_ctt/test_template
+site_url: https://test-template.user_ctt.me
+repo_name: user_ctt/test-template
+repo_url: https://github.com/user_ctt/test-template
 edit_uri: edit/main/docs
 docs_dir: docs
 site_dir: releases/site
@@ -79,7 +79,7 @@ markdown_extensions:
       toc_depth: 5
 
 extra_css:
-  - css/mkdocstrings.css
+  - _styles/mkdocstrings.css
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js

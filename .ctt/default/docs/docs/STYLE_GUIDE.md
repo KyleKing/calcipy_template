@@ -157,4 +157,4 @@ Personal Guide
 <-- Links -->
   [simple_git]: http://rogerdudler.github.io/git-guide/
   [gcmsg]: https://github.com/atom/atom/blob/master/CONTRIBUTING.md#styleguides
-  [labels]: https://github.com/org_ctt/.github/labels.yml
+  [labels]: https://github.com/user_ctt/.github/labels.yml

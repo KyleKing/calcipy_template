@@ -3,7 +3,7 @@
 ## Local Development
 
 ```sh
-git clone https://github.com/org_ctt/test_template.git
+git clone https://github.com/user_ctt/test-template.git
 cd test-template
 poetry install 
 
