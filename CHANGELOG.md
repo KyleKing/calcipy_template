@@ -1,3 +1,10 @@
+## 0.17.4 (2022-11-27)
+
+### Fix
+
+- make the noxfile only part of include_all
+- add watch directory to mkdocstrings
+
 ## 0.17.3 (2022-11-27)
 
 ### Fix
