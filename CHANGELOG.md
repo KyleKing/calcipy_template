@@ -1,3 +1,10 @@
+## 0.17.3 (2022-11-27)
+
+### Fix
+
+- move CodeQL to configuration file
+- use title case A for mkdocs section-index
+
 ## 0.17.2 (2022-11-21)
 
 ### Fix
