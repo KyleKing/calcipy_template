@@ -1,3 +1,10 @@
+## 0.17.5 (2022-11-29)
+
+### Fix
+
+- CodeQL configuration can't be in the workflows dir
+- mypy uses "type: ignore" not the other order
+
 ## 0.17.4 (2022-11-27)
 
 ### Fix
