@@ -21,6 +21,7 @@ def cleanup() -> None:
     """Remove files and folders that are no longer used."""
     paths = [
         Path('.deepsource.toml'),
+        Path('.github/workflows/codeql-config.yml'),
         Path('.pyup.yml'),
         Path('appveyor.yml'),
         Path('mypy.ini'),
