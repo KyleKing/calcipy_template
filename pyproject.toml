@@ -5,12 +5,12 @@ requires = [
 ]
 
 [tool.commitizen]
-version = "0.17.5"
+version = "0.17.6"
 version_files = ["pyproject.toml"]
 
 [tool.poetry]
 name = "calcipy_template"
-version = "0.17.5"
+version = "0.17.6"
 description = "Project scaffold for Python packages built on `calcipy`. Utilizes `copier` to keep scaffolding up to date"
 license = "MIT"
 authors = [ "Kyle King <dev.act.kyle@gmail.com>",]

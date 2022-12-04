@@ -1,3 +1,9 @@
+## 0.17.6 (2022-12-04)
+
+### Fix
+
+- make the PR template less bad
+
 ## 0.17.5 (2022-11-29)
 
 ### Fix
