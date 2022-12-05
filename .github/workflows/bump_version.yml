@@ -12,7 +12,7 @@ jobs:
   bump-version:
     # Ignore the commits from this action
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Bump version and make release with commitizen
     steps:
       - uses: actions/checkout@v3
