@@ -81,7 +81,7 @@ cname:
 minimum_python:
   type: str
   help: The minimum Python version
-  default: 3.8.4
+  default: 3.8.12
 
 install_extras:
   type: str

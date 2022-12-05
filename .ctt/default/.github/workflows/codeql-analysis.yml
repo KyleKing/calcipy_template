@@ -6,7 +6,6 @@ on:  # yamllint disable-line rule:truthy
   push:
     branches: [main]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [main]
   schedule:
     - cron: 34 21 * * 6
@@ -15,7 +14,7 @@ on:  # yamllint disable-line rule:truthy
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       actions: read
       contents: read
@@ -40,7 +39,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          config-file: .github/workflows/codeql-config.yml
+          config-file: .github/codeql-config.yml
           languages: ${{ matrix.language }}
           setup-python-dependencies: false
 
