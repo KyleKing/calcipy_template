@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [{{ minimum_python }}]
+        python-version: ['{% set major,minor,patch = minimum_python.split('.') %}{{ major }}.{{ minor }}']
         language: [python]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support

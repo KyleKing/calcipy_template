@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-22.04]
-        python-version: [{{ minimum_python }}]
+        python-version: ['{% set major,minor,patch = minimum_python.split('.') %}{{ major }}.{{ minor }}']
     steps:
       - uses: actions/checkout@v3
         with:
