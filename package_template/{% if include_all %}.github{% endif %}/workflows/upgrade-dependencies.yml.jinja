@@ -18,7 +18,8 @@ jobs:
         python-version: ['{% set major,minor,patch = minimum_python.split('.') %}{{ major }}.{{ minor }}']
     steps:
       - uses: actions/checkout@v3
-        ref: {{ development_branch }}
+        with:
+          ref: {{ development_branch }}
 
       - uses: ./.github/actions/setup
         with:
