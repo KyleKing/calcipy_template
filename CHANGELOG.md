@@ -1,3 +1,14 @@
+## 0.18.0 (2023-01-10)
+
+### Feat
+
+- use MkDocs new watch feature
+
+### Fix
+
+- resolve issues flagged by actionlint
+- use only the major and minor version for CI
+
 ## 0.17.7 (2022-12-05)
 
 ### Fix
