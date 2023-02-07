@@ -1,3 +1,13 @@
+## 0.18.1 (2023-02-07)
+
+### Fix
+
+- bump poetry minimum version
+
+### Refactor
+
+- use encoding in tests
+
 ## 0.18.0 (2023-01-10)
 
 ### Feat
