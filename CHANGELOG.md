@@ -1,3 +1,9 @@
+## 0.18.2 (2023-02-08)
+
+### Fix
+
+- switch to mdformat-mkdocs, prettier, and drop taplo
+
 ## 0.18.1 (2023-02-07)
 
 ### Fix
