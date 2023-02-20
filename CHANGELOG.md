@@ -1,3 +1,14 @@
+## 1.0.0 (2023-02-20)
+
+### Feat
+
+- migrate to calcipy v1!
+
+### Fix
+
+- add cz back to pyproject.toml
+- correct copier post generation JSON
+
 ## 0.18.2 (2023-02-08)
 
 ### Fix
