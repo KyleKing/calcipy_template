@@ -1,13 +1,19 @@
 ---
 # Common commands:
-# poetry run pre-commit install
-# poetry run pre-commit run --all-files copier-template-tester
-# poetry run pre-commit run --all-files --hook-stage commit copier-template-tester
-# poetry run pre-commit run --all-files --hook-stage push
-# poetry run doit run pre_commit_hooks
+# pre-commit install
+# pre-commit autoupdate
+# pre-commit run --all-files copier-template-tester
+# pre-commit run --all-files --hook-stage commit
+# pre-commit run --all-files --hook-stage push
+# poetry run calcipy lint.pre-commit --no-update
 #
 # See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
+#  and https://pre-commit.com/hooks.html for more hooks
+
+# Only commit is installed by default: https://pre-commit.com/#pre-commit-install
+# Pending rename of pre-push from: https://github.com/pre-commit/pre-commit/issues/2732
+default_install_hook_types: ["pre-commit"]
+
 repos:
   - repo: https://github.com/kyleking/copier-template-tester
     rev: 1.0.2
@@ -37,62 +43,45 @@ repos:
       - id: forbid-new-submodules
       - id: mixed-line-ending
         args: [--fix=auto]
-      - id: pretty-format-json
-        args: [--autofix, --indent=4]
-        exclude: (.+/assert-cache/.+\.json)
       - id: trailing-whitespace
-        exclude: \.ctt
-  - repo: https://github.com/lovesegfault/beautysh
-    rev: v6.2.1
-    hooks:
-      - id: beautysh
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.37.0
+    rev: v2.42.0
     hooks:
       - id: commitizen
         additional_dependencies: [cz_legacy]
         stages: [commit-msg]
-  # FIXME: Needs to support mkdocs: https://github.com/executablebooks/mdformat/issues/317
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
     hooks:
       - id: mdformat
-        additional_dependencies:
-          - mdformat-beautysh
-          - mdformat-black
-          - mdformat-config
-          - mdformat-frontmatter
-          - mdformat-gfm
-          - mdformat-tables
-          - mdformat-toc
-          - mdformat-web
-        exclude: (_.*\.md|CHANGELOG\.md|\.ctt)
+        additional_dependencies: ["mdformat-mkdocs[recommneded]"]
         args: [--wrap=no]
-  - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 0.4.1
-    hooks:
-      - id: pyproject-fmt
-        exclude: \.ctt
+        exclude: _.+\.md|CHANGELOG\.md|CODE_TAG_SUMMARY\.md
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.8.0.4
+    rev: v0.9.0.2
     hooks:
       - id: shellcheck
         args: [--severity=warning]
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.0-alpha.4
     hooks:
-      # Can't generate baseline with Py 3.8. Use exclude regex rules instead
-      # See: https://github.com/Yelp/detect-secrets/issues/452
-      - id: detect-secrets
-        # args: ["--baseline", ".secrets.baseline"]
-        exclude: poetry\.lock|.*/cassettes/.*\.yaml
-  - repo: https://github.com/lyz-code/yamlfix/
-    rev: 1.1.1
+      - id: prettier
+        additional_dependencies:
+          - prettier-plugin-sh
+        exclude: \.copier-answers\.yml|.*/cassettes/.*\.yaml|tests/.*assert-cache.*/.+\.json
+        types: [html, javascript, shell, yaml]
+  - repo: https://github.com/pappasam/toml-sort
+    rev: v0.22.3
     hooks:
-      - id: yamlfix
-        exclude: \.copier-answers\.yml|.*/cassettes/.*\.yaml
-        types_or: []
-        types: [file, yaml]
+      - id: toml-sort-fix
+        args: [--in-place, --all, --trailing-comma-inline-array]
+        # TODO: https://github.com/pappasam/toml-sort/issues/42
+        exclude: poetry\.lock|pyproject\.toml
+  # PLANNED: Add calcipy pre-commit
+  # - repo: https://github.com/kyleking/calcipy
+  #   rev: main
+  #   hooks:
+  #     - id: lint-fix
   - repo: local
     hooks:
       - id: copier-forbidden-files

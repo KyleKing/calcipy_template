@@ -54,8 +54,7 @@ author_username:
 
 repository_namespace:
   type: str
-  help: Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ package_name_py
-    }}
+  help: Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ package_name_py }})
   default: '{{ author_username }}'
 
 repository_url:
@@ -83,10 +82,15 @@ minimum_python:
   help: The minimum Python version
   default: 3.8.12
 
+minimum_python_short:
+  type: str
+  help: Two-digit version of the minimum Python
+  # FYI: {% set major,minor,patch = minimum_python.split('.') %}{{ major }}.{{ minor }}
+  default: '3.8'
+
 install_extras:
   type: str
-  help: (Uncommon) Optional extras to install when running in CI. Example "-E dev
-    -E lint". Typically leave blank
+  help: (Uncommon) Optional extras to install when running in CI. Example "-E doc -E lint". Typically leave blank
 
 include_all:
   type: bool

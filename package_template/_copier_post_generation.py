@@ -1,15 +1,28 @@
 """Post-Generation Script to be run from Copier."""
 
+import json
 import re
 import shutil
 from pathlib import Path
+from dataclasses import dataclass
 
 # Don't print any output if matching directories like:
 # /private/var/folders/1f/gd24l7210d3d8crp0clcm4440000gn/T/copier.main.update_diff.7eb725cw/.git/
 # /private/var/folders/1f/gd24l7210d3d8crp0clcm4440000gn/T/copier.main.recopy_diff.gnos2law/.git/
-
-_re_copier_dir = re.compile(f'copier\.[^\.]+\.\w+_diff\.')
+_re_copier_dir = re.compile(rf'copier\.[^\.]+\.\w+_diff\.')
 _IS_PROJ = not _re_copier_dir.search(Path(__file__).absolute().as_posix())
+
+
+@dataclass
+class Config:
+    package_name_py: str
+    doc_dir: str
+    include_all: bool
+
+
+_CONFIG_PATH = Path(__file__).with_suffix('.json')
+_CONFIG = Config(**json.loads(_CONFIG_PATH.read_text()))
+_CONFIG_PATH.unlink()
 
 
 def log(message: str) -> None:
@@ -20,27 +33,32 @@ def log(message: str) -> None:
 def cleanup() -> None:
     """Remove files and folders that are no longer used."""
     paths = [
-        Path('.deepsource.toml'),
-        Path('.github/workflows/codeql-config.yml'),
-        Path('.pyup.yml'),
-        Path('appveyor.yml'),
-        Path('mypy.ini'),
-        Path('requirements.txt'),
-        Path('{{ doc_dir }}/docs/_docs.md'),
-        Path('{{ doc_dir }}/docs/CODE_OF_CONDUCT.md'),
-        Path('{{ doc_dir }}/docs/CONTRIBUTING.md'),
-        Path('{{ doc_dir }}/docs/SECURITY.md'),
-        {% if include_all %}
-        {% else %}
         Path('.calcipy_packaging.lock'),
         Path('.pre-commit-config.yaml'),
         Path('.sourcery.yaml'),
         Path('mkdocs.yml'),
-        {% endif %}
     ]
+    if _CONFIG.include_all:
+        paths.extend(
+            [
+                Path('.deepsource.toml'),
+                Path('.github/workflows/codeql-config.yml'),
+                Path('.pyup.yml'),
+                Path('.sourcery.yaml'),
+                Path('.yamllint.yaml'),
+                Path('appveyor.yml'),
+                Path('dodo.py'),
+                Path('mypy.ini'),
+                Path('requirements.txt'),
+                Path(f'{_CONFIG.doc_dir}/docs/_docs.md'),
+                Path(f'{_CONFIG.doc_dir}/docs/CODE_OF_CONDUCT.md'),
+                Path(f'{_CONFIG.doc_dir}/docs/CONTRIBUTING.md'),
+                Path(f'{_CONFIG.doc_dir}/docs/SECURITY.md'),
+            ]
+        )
     directories = [
         Path('_adr'),
-        Path('{{ doc_dir }}/css'),
+        Path(f'{_CONFIG.doc_dir}/css'),
     ]
 
     for pth in paths:
@@ -59,13 +77,15 @@ def delete_myself() -> None:
 
 
 if __name__ == '__main__':
-    log("""
-The '{{ package_name_py }}' package has been updated!
+    log(
+        f"""
+The '{_CONFIG.package_name_py}' package has been updated!
 
 1. Review the changes and commit. Merge conflicts will be logged by copier in '*.rej' files
 2. Install dependencies with 'poetry install --sync'
 3. Run `poetry run doit list` to show the available actions
 4. Run `poetry run doit --continue` to try running all default tasks
-""")
+"""
+    )
     cleanup()
     delete_myself()

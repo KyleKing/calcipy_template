@@ -1,7 +1,7 @@
 # Global options:
 
-[mypy]{% set major,minor,patch = minimum_python.split('.') %}
-python_version = {{ major }}.{{ minor }}
+[mypy]
+python_version = {{ minimum_python_short }}
 
 check_untyped_defs = True
 disallow_any_decorated = False
@@ -27,7 +27,6 @@ warn_unused_ignores = True
 
 ; linecoverage_report = coverage_mypy-json
 ; linecount_report = coverage_mypy-txt
-html_report = releases/tests/mypy_html
 ; any_exprs_report = coverage_mypy_any-txt
 
 plugins = pydantic.mypy
