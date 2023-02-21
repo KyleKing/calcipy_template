@@ -1,3 +1,1 @@
 Developer documentation
-
-^ What?
