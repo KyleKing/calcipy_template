@@ -1,3 +1,9 @@
+## 1.0.1 (2023-02-21)
+
+### Fix
+
+- correct the logic in the post-generation script
+
 ## 1.0.0 (2023-02-20)
 
 ### Feat
