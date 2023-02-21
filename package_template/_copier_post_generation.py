@@ -33,27 +33,27 @@ def log(message: str) -> None:
 def cleanup() -> None:
     """Remove files and folders that are no longer used."""
     paths = [
-        Path('.calcipy_packaging.lock'),
-        Path('.pre-commit-config.yaml'),
+        Path('.deepsource.toml'),
+        Path('.github/workflows/codeql-config.yml'),
+        Path('.pyup.yml'),
         Path('.sourcery.yaml'),
-        Path('mkdocs.yml'),
+        Path('.sourcery.yaml'),
+        Path('.yamllint.yaml'),
+        Path('appveyor.yml'),
+        Path('dodo.py'),
+        Path('mypy.ini'),
+        Path('requirements.txt'),
+        Path(f'{_CONFIG.doc_dir}/docs/_docs.md'),
+        Path(f'{_CONFIG.doc_dir}/docs/CODE_OF_CONDUCT.md'),
+        Path(f'{_CONFIG.doc_dir}/docs/CONTRIBUTING.md'),
+        Path(f'{_CONFIG.doc_dir}/docs/SECURITY.md'),
     ]
-    if _CONFIG.include_all:
+    if not _CONFIG.include_all:
         paths.extend(
             [
-                Path('.deepsource.toml'),
-                Path('.github/workflows/codeql-config.yml'),
-                Path('.pyup.yml'),
-                Path('.sourcery.yaml'),
-                Path('.yamllint.yaml'),
-                Path('appveyor.yml'),
-                Path('dodo.py'),
-                Path('mypy.ini'),
-                Path('requirements.txt'),
-                Path(f'{_CONFIG.doc_dir}/docs/_docs.md'),
-                Path(f'{_CONFIG.doc_dir}/docs/CODE_OF_CONDUCT.md'),
-                Path(f'{_CONFIG.doc_dir}/docs/CONTRIBUTING.md'),
-                Path(f'{_CONFIG.doc_dir}/docs/SECURITY.md'),
+                Path('.calcipy_packaging.lock'),
+                Path('.pre-commit-config.yaml'),
+                Path('mkdocs.yml'),
             ]
         )
     directories = [
