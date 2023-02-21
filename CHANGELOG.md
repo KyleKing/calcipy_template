@@ -1,3 +1,10 @@
+## 1.0.3 (2023-02-21)
+
+### Fix
+
+- update ruff.toml
+- assign the right permissions for workflows
+
 ## 1.0.2 (2023-02-21)
 
 ### Fix
