@@ -1,3 +1,13 @@
+## 1.1.0 (2023-02-22)
+
+### Feat
+
+- use regex rules for commitizen
+
+### Fix
+
+- don't specify venvPath for pyright
+
 ## 1.0.3 (2023-02-21)
 
 ### Fix
