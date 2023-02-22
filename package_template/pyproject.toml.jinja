@@ -4,7 +4,7 @@ requires = ["poetry-core"]
 
 [tool.commitizen]
 version = "0.0.1"
-version_files = ["pyproject.toml", "{{ package_name_py }}/__init__.py"]
+version_files = ["pyproject.toml:^version", "{{ package_name_py }}/__init__.py:^__version"]
 
 [tool.poetry]
 authors = ["{{ author_name }} <{{ author_email }}>"]
