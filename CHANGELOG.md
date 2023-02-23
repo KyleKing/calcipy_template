@@ -1,3 +1,9 @@
+## 1.2.4 (2023-02-23)
+
+### Fix
+
+- correct typo in mdformat-mkdocs extra & remove duplicate copier-ff
+
 ## 1.2.3 (2023-02-23)
 
 ### Fix
