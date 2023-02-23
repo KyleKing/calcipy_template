@@ -1,3 +1,9 @@
+## 1.2.5 (2023-02-23)
+
+### Fix
+
+- minor logging and pre-commit updates
+
 ## 1.2.4 (2023-02-23)
 
 ### Fix
