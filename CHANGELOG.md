@@ -1,3 +1,14 @@
+## 1.2.0 (2023-02-23)
+
+### Feat
+
+- remove include_all
+
+### Fix
+
+- replace shoal references with calcipy and corallium
+- set known_first_party to the package name
+
 ## 1.1.0 (2023-02-22)
 
 ### Feat

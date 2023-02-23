@@ -1,7 +1,7 @@
 [tool.commitizen]
-version = "1.1.0"
+version = "1.2.0"
 version_files = ["pyproject.toml"]
 
 [tool.poetry]
 name = "calcipy_template"
-version = "1.1.0"
+version = "1.2.0"
