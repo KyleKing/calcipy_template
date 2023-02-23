@@ -1,3 +1,9 @@
+## 1.2.3 (2023-02-23)
+
+### Fix
+
+- make extending calcipy optional
+
 ## 1.2.2 (2023-02-23)
 
 ### Fix
