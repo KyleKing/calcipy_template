@@ -81,7 +81,7 @@ repos:
         # TODO: https://github.com/pappasam/toml-sort/issues/42
         exclude: poetry\.lock|pyproject\.toml
   - repo: https://github.com/kyleking/calcipy
-    rev: main
+    rev: 1.0.0rc5
     hooks:
       - id: lint-fix
       - id: tags
