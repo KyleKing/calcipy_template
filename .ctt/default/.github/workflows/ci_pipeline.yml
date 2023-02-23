@@ -60,4 +60,5 @@ jobs:
       - name: Run typecheck
         run: ./run types.mypy
 
-      - uses: jakebailey/pyright-action@v1
+      # TODO: Resolve why the virtual environment isn't found
+      # - uses: jakebailey/pyright-action@v1
