@@ -5,10 +5,8 @@ _min_copier_version: 7.0.0
 _answers_file: .copier-answers.yml
 _subdirectory: package_template
 _skip_if_exists:
-  - ./{{ package_name_py }}/__init__.py
   - ./{{ doc_dir }}/README.md
   - LICENSE
-  - pyproject.toml
 _tasks:
   - git init
   - python _copier_post_generation.py

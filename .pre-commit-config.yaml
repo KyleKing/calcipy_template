@@ -80,11 +80,12 @@ repos:
         args: [--in-place, --all, --trailing-comma-inline-array]
         # TODO: https://github.com/pappasam/toml-sort/issues/42
         exclude: poetry\.lock|pyproject\.toml
-  # PLANNED: Add calcipy pre-commit
-  # - repo: https://github.com/kyleking/calcipy
-  #   rev: main
-  #   hooks:
-  #     - id: lint-fix
+  - repo: https://github.com/kyleking/calcipy
+    rev: main
+    hooks:
+      - id: lint-fix
+      - id: tags
+      - id: types
   - repo: local
     hooks:
       - id: copier-forbidden-files
