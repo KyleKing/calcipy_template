@@ -39,7 +39,7 @@ inline-quotes = 'single'
 'typing.TypeVar'.msg = 'Use beartype.typing.* instead.'
 
 [isort]
-known-first-party = ['calcipy']
+known-first-party = ['test_template']
 
 [per-file-ignores]
 '*/__init__.py' = [
