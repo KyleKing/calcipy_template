@@ -1,3 +1,9 @@
+## 1.2.2 (2023-02-23)
+
+### Fix
+
+- update version of calcipy pre-commit
+
 ## 1.2.1 (2023-02-23)
 
 ### Fix
