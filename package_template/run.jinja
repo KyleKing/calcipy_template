@@ -1,4 +1,4 @@
 #!/bin/bash -e
 
 # shellcheck disable=SC2048
-poetry run {{ package_name_py }} $*
+poetry run {% if extends_calcipy %}{{ package_name_py }}{% else %}calcipy{% endif %} $*

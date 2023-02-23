@@ -90,6 +90,11 @@ install_extras:
   type: str
   help: (Uncommon) Optional extras to install when running in CI. Example "-E doc -E lint". Typically leave blank
 
+extends_calcipy:
+  type: bool
+  help: If True, the CLI entrypoint will import from 'calcipy:all_tasks'
+  default: true
+
 include_adrs:
   type: bool
   help: If True, include a subdirectory "adr" in the "doc_dir"
