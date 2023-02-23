@@ -79,9 +79,9 @@ repos:
         args: [--never]
         files: {{ package_name_py }}/.*\.py
   - repo: https://github.com/KyleKing/calcipy
-    rev: 1.0.0rc6
+    rev: 1.0.0rc7
     hooks:
       - id: copier-forbidden-files
       - id: lint-fix
+      - id: flake8
       - id: tags
-      - id: types
