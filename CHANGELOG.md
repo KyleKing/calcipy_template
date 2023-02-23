@@ -1,3 +1,10 @@
+## 1.2.1 (2023-02-23)
+
+### Fix
+
+- use calcipy pre-commit instead of local
+- remove trailing comma from template
+
 ## 1.2.0 (2023-02-23)
 
 ### Feat
