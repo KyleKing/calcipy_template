@@ -42,6 +42,7 @@ def cleanup() -> None:
         Path('dodo.py'),
         Path('mypy.ini'),
         Path('requirements.txt'),
+        Path('ruff.toml'),
         Path(f'{_CONFIG.doc_dir}/docs/_docs.md'),
         Path(f'{_CONFIG.doc_dir}/docs/CODE_OF_CONDUCT.md'),
         Path(f'{_CONFIG.doc_dir}/docs/CONTRIBUTING.md'),
