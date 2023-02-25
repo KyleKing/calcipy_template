@@ -33,6 +33,9 @@ def cleanup() -> None:
     """Remove files and folders that are no longer used."""
     paths = [
         Path('.deepsource.toml'),
+        Path('.doit-db.sqlite'),
+        Path('.doit.tmp-py'),
+        Path('.doit.tmp-toml'),
         Path('.github/workflows/codeql-config.yml'),
         Path('.pyup.yml'),
         Path('.sourcery.yaml'),
@@ -40,6 +43,7 @@ def cleanup() -> None:
         Path('.yamllint.yaml'),
         Path('appveyor.yml'),
         Path('dodo.py'),
+        Path('flake8-full.log'),
         Path('mypy.ini'),
         Path('requirements.txt'),
         Path('ruff.toml'),
@@ -49,6 +53,7 @@ def cleanup() -> None:
         Path(f'{_CONFIG.doc_dir}/docs/SECURITY.md'),
     ]
     directories = [
+        Path('.logs'),
         Path('_adr'),
         Path(f'{_CONFIG.doc_dir}/css'),
     ]
