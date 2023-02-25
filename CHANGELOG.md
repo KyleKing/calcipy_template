@@ -1,3 +1,9 @@
+## 1.2.6 (2023-02-25)
+
+### Fix
+
+- make scripts.py optional and extend ruff.toml
+
 ## 1.2.5 (2023-02-23)
 
 ### Fix
