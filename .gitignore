@@ -219,20 +219,8 @@ coverage.json
 # Built Outputs
 /releases/
 
-# Ignore auto-created files by documentation tasks
-/docs/modules/*.md
-/docs/modules/**/*.md
-
-# Allow List
-!/docs/*.*
-!supporting/**
-!tests/data/**
-
 # Ensure that system files don't appear in the Allow List
 .DS_Store
-
-# Ensure *.pyc files are still ignored even if in tests/data directory
-*.pyc
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Custom Rules
