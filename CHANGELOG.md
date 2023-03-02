@@ -1,3 +1,10 @@
+## 1.2.10 (2023-03-02)
+
+### Fix
+
+- bump minimum calcipy in pre-commit
+- correct typo in doc_dir
+
 ## 1.2.9 (2023-03-02)
 
 ### Fix
