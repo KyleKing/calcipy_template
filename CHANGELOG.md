@@ -1,3 +1,9 @@
+## 1.2.9 (2023-03-02)
+
+### Fix
+
+- **#4**: additional minor link corrections
+
 ## 1.2.8 (2023-03-02)
 
 ### Fix
