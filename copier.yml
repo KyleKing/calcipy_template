@@ -63,7 +63,7 @@ repository_url:
 repository_source_url:
   type: str
   help: This is an internal variable where the default should be accepted.
-  default: '{{ repository_source_url }}'
+  default: '{{ repository_url }}/blob/{{ development_branch }}'
 
 copyright_date:
   type: str
