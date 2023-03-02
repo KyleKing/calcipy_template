@@ -1,3 +1,15 @@
+## 1.2.7 (2023-03-02)
+
+### Fix
+
+- minor cleanup
+- **#4**: resolve links from PyPi to documentation site
+- remove legacy calcipy output files
+
+### Refactor
+
+- update gitignore and use the new .ruff.toml
+
 ## 1.2.6 (2023-02-25)
 
 ### Fix
