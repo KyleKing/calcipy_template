@@ -1,3 +1,9 @@
+## 1.2.8 (2023-03-02)
+
+### Fix
+
+- specify the default source url
+
 ## 1.2.7 (2023-03-02)
 
 ### Fix
