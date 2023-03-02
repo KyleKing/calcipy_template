@@ -40,7 +40,7 @@ calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], ve
 {% endif %}
 [tool.poetry.urls]
 "Bug Tracker" = "{{ repository_url }}/issues"
-"Changelog" = "{{ repository_source_url }}/docs/CHANGELOG.md"
+"Changelog" = "{{ repository_source_url }}/{{ docs_dir }}/docs/CHANGELOG.md"
 
 [tool.pyright]
 include = ["{{ package_name_py }}"]
