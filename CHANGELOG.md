@@ -1,3 +1,9 @@
+## 1.3.0 (2023-03-03)
+
+### Feat
+
+- use new 'strict: false' from https://github.com/timvink/mkdocs-git-revision-date-localized-plugin/issues/108
+
 ## 1.2.10 (2023-03-02)
 
 ### Fix
