@@ -1,3 +1,9 @@
+## 1.4.1 (2023-04-03)
+
+### Fix
+
+- run CI on changes to dependencies
+
 ## 1.4.0 (2023-03-11)
 
 ### Feat
