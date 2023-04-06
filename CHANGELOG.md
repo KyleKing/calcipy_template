@@ -1,3 +1,9 @@
+## 1.4.3 (2023-04-06)
+
+### Fix
+
+- bump default poetry version
+
 ## 1.4.2 (2023-04-06)
 
 ### Fix
