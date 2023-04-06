@@ -1,3 +1,9 @@
+## 1.4.2 (2023-04-06)
+
+### Fix
+
+- remove mdx-truly-sane-lists
+
 ## 1.4.1 (2023-04-03)
 
 ### Fix
