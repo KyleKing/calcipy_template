@@ -1,3 +1,13 @@
+## 1.5.0 (2023-04-08)
+
+### Feat
+
+- add pre-commit autoupdate
+
+### Fix
+
+- bump calcipy version
+
 ## 1.4.3 (2023-04-06)
 
 ### Fix
