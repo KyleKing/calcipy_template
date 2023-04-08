@@ -30,10 +30,10 @@ version = "0.0.1"
 
 [tool.poetry.dependencies]
 python = "^{{ minimum_python }}"
-corallium = ">=0.0.1"
+corallium = ">=0.1.1"
 
 [tool.poetry.group.dev.dependencies]
-calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.0.0rc6"}
+calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=1.2.1"}
 {% if extends_calcipy %}
 [tool.poetry.scripts]
 {{ package_name_py }} = "{{ package_name_py }}.scripts:start"
