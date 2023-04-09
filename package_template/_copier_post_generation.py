@@ -80,14 +80,17 @@ def validate_configuration():
     errors = []
     extras_value = copier_dict['install_extras']
     if extras_value == 'None':
-        errors.append('install_extras should be an empty string or list of extras, not "None"')
-    python_value = copier_dict['minimum_python']
-    python_short_value = copier_dict['minimum_python_short']
-    if python_value.split('.')[:2] != python_short_value.split('.'):
-        errors.append('Error in Python versions. Please review and correct')
+        errors.append(f'install_extras should be an empty string or list of extras, not {extras_value}')
+    python_value = copier_dict['minimum_python'].replace('"', '').replace("'", '').split('.')[:2]
+    python_short_value = copier_dict['minimum_python_short'].replace('"', '').replace("'", '').split('.')
+    if python_value != python_short_value:
+        errors.append(f'Error in Python versions ({python_value} != {python_short_value})')
     if errors:
+        print('\n\n')
+        print('Please review the errors below and edit the copier answers accordingly')
         print(errors)
-        raise ValueError('Please review the errors above and edit the copier answers accordingly')
+        print('\n\n')
+        exit(1)
 
 
 def delete_myself() -> None:
