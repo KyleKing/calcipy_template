@@ -1,3 +1,14 @@
+## 1.6.0 (2023-04-09)
+
+### Feat
+
+- validate the copier config post-install
+
+### Fix
+
+- set extends Calcipy to False by default
+- use new sort-keys from toml-sort
+
 ## 1.5.0 (2023-04-08)
 
 ### Feat
