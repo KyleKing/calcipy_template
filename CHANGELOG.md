@@ -1,3 +1,9 @@
+## 1.6.2 (2023-04-09)
+
+### Fix
+
+- make post-validation script more robust
+
 ## 1.6.1 (2023-04-09)
 
 ### Fix
