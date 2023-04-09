@@ -1,3 +1,9 @@
+## 1.6.1 (2023-04-09)
+
+### Fix
+
+- actually call the validation logic
+
 ## 1.6.0 (2023-04-09)
 
 ### Feat
