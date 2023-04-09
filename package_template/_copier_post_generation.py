@@ -107,4 +107,5 @@ The '{_CONFIG.package_name_py}' package has been updated!
 """
     )
     cleanup()
+    validate_configuration()
     delete_myself()
