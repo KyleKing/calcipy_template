@@ -98,7 +98,7 @@ install_extras:
 extends_calcipy:
   type: bool
   help: If True, the CLI entrypoint will import from 'calcipy:all_tasks'
-  default: true
+  default: false
 
 include_adrs:
   type: bool
