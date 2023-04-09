@@ -68,6 +68,28 @@ def cleanup() -> None:
             shutil.rmtree(dir_pth)
 
 
+def validate_configuration():
+    copier_text = Path('.copier-answers.yml').read_text()
+    copier_dict = {
+        line.split(':')[0]: line.split(':')[-1].strip()
+        for line in copier_text.split('\n')
+        if ':' in line
+    }
+    print(copier_dict)
+
+    errors = []
+    extras_value = copier_dict['install_extras']
+    if extras_value == 'None':
+        errors.append('install_extras should be an empty string or list of extras, not "None"')
+    python_value = copier_dict['minimum_python']
+    python_short_value = copier_dict['minimum_python_short']
+    if python_value.split('.')[:2] != python_short_value.split('.'):
+        errors.append('Error in Python versions. Please review and correct')
+    if errors:
+        print(errors)
+        raise ValueError('Please review the errors above and edit the copier answers accordingly')
+
+
 def delete_myself() -> None:
     """Delete this file after completing the main script."""
     Path(__file__).unlink()
