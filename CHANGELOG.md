@@ -1,3 +1,9 @@
+## 1.6.3 (2023-04-22)
+
+### Fix
+
+- remove unused ADR directory and logic
+
 ## 1.6.2 (2023-04-09)
 
 ### Fix
