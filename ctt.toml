@@ -14,7 +14,6 @@ project_name = "test-template"
 repository_provider = "https://github.com"
 
 [output.".ctt/default"]
-include_adrs = true
 minimum_python = "3.11.0"
 minimum_python_short = "3.11"
 package_name = "testing-defaults"

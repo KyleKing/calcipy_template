@@ -99,8 +99,3 @@ extends_calcipy:
   type: bool
   help: If True, the CLI entrypoint will import from 'calcipy:all_tasks'
   default: false
-
-include_adrs:
-  type: bool
-  help: If True, include a subdirectory "adr" in the "doc_dir"
-  default: false
