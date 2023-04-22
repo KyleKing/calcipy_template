@@ -75,7 +75,6 @@ def validate_configuration():
         for line in copier_text.split('\n')
         if ':' in line
     }
-    print(copier_dict)
 
     errors = []
     extras_value = copier_dict['install_extras']
