@@ -19,10 +19,9 @@ exclude: "^.ctt/.+$"
 
 repos:
   - repo: https://github.com/kyleking/copier-template-tester
-    rev: 1.0.2
+    rev: 1.2.0rc1
     hooks:
       - id: copier-template-tester
-        stages: [push]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
