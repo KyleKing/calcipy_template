@@ -12,7 +12,7 @@
 
 # Only commit is installed by default: https://pre-commit.com/#pre-commit-install
 # Pending rename of pre-push from: https://github.com/pre-commit/pre-commit/issues/2732
-default_install_hook_types: ["pre-commit"]
+default_install_hook_types: ["commit-msg", "pre-commit", "pre-push"]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -49,7 +49,7 @@ repos:
     rev: 0.7.16
     hooks:
       - id: mdformat
-        additional_dependencies: ["mdformat-mkdocs[recommneded]"]
+        additional_dependencies: ["mdformat-mkdocs[recommended]"]
         args: [--wrap=no]
         exclude: _.+\.md|CHANGELOG\.md|CODE_TAG_SUMMARY\.md
   - repo: https://github.com/shellcheck-py/shellcheck-py
@@ -66,12 +66,11 @@ repos:
         exclude: \.copier-answers\.yml|.*/cassettes/.*\.yaml|tests/.*assert-cache.*/.+\.json
         types: [html, javascript, shell, yaml]
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.22.3
+    rev: v0.23.0
     hooks:
       - id: toml-sort-fix
-        args: [--in-place, --all, --trailing-comma-inline-array]
-        # TODO: https://github.com/pappasam/toml-sort/issues/42
-        exclude: poetry\.lock|pyproject\.toml
+        args: [--in-place, --all, --trailing-comma-inline-array, --sort-first=python]
+        exclude: poetry\.lock
   - repo: https://github.com/MarcoGorelli/absolufy-imports
     rev: v0.3.1
     hooks:
@@ -79,18 +78,9 @@ repos:
         args: [--never]
         files: test_template/.*\.py
   - repo: https://github.com/KyleKing/calcipy
-    rev: 1.0.0rc6
+    rev: 1.2.3
     hooks:
       - id: copier-forbidden-files
       - id: lint-fix
+      - id: flake8
       - id: tags
-      - id: types
-  - repo: local
-    hooks:
-      - id: copier-forbidden-files
-        name: copier_forbidden_files
-        entry: |
-          Found copier update rejection files; review them and remove them
-          (https://copier.readthedocs.io/en/stable/updating/)
-        language: fail
-        files: \.rej$
