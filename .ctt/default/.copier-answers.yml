@@ -2,8 +2,8 @@
 # Answer file maintained by Copier for: https://github.com/KyleKing/calcipy_template
 # DO NOT MODIFY THIS FILE. Edit by re-running copier and changing responses to the questions
 # Check into version control.
-_commit: 1.6.2-0
-_src_path: /Users/kyleking/Developer/packages/calcipy_template
+_commit: 1.6.3-0
+_src_path: ../../calcipy_template
 author_email: ctt@ctt.ctt
 author_name: Carl The Template
 author_username: user_ctt
@@ -22,4 +22,3 @@ repository_namespace: user_ctt
 repository_provider: https://github.com
 repository_source_url: https://github.com/user_ctt/test-template/blob/main
 repository_url: https://github.com/user_ctt/test-template
-
