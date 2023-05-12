@@ -19,7 +19,7 @@ exclude: "^.ctt/.+$"
 
 repos:
   - repo: https://github.com/kyleking/copier-template-tester
-    rev: 1.2.0rc1
+    rev: 1.2.0
     hooks:
       - id: copier-template-tester
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -48,7 +48,7 @@ repos:
         args: [--fix=auto]
       - id: trailing-whitespace
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.42.1
+    rev: 3.2.2
     hooks:
       - id: commitizen
         additional_dependencies: [cz_legacy]
@@ -66,7 +66,7 @@ repos:
       - id: shellcheck
         args: [--severity=warning]
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.6
+    rev: v3.0.0-alpha.9-for-vscode
     hooks:
       - id: prettier
         additional_dependencies:
@@ -74,7 +74,7 @@ repos:
         exclude: \.copier-answers\.yml|.*/cassettes/.*\.yaml|tests/.*assert-cache.*/.+\.json
         types: [html, javascript, shell, yaml]
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.23.0
+    rev: v0.23.1
     hooks:
       - id: toml-sort-fix
         args: [--in-place, --all, --trailing-comma-inline-array, --sort-first=python]
