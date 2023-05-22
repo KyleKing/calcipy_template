@@ -1,3 +1,9 @@
+## 1.6.7 (2023-05-22)
+
+### Fix
+
+- remove TODO comments that were appearing in the downstream Code Tag Summaries
+
 ## 1.6.6 (2023-05-22)
 
 ### Fix
