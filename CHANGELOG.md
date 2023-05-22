@@ -1,3 +1,9 @@
+## 1.6.6 (2023-05-22)
+
+### Fix
+
+- remove pyupgrade runtime typing configuration
+
 ## 1.6.5 (2023-05-17)
 
 ### Fix
