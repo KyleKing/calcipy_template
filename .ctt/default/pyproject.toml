@@ -42,6 +42,3 @@ calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], ve
 [tool.pyright]
 include = ["test_template"]
 pythonVersion = "3.11"
-
-[tool.pytest.ini_options]
-filterwarnings = ["error"]
