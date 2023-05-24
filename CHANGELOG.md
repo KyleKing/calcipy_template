@@ -1,3 +1,10 @@
+## 1.6.10 (2023-05-24)
+
+### Fix
+
+- escalate warnings to errors in pytest
+- remove extra whitespace in ruff configuration
+
 ## 1.6.9 (2023-05-23)
 
 ### Fix
