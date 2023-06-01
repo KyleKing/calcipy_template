@@ -1,3 +1,9 @@
+## 1.6.13 (2023-06-01)
+
+### Fix
+
+- correct formatting for pre-commit config
+
 ## 1.6.12 (2023-06-01)
 
 ### Fix
