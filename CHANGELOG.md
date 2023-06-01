@@ -1,3 +1,10 @@
+## 1.6.12 (2023-06-01)
+
+### Fix
+
+- properly configure the prettier hook
+- remove Upgrade Dependencies workflow
+
 ## 1.6.11 (2023-05-24)
 
 ### Fix
