@@ -37,6 +37,7 @@ def cleanup() -> None:
         Path('.doit.tmp-py'),
         Path('.doit.tmp-toml'),
         Path('.github/workflows/codeql-config.yml'),
+        Path('.github/workflows/upgrade-dependencies.yml'),
         Path('.pyup.yml'),
         Path('.sourcery.yaml'),
         Path('.sourcery.yaml'),
