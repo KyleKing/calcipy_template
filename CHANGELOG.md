@@ -1,3 +1,9 @@
+## 1.6.14 (2023-06-01)
+
+### Fix
+
+- actively remove the upgrade-dependencies workflow
+
 ## 1.6.13 (2023-06-01)
 
 ### Fix
