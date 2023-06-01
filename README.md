@@ -44,3 +44,35 @@ copier --force update .
 Any push to the repository `main` branch will trigger a version bump based on [`commitizen` rules (`fix`, `feat`, etc.)](https://commitizen-tools.github.io/commitizen/)
 
 If this repository is cloned, you will need to add a Personal Access Token to the repository under `Settings > Secrets > Add new secret` ([see guide](https://commitizen-tools.github.io/commitizen/tutorials/github_actions/))
+
+## Support
+
+Below are a couple of useful snippets related to maintaining a package that utilizes this template
+
+### Bulk Removing a Specific GitHub Action's History
+
+After renaming or removing a workflow, run this script to tidy up the list of Actions and avoid folding under "See More." This script will delete all runs for a specific workflow and could be extended as needed.
+
+```sh
+#!/bin/zsh -e
+
+# GitHub API docs: https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28
+#   GH CLI Docs: https://cli.github.com/manual/gh_api
+# Inspiration: https://qmacro.org/blog/posts/2021/03/26/mass-deletion-of-github-actions-workflow-runs/
+
+OWNER=kyleking
+REPO=tail-jsonl
+WORKFLOW_ID=upgrade-dependencies.yml
+
+run_ids=$( \
+        gh api \
+        --header "Accept: application/vnd.github+json" \
+        --header "X-GitHub-Api-Version: 2022-11-28" \
+        "/repos/$OWNER/$REPO/actions/workflows/$WORKFLOW_ID/runs" \
+        --method=GET \
+        --raw-field='per_page=100' \
+        --jq '.workflow_runs[].id' \
+    )
+echo $run_ids | xargs -I_ echo _
+echo $run_ids | xargs -I_ gh api -X DELETE "/repos/$OWNER/$REPO/actions/runs/_"
+```
