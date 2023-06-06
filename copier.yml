@@ -1,5 +1,5 @@
 ---
-_min_copier_version: 7.0.0
+_min_copier_version: 8.0.0
 
 # ====== TEMPLATE ======
 _answers_file: .copier-answers.yml
@@ -29,6 +29,7 @@ package_name_py:
 project_description:
   type: str
   help: Your project description
+  default: ' '
 
 author_name:
   type: str
@@ -94,6 +95,7 @@ minimum_python_short:
 install_extras:
   type: str
   help: (Uncommon) Optional extras to install when running in CI. Example "-E doc -E lint". Typically leave blank
+  default: ' '
 
 extends_calcipy:
   type: bool
