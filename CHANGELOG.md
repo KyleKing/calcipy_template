@@ -1,3 +1,9 @@
+## 1.6.15 (2023-06-06)
+
+### Refactor
+
+- update Action removal script to loop
+
 ## 1.6.14 (2023-06-01)
 
 ### Fix
