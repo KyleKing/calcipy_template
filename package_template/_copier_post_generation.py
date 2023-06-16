@@ -101,12 +101,12 @@ def delete_myself() -> None:
 if __name__ == '__main__':
     log(
         f"""
-The '{_CONFIG.package_name_py}' package has been updated!
+The '{_CONFIG.package_name_py}' package has been updated (or created)!
 
-1. Review the changes and commit. Merge conflicts will be logged by copier in '*.rej' files
+1. Review the changes and commit. Merge conflicts may either be '*.rej' files or as inline git diffs
 2. Install dependencies with 'poetry install --sync'
-3. Run `poetry run doit list` to show the available actions
-4. Run `poetry run doit --continue` to try running all default tasks
+3. Run `./run --help` to show the available actions
+4. Run `./run main --keep-going` to try running all default tasks after the changes
 """
     )
     cleanup()

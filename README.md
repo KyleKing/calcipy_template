@@ -12,7 +12,9 @@ pipx install copier
 copier copy --UNSAFE gh:KyleKing/calcipy_template dest_folder_name
 
 # Updates can be retrieved with:
-copier update .
+copier update . --UNSAFE
+# I personally have an alias for:
+alias copier-update='copier update --UNSAFE --conflict=rej'
 ```
 
 ## Alternatives
