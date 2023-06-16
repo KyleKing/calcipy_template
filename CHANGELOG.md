@@ -1,3 +1,10 @@
+## 1.6.17 (2023-06-16)
+
+### Fix
+
+- update the instructions post-update
+- remove unnecessary copier question defaults
+
 ## 1.6.16 (2023-06-06)
 
 ### Fix
