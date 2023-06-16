@@ -9,7 +9,7 @@ Project scaffold for Python packages built on `calcipy` ([kyleking/calcipy](http
 pipx install copier
 
 # For end users, get the template with the below snippet. Replace dest_folder_name (can use ".")
-copier copy gh:KyleKing/calcipy_template dest_folder_name
+copier copy --UNSAFE gh:KyleKing/calcipy_template dest_folder_name
 
 # Updates can be retrieved with:
 copier update .
@@ -27,16 +27,15 @@ This project scaffold is primarily for my personal use, so you may find that the
 
 ```sh
 # Local changes need to be committed to take effect (at a later point squash all "tmp" commits)
-git add . && git commit -m "tmp" && copier . ../test_template --force --vcs-ref=HEAD
-# Note: "--force" skips all questions and overwrites files without asking
+git add . && git commit -m "tmp" && copier . ../test_template  --UNSAFE --conflict=rej --vcs-ref=HEAD
 
 # For testing update from within the target directory
 #   Note: make sure to commit changes in test directory before running copier
 #   If not, after answering all of the questions, you may see this error and need to restart:
 #   > Destination repository is dirty; cannot continue. Please commit or stash your local changes and retry.
 cd test_template
-copier copy ../calcipy_template .
-copier --force update .
+copier copy --UNSAFE ../calcipy_template .
+copier update . --UNSAFE --conflict=rej
 ```
 
 ## Releases
