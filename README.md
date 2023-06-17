@@ -13,8 +13,9 @@ copier copy --UNSAFE gh:KyleKing/calcipy_template dest_folder_name
 
 # Updates can be retrieved with:
 copier update . --UNSAFE
-# I personally have an alias for:
+# I personally have aliases for:
 alias copier-update='copier update --UNSAFE --conflict=rej'
+alias copier-auto-update='copier-update --defaults'
 ```
 
 ## Alternatives
@@ -34,10 +35,10 @@ git add . && git commit -m "tmp" && copier . ../test_template  --UNSAFE --confli
 # For testing update from within the target directory
 #   Note: make sure to commit changes in test directory before running copier
 #   If not, after answering all of the questions, you may see this error and need to restart:
-#   > Destination repository is dirty; cannot continue. Please commit or stash your local changes and retry.
+#     "Destination repository is dirty; cannot continue. Please commit or stash your local changes and retry."
 cd test_template
 copier copy --UNSAFE ../calcipy_template .
-copier update . --UNSAFE --conflict=rej
+copier update . --UNSAFE --conflict=rej --defaults
 ```
 
 ## Releases
