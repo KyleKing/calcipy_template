@@ -107,6 +107,7 @@ The '{_CONFIG.package_name_py}' package has been updated (or created)!
 2. Install dependencies with 'poetry install --sync'
 3. Run `./run --help` to show the available actions
 4. Run `./run main --keep-going` to try running all default tasks after the changes
+5. If this is a new project, you can create the new repo with 'gh repo create "{{ project_name }}" --source=. --remote=upstream --push'
 """
     )
     cleanup()
