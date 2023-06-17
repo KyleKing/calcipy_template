@@ -1,3 +1,10 @@
+## 1.6.20 (2023-06-17)
+
+### Fix
+
+- use the _CONFIG rather than template for the post-generation script help text
+- bump calcipy in pre-commit for latest ruff
+
 ## 1.6.19 (2023-06-17)
 
 ### Fix
