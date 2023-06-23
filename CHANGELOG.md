@@ -1,3 +1,18 @@
+## 1.6.23 (2023-06-23)
+
+### Fix
+
+- import Any from typing rather than beartype
+- run pre-commit
+- update editorconfig for lua and shell
+- sync pre-commit config with .ctt
+- resolve yamllint error for empty-values
+- add yamllint config
+
+### Refactor
+
+- run pre-commit on .ctt output
+
 ## 1.6.22 (2023-06-23)
 
 ### Fix
