@@ -3,10 +3,10 @@ name: Bump Version
 
 # FYI: Requires Personal Access Token. See README
 
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   push:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch: null # For manual runs
 
 jobs:
   bump-version:

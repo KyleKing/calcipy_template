@@ -3,10 +3,10 @@
 extends: default
 
 rules:
-    empty-values: enable
-    float-values: enable
-    line-length: disable
-    octal-values: enable
-    # quoted-strings: enable
-    comments:
-        min-spaces-from-content: 1
+  empty-values: enable
+  float-values: enable
+  line-length: disable
+  octal-values: enable
+  # quoted-strings: enable
+  comments:
+    min-spaces-from-content: 1

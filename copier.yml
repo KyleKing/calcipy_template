@@ -53,17 +53,17 @@ author_username:
 repository_namespace:
   type: str
   help: Your repository namespace (i.e. {{ repository_provider }}/<namespace>/{{ project_name }})
-  default: '{{ author_username }}'
+  default: "{{ author_username }}"
 
 repository_url:
   type: str
   help: This is an internal variable where the default should be accepted.
-  default: '{{ repository_provider }}/{{ repository_namespace }}/{{ project_name }}'
+  default: "{{ repository_provider }}/{{ repository_namespace }}/{{ project_name }}"
 
 repository_source_url:
   type: str
   help: This is an internal variable where the default should be accepted.
-  default: '{{ repository_url }}/blob/{{ development_branch }}'
+  default: "{{ repository_url }}/blob/{{ development_branch }}"
 
 copyright_date:
   type: str
@@ -78,7 +78,7 @@ doc_dir:
 cname:
   type: str
   help: Canonical Website Name used for the documentation website
-  default: '{{ project_name }}.{{ author_username }}.me'
+  default: "{{ project_name }}.{{ author_username }}.me"
 
 minimum_python:
   type: str
@@ -89,7 +89,7 @@ minimum_python_short:
   type: str
   help: Two-digit version of the minimum Python
   # FYI: {% set major,minor,patch = minimum_python.split('.') %}{{ major }}.{{ minor }}
-  default: '3.8'
+  default: "3.8"
 
 install_extras:
   type: str
