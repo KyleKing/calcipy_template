@@ -5,7 +5,7 @@
 ```sh
 git clone https://github.com/user_ctt/test-template.git
 cd test-template
-poetry install --sync 
+poetry install --sync
 
 # See the available tasks
 poetry run calcipy

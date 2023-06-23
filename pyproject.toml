@@ -3,5 +3,7 @@ version = "1.6.22"
 version_files = ["pyproject.toml:^version"]
 
 [tool.poetry]
+authors = ["Kyle King <dev.act.kyle@gmail.com>"]
+description = "Project scaffold for Python packages built on calcipy. Utilizes copier to keep projects up to date"
 name = "calcipy_template"
 version = "1.6.22"
