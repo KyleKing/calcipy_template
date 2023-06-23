@@ -1,3 +1,10 @@
+## 1.6.22 (2023-06-23)
+
+### Fix
+
+- typo in if extends_calcipy for the script.py file
+- add companion yamllint to prettier in pre-commit
+
 ## 1.6.21 (2023-06-21)
 
 ### Fix
