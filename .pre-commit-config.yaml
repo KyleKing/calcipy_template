@@ -39,7 +39,7 @@ repos:
       - id: detect-private-key
       - id: double-quote-string-fixer
       - id: end-of-file-fixer
-        exclude: \.ctt
+        exclude: \.copier-answers\.yml
       - id: fix-byte-order-marker
       - id: fix-encoding-pragma
         args: [--remove]
@@ -48,11 +48,9 @@ repos:
         args: [--fix=auto]
       - id: trailing-whitespace
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3.2.2
+    rev: 3.4.0
     hooks:
       - id: commitizen
-        additional_dependencies: [cz_legacy]
-        stages: [commit-msg]
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
     hooks:
@@ -66,20 +64,41 @@ repos:
       - id: shellcheck
         args: [--severity=warning]
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.9-for-vscode
+    rev: "v3.0.0-alpha.9-for-vscode"
     hooks:
       - id: prettier
         additional_dependencies:
-          - prettier-plugin-sh
+          # Note: this version must be the same as the hook revision
+          - "prettier@3.0.0-alpha.9-for-vscode"
+          - "prettier-plugin-sh"
         exclude: \.copier-answers\.yml|.*/cassettes/.*\.yaml|tests/.*assert-cache.*/.+\.json
-        types: [html, javascript, shell, yaml]
+        types_or: [html, javascript, json, shell, yaml]
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.32.0
+    hooks:
+      - id: yamllint
   - repo: https://github.com/pappasam/toml-sort
     rev: v0.23.1
     hooks:
       - id: toml-sort-fix
-        args: [--in-place, --all, --trailing-comma-inline-array, --sort-first=python]
+        args:
+          [
+            --in-place,
+            --all,
+            --trailing-comma-inline-array,
+            --sort-first=python,
+          ]
         exclude: poetry\.lock
+  - repo: https://github.com/MarcoGorelli/absolufy-imports
+    rev: v0.3.1
+    hooks:
+      - id: absolufy-imports
+        args: [--never]
+        files: test_template/.*\.py
   - repo: https://github.com/KyleKing/calcipy
-    rev: 1.2.5
+    rev: 1.3.0
     hooks:
       - id: copier-forbidden-files
+      - id: lint-fix
+      - id: flake8
+      - id: tags
