@@ -9,7 +9,7 @@ on: # yamllint disable-line rule:truthy
     branches: [main]
   schedule:
     - cron: 34 21 * * 6
-  workflow_dispatch: # For manual runs
+  workflow_dispatch: null # For manual runs
 
 jobs:
   analyze:

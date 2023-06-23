@@ -7,7 +7,7 @@ on: # yamllint disable-line rule:truthy
   push:
     branches: [main]
     paths: [.github/labels.yml, .github/workflows/labeler.yml]
-  workflow_dispatch: # For manual runs
+  workflow_dispatch: null # For manual runs
 
 permissions:
   # Issues and related comments, assignees, labels, and milestones.
