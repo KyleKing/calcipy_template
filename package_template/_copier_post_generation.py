@@ -3,13 +3,14 @@
 import json
 import re
 import shutil
-from pathlib import Path
+import sys
 from dataclasses import dataclass
+from pathlib import Path
 
 # Don't print any output if matching directories like:
 # /private/var/folders/1f/gd24l7210d3d8crp0clcm4440000gn/T/copier.main.update_diff.7eb725cw/.git/
 # /private/var/folders/1f/gd24l7210d3d8crp0clcm4440000gn/T/copier.main.recopy_diff.gnos2law/.git/
-_re_copier_dir = re.compile(rf'copier\.[^\.]+\.\w+_diff\.')
+_re_copier_dir = re.compile(r'copier\.[^\.]+\.\w+_diff\.')
 _IS_PROJ = not _re_copier_dir.search(Path(__file__).absolute().as_posix())
 
 
@@ -93,7 +94,7 @@ def validate_configuration():
         print('Please review the errors below and edit the copier answers accordingly')
         print(errors)
         print('\n\n')
-        exit(1)
+        sys.exit(1)
 
 
 def delete_myself() -> None:
@@ -113,7 +114,7 @@ The '{_CONFIG.package_name_py}' package has been updated (or created)!
 5. If this is a new project, you could create the GitHub repo with:
 
     gh repo create "{ _CONFIG.project_name }" --source=. --remote=origin --push --description="{ _CONFIG.project_description }" --homepage="{ _CONFIG.cname }" --public
-"""
+""",
     )
     cleanup()
     validate_configuration()
