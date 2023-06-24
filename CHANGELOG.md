@@ -1,3 +1,14 @@
+## 1.6.24 (2023-06-24)
+
+### Fix
+
+- don't delete yamllint
+
+### Refactor
+
+- suppress pre-commit errors on Python code
+- sync .ctt configuration with top-level pre-commit
+
 ## 1.6.23 (2023-06-23)
 
 ### Fix
