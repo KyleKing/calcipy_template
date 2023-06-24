@@ -44,8 +44,6 @@ def cleanup() -> None:
         Path('.github/workflows/upgrade-dependencies.yml'),
         Path('.pyup.yml'),
         Path('.sourcery.yaml'),
-        Path('.sourcery.yaml'),
-        Path('.yamllint.yaml'),
         Path('appveyor.yml'),
         Path('dodo.py'),
         Path('flake8-full.log'),
