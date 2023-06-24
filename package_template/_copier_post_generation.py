@@ -1,4 +1,4 @@
-"""Post-Generation Script to be run from Copier."""
+"""Post-Generation Script to be run from Copier."""  # noqa: INP001
 
 import json
 import re
@@ -28,9 +28,9 @@ _CONFIG = Config(**json.loads(_CONFIG_PATH.read_text()))
 _CONFIG_PATH.unlink()
 
 
-def log(message: str) -> None:
+def _log(message: str) -> None:  # noqa: RBT001
     if _IS_PROJ:
-        print(message)
+        print(message)  # noqa: T201
 
 
 def cleanup() -> None:
@@ -63,15 +63,15 @@ def cleanup() -> None:
 
     for pth in paths:
         if pth.is_file():
-            log(f'Removing: {pth}')
+            _log(f'Removing: {pth}')
             pth.unlink()  # FYI: "missing_ok" was added in 3.8, but this script is ^3.7
     for dir_pth in directories:
         if dir_pth.is_dir():
-            log(f'Deleting: {dir_pth}')
+            _log(f'Deleting: {dir_pth}')
             shutil.rmtree(dir_pth)
 
 
-def validate_configuration():
+def validate_configuration() -> None:
     copier_text = Path('.copier-answers.yml').read_text()
     copier_dict = {
         line.split(':')[0]: line.split(':')[-1].strip()
@@ -83,15 +83,19 @@ def validate_configuration():
     extras_value = copier_dict['install_extras']
     if extras_value == 'None':
         errors.append(f'install_extras should be an empty string or list of extras, not {extras_value}')
-    python_value = copier_dict['minimum_python'].replace('"', '').replace("'", '').split('.')[:2]
-    python_short_value = copier_dict['minimum_python_short'].replace('"', '').replace("'", '').split('.')
+    py_tuples = {
+        key: re.compile(r'["\']+').sub('', copier_dict[key]).split('.')
+        for key in ('minimum_python', 'minimum_python_short')
+    }
+    python_value = py_tuples['minimum_python'][:2]
+    python_short_value = py_tuples['minimum_python_short']
     if python_value != python_short_value:
         errors.append(f'Error in Python versions ({python_value} != {python_short_value})')
     if errors:
-        print('\n\n')
-        print('Please review the errors below and edit the copier answers accordingly')
-        print(errors)
-        print('\n\n')
+        print('\n\n')  # noqa: T201
+        print('Please review the errors below and edit the copier answers accordingly')  # noqa: T201
+        print(errors)  # noqa: T201
+        print('\n\n')  # noqa: T201
         sys.exit(1)
 
 
@@ -101,7 +105,7 @@ def delete_myself() -> None:
 
 
 if __name__ == '__main__':
-    log(
+    _log(
         f"""
 The '{_CONFIG.package_name_py}' package has been updated (or created)!
 
@@ -111,7 +115,10 @@ The '{_CONFIG.package_name_py}' package has been updated (or created)!
 4. Run `./run main --keep-going` to try running all default tasks after the changes
 5. If this is a new project, you could create the GitHub repo with:
 
-    gh repo create "{ _CONFIG.project_name }" --source=. --remote=origin --push --description="{ _CONFIG.project_description }" --homepage="{ _CONFIG.cname }" --public
+    ```sh
+    gh repo create "{ _CONFIG.project_name }" --source=. --remote=origin --push \
+        --description="{ _CONFIG.project_description }" --homepage="{ _CONFIG.cname }" --public
+    ```
 """,
     )
     cleanup()
