@@ -42,5 +42,5 @@ runs:
 
     - name: Install Project and Dependencies
       run: |-
-        poetry install {{ install_extras if install_extras }}
+        poetry install{%- if install_extras -%} {{ install_extras }}{% endif %}
       shell: bash
