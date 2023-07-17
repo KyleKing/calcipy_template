@@ -1,3 +1,9 @@
+## 1.6.27 (2023-07-17)
+
+### Fix
+
+- keep leading whitespace on install_extras
+
 ## 1.6.26 (2023-07-17)
 
 ### Fix
