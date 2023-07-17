@@ -5,7 +5,7 @@
 ```sh
 git clone {{ repository_url }}.git
 cd {{ project_name }}
-poetry install --sync{%- if install_extras -%} {{ install_extras }}{% endif %}
+poetry install --sync{% if install_extras %} {{ install_extras }}{% endif %}
 
 # See the available tasks
 poetry run calcipy
