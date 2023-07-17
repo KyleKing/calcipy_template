@@ -1,3 +1,10 @@
+## 1.6.25 (2023-07-17)
+
+### Fix
+
+- update pre-commit
+- skip RUF013 until supported by pyright
+
 ## 1.6.24 (2023-06-24)
 
 ### Fix
