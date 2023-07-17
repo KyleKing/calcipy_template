@@ -3,7 +3,7 @@ name: Bump Version
 
 # FYI: Requires Personal Access Token. See README
 
-on:
+"on":
   push:
     branches: [main]
   workflow_dispatch: null # For manual runs
@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Create bump and changelog
+      - name: Bump version and generate changelog
         uses: commitizen-tools/commitizen-action@master
         with:
           branch: main
