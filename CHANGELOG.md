@@ -1,3 +1,12 @@
+## 1.6.26 (2023-07-17)
+
+### Fix
+
+- resolve truthy warning from yamllint
+- correct non-determinism in .ctt output
+- correct error in variable name
+- exclude cassette files from yamllint
+
 ## 1.6.25 (2023-07-17)
 
 ### Fix
