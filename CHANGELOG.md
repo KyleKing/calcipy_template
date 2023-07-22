@@ -1,3 +1,9 @@
+## 1.6.28 (2023-07-22)
+
+### Refactor
+
+- activate pylint valid naming rules
+
 ## 1.6.27 (2023-07-17)
 
 ### Fix
