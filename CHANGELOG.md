@@ -1,3 +1,9 @@
+## 1.7.2 (2023-07-22)
+
+### Fix
+
+- refactor to resolve pyright and mypy errors
+
 ## 1.7.1 (2023-07-22)
 
 ### Fix
