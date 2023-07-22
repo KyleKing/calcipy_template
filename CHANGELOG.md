@@ -1,3 +1,9 @@
+## 1.7.3 (2023-07-22)
+
+### Fix
+
+- import Self from typing extensions instead of beartype
+
 ## 1.7.2 (2023-07-22)
 
 ### Fix
