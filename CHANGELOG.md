@@ -1,3 +1,9 @@
+## 1.7.0 (2023-07-22)
+
+### Feat
+
+- use beartype_this_package
+
 ## 1.6.28 (2023-07-22)
 
 ### Refactor
