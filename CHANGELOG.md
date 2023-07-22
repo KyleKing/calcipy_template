@@ -1,3 +1,9 @@
+## 1.7.1 (2023-07-22)
+
+### Fix
+
+- refactor configuration into function to encapsulate variables
+
 ## 1.7.0 (2023-07-22)
 
 ### Feat
