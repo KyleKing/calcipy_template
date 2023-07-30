@@ -1,3 +1,9 @@
+## 1.7.4 (2023-07-30)
+
+### Fix
+
+- use options key for mkdocstrings
+
 ## 1.7.3 (2023-07-22)
 
 ### Fix
