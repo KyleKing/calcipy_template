@@ -51,6 +51,3 @@ def configure_beartype() -> None:
 configure_beartype()
 
 # ====== Above is the recommended code from calcipy_template and may be updated on new releases ======
-
-
-# ====== Above is the recommended code from calcipy_template and may be updated on new releases ======
