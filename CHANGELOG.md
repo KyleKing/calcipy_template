@@ -1,3 +1,9 @@
+## 1.7.5 (2023-07-31)
+
+### Fix
+
+- remove duplicate comments
+
 ## 1.7.4 (2023-07-30)
 
 ### Fix
