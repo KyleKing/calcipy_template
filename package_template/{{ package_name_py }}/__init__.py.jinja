@@ -36,13 +36,11 @@ def configure_beartype() -> None:
     beartype_mode = _BeartypeModes.from_environment()
 
     if beartype_mode != _BeartypeModes.OFF:
-        # PLANNED: Appease mypy and pyright, but this is a private import
-        from beartype.roar._roarwarn import _BeartypeConfReduceDecoratorExceptionToWarningDefault
-        beartype_warning_default = _BeartypeConfReduceDecoratorExceptionToWarningDefault
+        from beartype.roar import BeartypeClawDecorWarning
 
         beartype_this_package(conf=BeartypeConf(
             warning_cls_on_decorator_exception=(
-                None if beartype_mode == _BeartypeModes.ERROR else beartype_warning_default
+                None if beartype_mode is _BeartypeModes.ERROR else BeartypeClawDecorWarning
             ),
             is_color=getenv('BEARTYPE_NO_COLOR') is not None),
         )
