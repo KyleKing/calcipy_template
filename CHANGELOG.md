@@ -1,3 +1,9 @@
+## 1.7.6 (2023-08-02)
+
+### Fix
+
+- use public export for default beartype warnings
+
 ## 1.7.5 (2023-07-31)
 
 ### Fix
