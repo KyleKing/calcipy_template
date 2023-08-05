@@ -1,3 +1,9 @@
+## 1.7.7 (2023-08-05)
+
+### Fix
+
+- switch to a generic prefix
+
 ## 1.7.6 (2023-08-02)
 
 ### Fix
