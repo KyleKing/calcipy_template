@@ -1,3 +1,10 @@
+## 1.7.8 (2023-08-12)
+
+### Fix
+
+- update ruff import rules
+- correct the error message for invoke.task
+
 ## 1.7.7 (2023-08-05)
 
 ### Fix
