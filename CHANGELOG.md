@@ -1,3 +1,10 @@
+## 1.7.10 (2023-08-13)
+
+### Fix
+
+- allow Runtime Typechecking Mode for tests to be configurable
+- update pre-commit
+
 ## 1.7.9 (2023-08-13)
 
 ### Fix
