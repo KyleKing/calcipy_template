@@ -1,3 +1,10 @@
+## 1.7.11 (2023-08-14)
+
+### Fix
+
+- filter all PEP-585 warnings
+- ignore unimportant failures because of Python 3.8 beartype warnings
+
 ## 1.7.10 (2023-08-13)
 
 ### Fix
