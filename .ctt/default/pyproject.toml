@@ -29,7 +29,7 @@ repository = "https://github.com/user_ctt/test-template"
 version = "0.0.1"
 
 [tool.poetry.dependencies]
-python = "^3.11.0"
+python = "^3.10.0"
 corallium = ">=0.2.2"
 
 [tool.poetry.group.dev.dependencies]
@@ -41,4 +41,4 @@ calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], ve
 
 [tool.pyright]
 include = ["test_template"]
-pythonVersion = "3.11"
+pythonVersion = "3.10"

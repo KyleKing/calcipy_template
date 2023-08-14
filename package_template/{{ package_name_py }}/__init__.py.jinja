@@ -1,6 +1,6 @@
 """{{ package_name_py }}."""
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from enum import Enum
 from os import getenv
 from warnings import filterwarnings
@@ -48,7 +48,7 @@ def configure_runtime_type_checking_mode() -> None:
 
 
 _PEP585_DATE = 2025
-if datetime.now(tz=UTC).year <= _PEP585_DATE:
+if datetime.now(tz=timezone.utc).year <= _PEP585_DATE:
     filterwarnings('ignore', category=BeartypeDecorHintPep585DeprecationWarning)
 configure_runtime_type_checking_mode()
 
