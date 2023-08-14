@@ -1,3 +1,10 @@
+## 1.7.13 (2023-08-14)
+
+### Fix
+
+- raise minimums for dependencies
+- exclude beartype logic from test coverage
+
 ## 1.7.12 (2023-08-14)
 
 ### Fix
