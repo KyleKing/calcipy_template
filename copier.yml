@@ -83,13 +83,13 @@ cname:
 minimum_python:
   type: str
   help: The minimum Python version
-  default: 3.8.12
+  default: 3.9.13
 
 minimum_python_short:
   type: str
   help: Two-digit version of the minimum Python
   # FYI: {% set major,minor,patch = minimum_python.split('.') %}{{ major }}.{{ minor }}
-  default: "3.8"
+  default: "3.9"
 
 install_extras:
   type: str
