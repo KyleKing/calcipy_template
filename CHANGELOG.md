@@ -1,3 +1,14 @@
+## 1.8.0 (2023-09-07)
+
+### Feat
+
+- drop Python 3.8
+- remove RUF100 and add external-noqa setting
+
+### Refactor
+
+- sync with ctt
+
 ## 1.7.13 (2023-08-14)
 
 ### Fix
