@@ -55,8 +55,8 @@ inline-quotes = 'single'
 known-first-party = ['{{ package_name_py }}']
 
 [per-file-ignores]
-'./{{ package_name_py }}/../*.py' = [  # Python scripts outside of the package directory
-  'INP001', # File `<>.py` is part of an implicit namespace package. Add an `__init__.py`.
+'./{{ package_name_py }}/../*.py' = [
+  'INP001', # File `/<>.py` is part of an implicit namespace package. Add an `__init__.py`.
 ]
 '__init__.py' = [
   'D104', # Missing docstring in public package
