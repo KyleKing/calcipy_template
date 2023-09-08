@@ -14,7 +14,7 @@ _tasks:
 # ====== QUESTIONS ======
 development_branch:
   type: str
-  help: The Github branch name used for development
+  help: The GitHub branch name used for development
   default: main
 
 project_name:

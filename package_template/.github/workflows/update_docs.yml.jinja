@@ -17,21 +17,21 @@ permissions:
 env:
   COLUMNS: 120
 
-jobs:
+jobs:{% raw %}
   docs:
-    runs-on: {{ '${{ matrix.os }}' }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-22.04]
-        python-version: ["{{ minimum_python_short }}"]
+        python-version: [{% endraw %}"{{ minimum_python_short }}"{% raw %}]
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0 # For git-revision-date-localized-plugin
       - uses: ./.github/actions/setup
         with:
-          os: {{ '${{ matrix.os }}' }}
-          python-version: {{ '${{ matrix.python-version }}' }}
+          os: ${{ matrix.os }}
+          python-version: ${{ matrix.python-version }}
       - name: Setup Graphviz
         uses: ts-graphviz/setup-graphviz@v1
 
@@ -41,4 +41,4 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
       - name: Build and deploy documentation
-        run: ./run cl.write doc.build doc.deploy
+        run: poetry run calcipy-docs cl.write doc.build doc.deploy{% endraw %}
