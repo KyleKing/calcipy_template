@@ -1,3 +1,9 @@
+## 1.8.1 (2023-09-08)
+
+### Fix
+
+- cache pipx in CI pipeline
+
 ## 1.8.0 (2023-09-07)
 
 ### Feat
