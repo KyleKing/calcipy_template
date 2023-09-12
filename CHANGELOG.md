@@ -1,3 +1,9 @@
+## 1.8.2 (2023-09-12)
+
+### Fix
+
+- update workflow dependencies
+
 ## 1.8.1 (2023-09-08)
 
 ### Fix
