@@ -20,7 +20,7 @@ repos:
     hooks:
       - id: copier-template-tester
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: check-added-large-files
       - id: check-executables-have-shebangs
@@ -45,18 +45,18 @@ repos:
         args: [--fix=auto]
       - id: trailing-whitespace
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3.8.0
+    rev: 3.12.0
     hooks:
       - id: commitizen
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.17
     hooks:
       - id: mdformat
-        additional_dependencies: ["mdformat-mkdocs[recommended]"]
+        additional_dependencies: ["mdformat-mkdocs[recommended]>=1.0.6"]
         args: [--wrap=no]
         exclude: _.+\.md|CHANGELOG\.md|CODE_TAG_SUMMARY\.md
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.9.0.5
+    rev: v0.9.0.6
     hooks:
       - id: shellcheck
         args: [--severity=warning]
@@ -66,7 +66,7 @@ repos:
       - id: prettier
         additional_dependencies:
           # Note: this version must be the same as the hook revision
-          - "prettier@3.0.0"
+          - "prettier@3.0.3"
           - "prettier-plugin-sh"
         exclude: \.copier-answers\.yml|.*/cassettes/.*\.yaml|tests/.*assert-cache.*/.+\.json
         types_or: [html, javascript, json, shell, yaml]
@@ -93,7 +93,7 @@ repos:
         args: [--never]
         files: test_template/.*\.py
   - repo: https://github.com/KyleKing/calcipy
-    rev: 2.0.0
+    rev: 2.0.1
     hooks:
       - id: copier-forbidden-files
       - id: lint-fix
