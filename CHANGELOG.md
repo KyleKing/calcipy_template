@@ -1,3 +1,13 @@
+## 1.9.0 (2023-11-06)
+
+### Feat
+
+- try preview version of ruff
+
+### Fix
+
+- patch mdformat-mkdocs for pre-commit
+
 ## 1.8.3 (2023-09-13)
 
 ### Fix
