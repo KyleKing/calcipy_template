@@ -1,4 +1,4 @@
-"""Post-Generation Script to be run from Copier."""  # noqa: INP001
+"""Post-Generation Script to be run from Copier."""
 
 import json
 import re
@@ -28,7 +28,7 @@ _CONFIG = Config(**json.loads(_CONFIG_PATH.read_text()))
 _CONFIG_PATH.unlink()
 
 
-def _log(message: str) -> None:  # noqa: RBT001
+def _log(message: str) -> None:
     if _IS_PROJ:
         print(message)  # noqa: T201
 
@@ -116,8 +116,8 @@ The '{_CONFIG.package_name_py}' package has been updated (or created)!
 5. If this is a new project, you could create the GitHub repo with:
 
     ```sh
-    gh repo create "{ _CONFIG.project_name }" --source=. --remote=origin --push \
-        --description="{ _CONFIG.project_description }" --homepage="{ _CONFIG.cname }" --public
+    gh repo create "{_CONFIG.project_name}" --source=. --remote=origin --push \
+        --description="{_CONFIG.project_description}" --homepage="{_CONFIG.cname}" --public
     ```
 """,
     )
