@@ -1,3 +1,9 @@
+## 1.9.1 (2023-11-09)
+
+### Fix
+
+- replace deprecated mkdocs_material_extensions emoji
+
 ## 1.9.0 (2023-11-06)
 
 ### Feat
