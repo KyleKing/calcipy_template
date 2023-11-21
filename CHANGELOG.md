@@ -1,3 +1,9 @@
+## 1.9.3 (2023-11-21)
+
+### Fix
+
+- use Python 3.12.0 locally and minor refactors
+
 ## 1.9.2 (2023-11-21)
 
 ### Fix
