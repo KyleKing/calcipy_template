@@ -1,3 +1,10 @@
+## 1.9.2 (2023-11-21)
+
+### Fix
+
+- remove pipx cache
+- remove CodeQL Action
+
 ## 1.9.1 (2023-11-09)
 
 ### Fix
