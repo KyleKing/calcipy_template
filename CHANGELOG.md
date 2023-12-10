@@ -1,3 +1,9 @@
+## 1.9.5 (2023-12-10)
+
+### Fix
+
+- remove incorrect use-implicit and defer typing-alias to ruff
+
 ## 1.9.4 (2023-12-10)
 
 ### Fix
