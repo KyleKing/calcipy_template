@@ -1,3 +1,13 @@
+## 1.9.6 (2023-12-10)
+
+### Fix
+
+- exclude syrupy output from trailing whitespace hook
+
+### Refactor
+
+- sync pre-commit
+
 ## 1.9.5 (2023-12-10)
 
 ### Fix
