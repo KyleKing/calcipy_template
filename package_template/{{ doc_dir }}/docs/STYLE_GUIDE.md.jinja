@@ -42,8 +42,8 @@ We use [Commitizen](https://github.com/commitizen-tools/commitizen) to manage bo
   - A diff will tell you what changed, but only the commit message can properly tell you why.
   - Keep in mind: [This](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) [has](https://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines) [all](https://github.com/torvalds/subsurface-for-dirk/blob/master/README.md#contributing) [been](http://who-t.blogspot.co.at/2009/12/on-commit-messages.html) [said](https://github.com/erlang/otp/wiki/writing-good-commit-messages) [before](https://github.com/spring-projects/spring-framework/blob/30bce7/CONTRIBUTING.md#format-commit-messages).
   - From the seven rules of a great Git commit message:
-    - 2. [Try for 50 characters, but consider 72 the hard limit](https://chris.beams.io/posts/git-commit/#limit-50)
-    - 7. [Use the body to explain what and why vs. how](https://chris.beams.io/posts/git-commit/#why-not-how)
+    - (2) [Try for 50 characters, but consider 72 the hard limit](https://chris.beams.io/posts/git-commit/#limit-50)
+    - (7) [Use the body to explain what and why vs. how](https://chris.beams.io/posts/git-commit/#why-not-how)
 
 ### Issue Labels and Milestones
 
