@@ -1,3 +1,12 @@
+## 1.9.7 (2023-12-31)
+
+### Fix
+
+- update prettier
+- upgrade mdformat-mkdocs
+- reformat the STYLE GUIDE
+- remove competing number/bullet code
+
 ## 1.9.6 (2023-12-10)
 
 ### Fix
