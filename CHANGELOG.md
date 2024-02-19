@@ -1,3 +1,9 @@
+## 1.9.8 (2024-02-19)
+
+### Fix
+
+- update ruff.toml for latest ruff
+
 ## 1.9.7 (2023-12-31)
 
 ### Fix
