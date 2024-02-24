@@ -1,3 +1,9 @@
+## 1.9.9 (2024-02-24)
+
+### Fix
+
+- move toml-sort config to pyproject.toml for nvim
+
 ## 1.9.8 (2024-02-19)
 
 ### Fix
