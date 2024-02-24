@@ -44,3 +44,9 @@ calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], ve
 [tool.pyright]
 include = ["{{ package_name_py }}"]
 pythonVersion = "{{ minimum_python_short }}"
+
+[tool.tomlsort]
+all = true
+in_place = true
+sort_first = ["python"]
+trailing_comma_inline_array = true
