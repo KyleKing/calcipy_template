@@ -1,3 +1,9 @@
+## 1.9.11 (2024-03-27)
+
+### Fix
+
+- bump minimum mdformat-mkdocs version
+
 ## 1.9.10 (2024-03-19)
 
 ### Fix
