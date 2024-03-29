@@ -46,18 +46,19 @@ repos:
       - id: trailing-whitespace
         exclude: __snapshots__/.*\.ambr
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.15.0
+    rev: v3.20.0
     hooks:
       - id: commitizen
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.17
     hooks:
       - id: mdformat
-        additional_dependencies: ["mdformat-mkdocs[recommended]>=1.1.1"]
+        additional_dependencies:
+          - "mdformat-mkdocs[recommended]>=2.0.6"
         args: [--wrap=no]
         exclude: _.+\.md|CHANGELOG\.md|CODE_TAG_SUMMARY\.md
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.9.0.6
+    rev: v0.10.0.1
     hooks:
       - id: shellcheck
         args: [--severity=warning]
@@ -80,13 +81,6 @@ repos:
     rev: v0.23.1
     hooks:
       - id: toml-sort-fix
-        args:
-          [
-            --in-place,
-            --all,
-            --trailing-comma-inline-array,
-            --sort-first=python,
-          ]
         exclude: poetry\.lock
   - repo: https://github.com/MarcoGorelli/absolufy-imports
     rev: v0.3.1

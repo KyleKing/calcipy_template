@@ -7,3 +7,9 @@ authors = ["Kyle King <dev.act.kyle@gmail.com>"]
 description = "Project scaffold for Python packages built on calcipy. Utilizes copier to keep projects up to date"
 name = "calcipy_template"
 version = "1.9.11"
+
+[tool.tomlsort]
+all = true
+in_place = true
+sort_first = ["python"]
+trailing_comma_inline_array = true
