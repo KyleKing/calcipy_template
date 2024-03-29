@@ -25,6 +25,7 @@ jobs:
         with:
           branch: main
           changelog_increment_filename: body.md
+          push: false
 
       - name: Generate GitHub Release Notes
         uses: softprops/action-gh-release@v2
