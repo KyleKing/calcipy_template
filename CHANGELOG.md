@@ -1,3 +1,16 @@
+## 1.9.13 (2024-03-29)
+
+### Fix
+
+- use github_token to push the version
+- update Actions
+
+## 1.9.12 (2024-03-28)
+
+### Fix
+
+- update Actions
+
 ## 1.9.11 (2024-03-27)
 
 ### Fix
