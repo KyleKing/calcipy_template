@@ -45,8 +45,6 @@ copier update . --UNSAFE --conflict=rej --defaults
 
 Any push to the repository `main` branch will trigger a version bump based on [`commitizen` rules (`fix`, `feat`, etc.)](https://commitizen-tools.github.io/commitizen/)
 
-If this repository is cloned, you will need to add a Personal Access Token to the repository under `Settings > Secrets > Add new secret` ([see guide](https://commitizen-tools.github.io/commitizen/tutorials/github_actions/))
-
 ## Support
 
 Below are a couple of useful snippets related to maintaining a package that utilizes this template

@@ -1,8 +1,6 @@
 ---
 name: Bump Version
 
-# FYI: Requires Personal Access Token. See README
-
 "on":
   push:
     branches: [main]
@@ -14,6 +12,7 @@ jobs:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-22.04
     name: Bump version and make release with commitizen
+    # Fix 403 error (https://github.com/softprops/action-gh-release/issues/400)
     permissions:
       contents: write
     steps:
@@ -28,10 +27,8 @@ jobs:
           changelog_increment_filename: body.md
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate GitHub Release Notes
+        uses: softprops/action-gh-release@v2
         with:
           body_path: body.md
           tag_name: ${{ env.REVISION }}
