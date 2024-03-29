@@ -25,7 +25,6 @@ class Config:
 
 _CONFIG_PATH = Path(__file__).with_suffix('.json')
 _CONFIG = Config(**json.loads(_CONFIG_PATH.read_text()))
-_CONFIG_PATH.unlink()
 
 
 def _log(message: str) -> None:
@@ -66,7 +65,7 @@ def cleanup() -> None:
     for pth in paths:
         if pth.is_file():
             _log(f'Removing: {pth}')
-            pth.unlink()  # FYI: "missing_ok" was added in 3.8, but this script is ^3.7
+            pth.unlink()
     for dir_pth in directories:
         if dir_pth.is_dir():
             _log(f'Deleting: {dir_pth}')
@@ -104,6 +103,7 @@ def validate_configuration() -> None:
 def delete_myself() -> None:
     """Delete this file after completing the main script."""
     Path(__file__).unlink()
+    _CONFIG_PATH.unlink()
 
 
 if __name__ == '__main__':
@@ -111,7 +111,8 @@ if __name__ == '__main__':
         f"""
 The '{_CONFIG.package_name_py}' package has been updated (or created)!
 
-1. Review the changes and commit. Merge conflicts may either be '*.rej' files or as inline git diffs
+1. Review the changes and commit
+    1. Merge conflicts may either be '*.rej' files or as inline git diffs
 2. Install dependencies with 'poetry install --sync'
 3. Run `./run --help` to show the available actions
 4. Run `./run main --keep-going` to try running all default tasks after the changes
