@@ -20,7 +20,7 @@ repos:
     hooks:
       - id: copier-template-tester
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-added-large-files
       - id: check-executables-have-shebangs
@@ -46,7 +46,7 @@ repos:
       - id: trailing-whitespace
         exclude: __snapshots__/.*\.ambr
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.20.0
+    rev: v3.24.0
     hooks:
       - id: commitizen
   - repo: https://github.com/executablebooks/mdformat
@@ -89,7 +89,7 @@ repos:
         args: [--never]
         files: test_template/.*\.py
   - repo: https://github.com/KyleKing/calcipy
-    rev: 2.0.4
+    rev: 2.1.0
     hooks:
       - id: copier-forbidden-files
       - id: lint-fix
