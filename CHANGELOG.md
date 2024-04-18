@@ -1,3 +1,13 @@
+## 1.9.14 (2024-04-18)
+
+### Fix
+
+- ignore PLC2701 in tests
+
+### Refactor
+
+- defer removal of JSON config
+
 ## 1.9.13 (2024-03-29)
 
 ### Fix
