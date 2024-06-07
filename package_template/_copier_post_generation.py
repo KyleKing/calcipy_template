@@ -39,6 +39,7 @@ def cleanup() -> None:
         Path('.doit-db.sqlite'),
         Path('.doit.tmp-py'),
         Path('.doit.tmp-toml'),
+        Path('.flake8'),
         Path('.github/codeql-config.yml'),
         Path('.github/workflows/codeql-analysis.yml'),
         Path('.github/workflows/codeql-config.yml'),
