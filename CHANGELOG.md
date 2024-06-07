@@ -1,3 +1,10 @@
+## 1.10.3 (2024-06-07)
+
+### Fix
+
+- simplify ruff and mypy configuration
+- remove absolufy-imports
+
 ## 1.10.2 (2024-06-07)
 
 ### Fix
