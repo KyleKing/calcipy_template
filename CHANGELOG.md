@@ -1,3 +1,10 @@
+## 1.10.0 (2024-06-07)
+
+### Feat
+
+- minimize redundancy in pre-commit
+- add py.typed
+
 ## 1.9.14 (2024-04-18)
 
 ### Fix
