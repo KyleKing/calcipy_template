@@ -84,9 +84,6 @@ def validate_configuration() -> None:
     }
 
     errors = []
-    extras_value = copier_dict['install_extras']
-    if extras_value == 'None':
-        errors.append(f'install_extras should be an empty string or list of extras, not {extras_value}')
     py_tuples = {
         key: re.compile(r'["\']+').sub('', copier_dict[key]).split('.')
         for key in ('minimum_python', 'minimum_python_short')

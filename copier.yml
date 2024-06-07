@@ -91,10 +91,6 @@ minimum_python_short:
   # FYI: {% set major,minor,patch = minimum_python.split('.') %}{{ major }}.{{ minor }}
   default: "3.9"
 
-install_extras:
-  type: str
-  help: (Uncommon) Optional extras to install when running in CI. Example "-E doc -E lint". Typically leave blank
-
 extends_calcipy:
   type: bool
   help: If True, the CLI entrypoint will import from 'calcipy:all_tasks'

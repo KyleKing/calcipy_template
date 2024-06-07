@@ -6,6 +6,7 @@
 git clone https://github.com/user_ctt/test-template.git
 cd test-template
 poetry install --sync
+poetry run calcipy-pack pack.install-extras
 
 # See the available tasks
 poetry run calcipy

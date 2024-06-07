@@ -46,5 +46,5 @@ runs:{% raw %}
 
     - name: Install Project and Minimum Subset of Dependencies{% endraw %}
       run: |
-        poetry install{% if install_extras %} {{ install_extras }}{% endif %}
+        poetry install && poetry run calcipy-pack pack.install-extras
       shell: bash

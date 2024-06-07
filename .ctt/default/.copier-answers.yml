@@ -12,7 +12,6 @@ copyright_date: '2022'
 development_branch: main
 doc_dir: docs
 extends_calcipy: false
-install_extras: ''
 minimum_python: 3.10.0
 minimum_python_short: '3.10'
 package_name_py: test_template
