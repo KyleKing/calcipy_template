@@ -1,3 +1,10 @@
+## 1.10.4 (2024-06-07)
+
+### Fix
+
+- update poetry-version
+- allow unlimited kwargs to functions
+
 ## 1.10.3 (2024-06-07)
 
 ### Fix
