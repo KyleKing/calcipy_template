@@ -1,3 +1,11 @@
+## 1.10.1 (2024-06-07)
+
+### Fix
+
+- remove flake8 config
+- merge (a shorter) mypy config with pyproject.toml
+- merge ruff config into pyproject.toml
+
 ## 1.10.0 (2024-06-07)
 
 ### Feat
