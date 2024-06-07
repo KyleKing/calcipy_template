@@ -1,3 +1,9 @@
+## 1.10.2 (2024-06-07)
+
+### Fix
+
+- remove install_extras from copier config
+
 ## 1.10.1 (2024-06-07)
 
 ### Fix
