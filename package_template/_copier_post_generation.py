@@ -44,6 +44,7 @@ def cleanup() -> None:
         Path('.github/workflows/codeql-config.yml'),
         Path('.github/workflows/upgrade-dependencies.yml'),
         Path('.pyup.yml'),
+        Path('.ruff.toml'),
         Path('.sourcery.yaml'),
         Path('appveyor.yml'),
         Path('dodo.py'),
