@@ -6,6 +6,22 @@ requires = ["poetry-core"]
 version = "0.0.1"
 version_files = ["pyproject.toml:^version", "{{ package_name_py }}/__init__.py:^__version"]
 
+[tool.mypy]
+check_untyped_defs = false
+disallow_any_generics = true
+enable_error_code = "ignore-without-code"
+follow_imports = "silent"
+no_implicit_reexport = true
+plugins = [
+  "pydantic.mypy", # Most settings are from: https://pydantic-docs.helpmanual.io/mypy_plugin
+]
+python_version = "{{ minimum_python_short }}"
+show_column_numbers = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_unreachable = true
+warn_unused_ignores = true
+
 [tool.poetry]
 authors = ["{{ author_name }} <{{ author_email }}>"]
 classifiers = [
@@ -40,6 +56,11 @@ calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], ve
 [tool.poetry.urls]
 "Bug Tracker" = "{{ repository_url }}/issues"
 "Changelog" = "{{ repository_source_url }}/{{ doc_dir }}/docs/CHANGELOG.md"
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
 
 [tool.pyright]
 include = ["{{ package_name_py }}"]

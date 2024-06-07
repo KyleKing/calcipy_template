@@ -43,6 +43,7 @@ def cleanup() -> None:
         Path('.github/workflows/codeql-analysis.yml'),
         Path('.github/workflows/codeql-config.yml'),
         Path('.github/workflows/upgrade-dependencies.yml'),
+        Path('.mypy.ini'),
         Path('.pyup.yml'),
         Path('.ruff.toml'),
         Path('.sourcery.yaml'),

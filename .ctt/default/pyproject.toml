@@ -6,6 +6,22 @@ requires = ["poetry-core"]
 version = "0.0.1"
 version_files = ["pyproject.toml:^version", "test_template/__init__.py:^__version"]
 
+[tool.mypy]
+check_untyped_defs = false
+disallow_any_generics = true
+enable_error_code = "ignore-without-code"
+follow_imports = "silent"
+no_implicit_reexport = true
+plugins = [
+  "pydantic.mypy", # Most settings are from: https://pydantic-docs.helpmanual.io/mypy_plugin
+]
+python_version = "3.10"
+show_column_numbers = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_unreachable = true
+warn_unused_ignores = true
+
 [tool.poetry]
 authors = ["Carl The Template <ctt@ctt.ctt>"]
 classifiers = [
@@ -37,6 +53,11 @@ calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], ve
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/user_ctt/test-template/issues"
 "Changelog" = "https://github.com/user_ctt/test-template/blob/main/docs/docs/CHANGELOG.md"
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
 
 [tool.pyright]
 include = ["test_template"]
