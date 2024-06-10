@@ -1,3 +1,10 @@
+## 1.10.5 (2024-06-10)
+
+### Fix
+
+- partially exclude syrupy JSON snapshots from pre-commit
+- stricter mypy and pyright configs
+
 ## 1.10.4 (2024-06-07)
 
 ### Fix
