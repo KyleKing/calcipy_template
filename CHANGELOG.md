@@ -1,3 +1,9 @@
+## 1.10.6 (2024-06-12)
+
+### Fix
+
+- provide file config for mypy
+
 ## 1.10.5 (2024-06-10)
 
 ### Fix
