@@ -17,7 +17,6 @@ _IS_PROJ = not _re_copier_dir.search(Path(__file__).absolute().as_posix())
 @dataclass
 class Config:
     cname: str
-    doc_dir: str
     project_description: str
     package_name_py: str
     project_name: str
@@ -34,45 +33,22 @@ def _log(message: str) -> None:
 
 def cleanup() -> None:
     """Remove files and folders that are no longer used."""
-    paths = [
-        Path('.deepsource.toml'),
-        Path('.doit-db.sqlite'),
-        Path('.doit.tmp-py'),
-        Path('.doit.tmp-toml'),
-        Path('.flake8'),
-        Path('.github/codeql-config.yml'),
-        Path('.github/workflows/codeql-analysis.yml'),
-        Path('.github/workflows/codeql-config.yml'),
-        Path('.github/workflows/upgrade-dependencies.yml'),
-        Path('.mypy.ini'),
-        Path('.pyup.yml'),
-        Path('.ruff.toml'),
-        Path('.sourcery.yaml'),
-        Path('appveyor.yml'),
-        Path('dodo.py'),
-        Path('flake8-full.log'),
-        Path('mypy.ini'),
-        Path('requirements.txt'),
-        Path('ruff.toml'),
-        Path(f'{_CONFIG.doc_dir}/docs/_docs.md'),
-        Path(f'{_CONFIG.doc_dir}/docs/CODE_OF_CONDUCT.md'),
-        Path(f'{_CONFIG.doc_dir}/docs/CONTRIBUTING.md'),
-        Path(f'{_CONFIG.doc_dir}/docs/SECURITY.md'),
-    ]
-    directories = [
-        Path('.logs'),
-        Path('_adr'),
-        Path(f'{_CONFIG.doc_dir}/css'),
-    ]
-
-    for pth in paths:
+    remove_list = Path('remove-if-found.txt')
+    if not remove_list.is_file():
+        return
+    for line in remove_list.read_text().split('\n'):
+        if not line:
+            continue
+        pth = Path(line)
         if pth.is_file():
-            _log(f'Removing: {pth}')
+            _log(f"Removing: {pth}")
             pth.unlink()
-    for dir_pth in directories:
-        if dir_pth.is_dir():
-            _log(f'Deleting: {dir_pth}')
-            shutil.rmtree(dir_pth)
+        elif pth.is_dir():
+            _log(f"Deleting: {pth}")
+            shutil.rmtree(pth)
+        else:
+            _log(f"Skipping {pth}")
+    remove_list.unlink()
 
 
 def validate_configuration() -> None:
