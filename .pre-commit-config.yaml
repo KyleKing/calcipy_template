@@ -16,7 +16,7 @@ default_install_hook_types: ["commit-msg", "pre-commit", "pre-push"]
 
 repos:
   - repo: https://github.com/kyleking/copier-template-tester
-    rev: 2.1.1
+    rev: 2.1.2
     hooks:
       - id: copier-template-tester
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -96,7 +96,7 @@ repos:
         files: test_template/.*\.py
         stages: ["pre-commit"]
   - repo: https://github.com/KyleKing/calcipy
-    rev: 2.1.0
+    rev: 3.0.1
     hooks:
       - id: copier-forbidden-files
       - id: lint-fix
