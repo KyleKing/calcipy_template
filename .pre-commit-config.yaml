@@ -96,7 +96,7 @@ repos:
         files: test_template/.*\.py
         stages: ["pre-commit"]
   - repo: https://github.com/KyleKing/calcipy
-    rev: 3.0.1
+    rev: 3.0.2
     hooks:
       - id: copier-forbidden-files
       - id: lint-fix
