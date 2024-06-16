@@ -1,3 +1,12 @@
+## 1.10.7 (2024-06-16)
+
+### Fix
+
+- bump minimum calcipy for path quoting fix
+- separate beartype type check config from package init
+- sync ruff and mypy config to top-level pyproject.toml
+- use remove-if-found for more general cleanup
+
 ## 1.10.6 (2024-06-12)
 
 ### Fix
