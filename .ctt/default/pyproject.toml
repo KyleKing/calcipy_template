@@ -50,10 +50,10 @@ version = "0.0.1"
 
 [tool.poetry.dependencies]
 python = "^3.10.0"
-corallium = ">=1.0.3"
+corallium = ">=2.0.0"
 
 [tool.poetry.group.dev.dependencies]
-calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=3.0.1"}
+calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=3.0.2"}
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/user_ctt/test-template/issues"
@@ -104,7 +104,7 @@ unfixable = [
 inline-quotes = 'single'
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
-'invoke.collection.Collection'.msg = 'Use calcipy.cli.Collection instead.'
+'invoke.collection.Collection'.msg = 'Use calcipy.collection.Collection instead.'
 'invoke.tasks.task'.msg = 'Use calcipy.cli.task instead.'
 'typing.Callable'.msg = 'Use beartype.typing.* instead.'
 'typing.Dict'.msg = 'Use beartype.typing.* instead.'

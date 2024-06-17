@@ -44,7 +44,7 @@ def configure_runtime_type_checking_mode() -> None:  # pragma: no cover
                     if rtc_mode is _RuntimeTypeCheckingModes.ERROR
                     else BeartypeClawDecorWarning
                 ),
-            )
+            ),
         )
 
 

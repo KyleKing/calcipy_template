@@ -41,23 +41,19 @@ def cleanup() -> None:
             continue
         pth = Path(line)
         if pth.is_file():
-            _log(f"Removing: {pth}")
+            _log(f'Removing: {pth}')
             pth.unlink()
         elif pth.is_dir():
-            _log(f"Deleting: {pth}")
+            _log(f'Deleting: {pth}')
             shutil.rmtree(pth)
         else:
-            _log(f"Skipping {pth}")
+            _log(f'Skipping {pth}')
     remove_list.unlink()
 
 
 def validate_configuration() -> None:
-    copier_text = Path('.copier-answers.yml').read_text()
-    copier_dict = {
-        line.split(':')[0]: line.split(':')[-1].strip()
-        for line in copier_text.split('\n')
-        if ':' in line
-    }
+    copier_text = Path('.copier-answers.yml').read_text(encoding='utf-8')
+    copier_dict = {line.split(':')[0]: line.split(':')[-1].strip() for line in copier_text.split('\n') if ':' in line}
 
     errors = []
     py_tuples = {
