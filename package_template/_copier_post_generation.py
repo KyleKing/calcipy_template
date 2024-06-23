@@ -46,8 +46,6 @@ def cleanup() -> None:
         elif pth.is_dir():
             _log(f'Deleting: {pth}')
             shutil.rmtree(pth)
-        else:
-            _log(f'Skipping {pth}')
     remove_list.unlink()
 
 
