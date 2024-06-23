@@ -6,26 +6,6 @@ requires = ["poetry-core"]
 version = "1.10.7"
 version_files = ["pyproject.toml:^version"]
 
-[tool.mypy]
-check_untyped_defs = true
-disallow_any_generics = true
-enable_error_code = ["ignore-without-code", "possibly-undefined", "redundant-expr", "truthy-bool"]
-extra_checks = true
-files = ["test_template", "tests"]
-no_implicit_reexport = true
-plugins = [
-  "pydantic.mypy", # Most settings are from: https://pydantic-docs.helpmanual.io/mypy_plugin
-]
-python_version = "3.10"
-show_column_numbers = true
-show_error_codes = true
-strict_equality = true
-warn_no_return = true
-warn_redundant_casts = true
-warn_unreachable = true
-warn_unused_configs = true
-warn_unused_ignores = true
-
 [tool.poetry]
 authors = ["Kyle King <dev.act.kyle@gmail.com>"]
 description = "Project scaffold for Python packages built on calcipy. Utilizes copier to keep projects up to date"
@@ -37,15 +17,6 @@ version = "1.10.7"
 [tool.poetry.dependencies]
 python = "^3.11"
 tomlkit = ">=0.12.5"
-
-[tool.pydantic-mypy]
-init_forbid_extra = true
-init_typed = true
-warn_required_dynamic_aliases = true
-
-[tool.pyright]
-include = ["test_template", "tests"]
-pythonVersion = "3.10"
 
 [tool.ruff]
 # Docs: https://github.com/charliermarsh/ruff
