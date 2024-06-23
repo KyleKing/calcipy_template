@@ -19,6 +19,7 @@ repos:
     rev: 2.1.2
     hooks:
       - id: copier-template-tester
+  # Sync below config with 'package_template'
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -73,14 +74,8 @@ repos:
           # Note: this version must be the same as the hook revision
           - "prettier@4.0.0-alpha.8"
           - "prettier-plugin-sh"
-        exclude: \.copier-answers\.yml|tests/.*/cassettes/.*\.yaml
+        exclude: \.copier-answers\.yml|tests/.*/cassettes/.*\.yaml|__snapshots__/.*\.json
         types_or: [html, javascript, json, shell, yaml]
-        stages: ["pre-commit"]
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.35.1
-    hooks:
-      - id: yamllint
-        exclude: tests/.*/cassettes/.*\.yaml
         stages: ["pre-commit"]
   - repo: https://github.com/pappasam/toml-sort
     rev: v0.23.1
@@ -88,15 +83,8 @@ repos:
       - id: toml-sort-fix
         exclude: poetry\.lock
         stages: ["pre-commit"]
-  - repo: https://github.com/MarcoGorelli/absolufy-imports
-    rev: v0.3.1
-    hooks:
-      - id: absolufy-imports
-        args: [--never]
-        files: test_template/.*\.py
-        stages: ["pre-commit"]
   - repo: https://github.com/KyleKing/calcipy
-    rev: 3.0.2
+    rev: 3.0.1
     hooks:
       - id: copier-forbidden-files
       - id: lint-fix

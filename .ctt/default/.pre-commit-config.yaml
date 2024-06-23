@@ -72,12 +72,6 @@ repos:
         exclude: \.copier-answers\.yml|tests/.*/cassettes/.*\.yaml|__snapshots__/.*\.json
         types_or: [html, javascript, json, shell, yaml]
         stages: ["pre-commit"]
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.35.1
-    hooks:
-      - id: yamllint
-        exclude: tests/.*/cassettes/.*\.yaml
-        stages: ["pre-commit"]
   - repo: https://github.com/pappasam/toml-sort
     rev: v0.23.1
     hooks:
