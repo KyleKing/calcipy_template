@@ -1,3 +1,13 @@
+## 2.0.0 (2024-07-05)
+
+### Feat
+
+- upgrade for calcipy v4
+
+### Fix
+
+- **wheel**: don't distribute top-level LICENSE file
+
 ## 1.10.8 (2024-07-05)
 
 ### Fix
