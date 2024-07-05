@@ -1,3 +1,9 @@
+## 2.0.1 (2024-07-05)
+
+### Fix
+
+- use calcipy.tags with missing pyyaml patch
+
 ## 2.0.0 (2024-07-05)
 
 ### Feat
