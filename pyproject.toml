@@ -70,8 +70,30 @@ known-first-party = ['test_template']
 './test_template/../*.py' = [
   'INP001', # File `/<>.py` is part of an implicit namespace package. Add an `__init__.py`.
 ]
+".ctt/default/tests/*.py" = [
+  'ANN001', # Missing type annotation for function argument
+  'ANN201', # Missing return type annotation for public function
+  'ANN202', # Missing return type annotation for private function `test_make_diffable`
+  'ARG001', # Unused function argument: `line`
+  'D100', # Missing docstring in public module
+  'D103', # Missing docstring in public function
+  'PLC2701', # Private name import `_<>` from external module
+  'PT004', # flake8-pytest-style: fixture does not return
+  'S101', # Use of `assert` detected
+]
 '__init__.py' = [
   'D104', # Missing docstring in public package
+]
+"package_template/tests/*.py" = [
+  'ANN001', # Missing type annotation for function argument
+  'ANN201', # Missing return type annotation for public function
+  'ANN202', # Missing return type annotation for private function `test_make_diffable`
+  'ARG001', # Unused function argument: `line`
+  'D100', # Missing docstring in public module
+  'D103', # Missing docstring in public function
+  'PLC2701', # Private name import `_<>` from external module
+  'PT004', # flake8-pytest-style: fixture does not return
+  'S101', # Use of `assert` detected
 ]
 'scripts/*.py' = [
   'INP001', # File `scripts/*.py` is part of an implicit namespace package. Add an `__init__.py`.
@@ -83,6 +105,7 @@ known-first-party = ['test_template']
   'ANN001', # Missing type annotation for function argument
   'ANN201', # Missing return type annotation for public function
   'ANN202', # Missing return type annotation for private function `test_make_diffable`
+  'ARG001', # Unused function argument: `line`
   'D100', # Missing docstring in public module
   'D103', # Missing docstring in public function
   'PLC2701', # Private name import `_<>` from external module
