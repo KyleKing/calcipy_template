@@ -1,3 +1,17 @@
+## 1.10.8 (2024-07-05)
+
+### Fix
+
+- update mdformat-mkdocs and ruff config
+- remove yamllint
+- quieter cleanup script
+
+### Refactor
+
+- simplify logging for post-setup script
+- improve pyproject sync script
+- fix formatting issues
+
 ## 1.10.7 (2024-06-16)
 
 ### Fix
