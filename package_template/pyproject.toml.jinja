@@ -52,7 +52,7 @@ python = "^{{ minimum_python }}"
 corallium = ">=2.0.1"
 
 [tool.poetry.group.dev.dependencies]
-calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=4.0.0rc3"}
+calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=4.0.0"}
 {% if extends_calcipy %}
 [tool.poetry.scripts]
 {{ package_name_py }} = "{{ package_name_py }}.scripts:start"
