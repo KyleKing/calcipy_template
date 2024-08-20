@@ -19,7 +19,7 @@ repos:
     rev: 2.1.3
     hooks:
       - id: copier-template-tester
-  # Sync below confcopier-template-testerig with 'package_template'
+  # Sync below config with 'package_template'
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
