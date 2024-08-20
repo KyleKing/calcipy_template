@@ -16,7 +16,7 @@ version = "2.0.2"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-tomlkit = ">=0.12.5"
+tomlkit = ">=0.13.2"
 
 [tool.ruff]
 # Docs: https://github.com/charliermarsh/ruff
