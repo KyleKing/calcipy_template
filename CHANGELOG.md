@@ -1,3 +1,10 @@
+## 2.0.3 (2024-08-20)
+
+### Fix
+
+- resolve issues flagged by recent versions of ruff
+- remove unused Graphviz and other cleanup
+
 ## 2.0.2 (2024-07-06)
 
 ### Fix
