@@ -1,3 +1,9 @@
+## 2.0.4 (2024-10-05)
+
+### Fix
+
+- ignore type-checking block fixes from ruff
+
 ## 2.0.3 (2024-08-20)
 
 ### Fix
