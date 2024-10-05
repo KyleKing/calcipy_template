@@ -1,3 +1,9 @@
+## 2.0.5 (2024-10-05)
+
+### Fix
+
+- raise beartype threshold for errors
+
 ## 2.0.4 (2024-10-05)
 
 ### Fix
