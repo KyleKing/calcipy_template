@@ -1,3 +1,13 @@
+## 2.1.0 (2024-10-08)
+
+### Feat
+
+- remove pylint
+
+### Fix
+
+- bump minimum copier version
+
 ## 2.0.5 (2024-10-05)
 
 ### Fix
