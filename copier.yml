@@ -1,5 +1,5 @@
 ---
-_min_copier_version: 8.0.0
+_min_copier_version: 9.0.0
 
 # ====== TEMPLATE ======
 _answers_file: .copier-answers.yml
