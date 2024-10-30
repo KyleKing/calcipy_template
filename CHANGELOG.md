@@ -1,3 +1,9 @@
+## 2.1.1 (2024-10-30)
+
+### Fix
+
+- update github-labeler to match example
+
 ## 2.1.0 (2024-10-08)
 
 ### Feat
