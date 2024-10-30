@@ -1,8 +1,6 @@
 ---
 name: Feature request
 about: Please share your ideas for test_template!
-title: ''
-labels: 'Type: Feature'
 assignees: user_ctt
 ---
 
