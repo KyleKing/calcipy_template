@@ -1,3 +1,9 @@
+## 2.2.1 (2024-11-01)
+
+### Fix
+
+- remove pydantic configuration
+
 ## 2.2.0 (2024-10-30)
 
 ### Feat
