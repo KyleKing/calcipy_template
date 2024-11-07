@@ -1,3 +1,9 @@
+## 3.0.0 (2024-11-07)
+
+### Feat
+
+- remove calcipy packaging lock
+
 ## 2.2.1 (2024-11-01)
 
 ### Fix
