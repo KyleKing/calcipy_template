@@ -51,7 +51,7 @@ python = "^3.10.0"
 corallium = ">=2.0.1"
 
 [tool.poetry.group.dev.dependencies]
-calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=4.1.0"}
+calcipy = {extras = ["doc", "lint", "nox", "stale", "tags", "test", "types"], version = ">=5.0.0"}
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/user_ctt/test-template/issues"
