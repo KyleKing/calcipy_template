@@ -1,3 +1,13 @@
+## 3.1.0 (2024-11-07)
+
+### Feat
+
+- improve beartype configuration
+
+### Fix
+
+- recommend future.annotations over deprecated syntax
+
 ## 3.0.0 (2024-11-07)
 
 ### Feat
