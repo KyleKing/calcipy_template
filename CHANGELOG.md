@@ -1,3 +1,14 @@
+## 3.1.1 (2024-12-07)
+
+### Fix
+
+- updates for pre-commit and ruff
+- remove unused stale extra
+
+### Refactor
+
+- pre-commit doesn't need to be a jinja template
+
 ## 3.1.0 (2024-11-07)
 
 ### Feat
