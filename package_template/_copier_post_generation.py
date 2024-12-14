@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 
-def _log(message: str) -> None:
+def _log(message: str | list[str]) -> None:
     print(message)  # noqa: T201
 
 
@@ -42,10 +42,10 @@ def validate_configuration() -> None:
     if python_value != python_short_value:
         errors.append(f'Error in Python versions ({python_value} != {python_short_value})')
     if errors:
-        print('\n\n')  # noqa: T201
-        print('Please review the errors below and edit the copier answers accordingly')  # noqa: T201
-        print(errors)  # noqa: T201
-        print('\n\n')  # noqa: T201
+        _log('\n\n')
+        _log('Please review the errors below and edit the copier answers accordingly')
+        _log(errors)
+        _log('\n\n')
         sys.exit(1)
 
 
