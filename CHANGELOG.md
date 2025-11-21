@@ -1,3 +1,13 @@
+## 3.1.2 (2025-11-21)
+
+### Fix
+
+- apply prettier to css
+
+### Refactor
+
+- use _log instead of print in cleanup script
+
 ## 3.1.1 (2024-12-07)
 
 ### Fix
