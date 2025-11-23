@@ -2,14 +2,23 @@
 
 Project scaffold for Python packages built on `calcipy` ([kyleking/calcipy](https://github.com/KyleKing/calcipy)). Built with `copier` so projects can be kept up-to-date
 
+**Now using `uv` instead of Poetry!** See [MIGRATION.md](./MIGRATION.md) for migration details.
+
 ## Quick Start
 
 ```sh
+# Install uv if you haven't already
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Install copier globally with pipx or use your preferred method
 pipx install copier
 
 # For end users, get the template with the below snippet. Replace dest_folder_name (can use ".")
 copier copy --UNSAFE gh:KyleKing/calcipy_template dest_folder_name
+
+# After generation, install dependencies
+cd dest_folder_name
+uv sync
 
 # Updates can be retrieved with:
 copier update . --UNSAFE

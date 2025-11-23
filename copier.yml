@@ -12,18 +12,30 @@ _tasks:
   - python _copier_post_generation.py
 
 _message_after_copy: |
-  The 'mdformat_{{ plugin_name }}' package has been initialized!
+  The '{{ package_name_py }}' package has been initialized!
 
+  **IMPORTANT: This template now uses `uv` instead of Poetry.**
+
+  If migrating from Poetry, the post-generation script has:
+  - Removed poetry.lock and poetry.toml
+  - Removed .venv (will be recreated)
+  - Updated .pre-commit-config.yaml references
+
+  Next steps:
   1. Review the changes and commit
       1. Merge conflicts may either be '*.rej' files or as inline git diffs
-  2. Install dependencies with 'poetry install --sync'
-  3. Run `./run --help` to show the available actions
-  4. Run `./run main --keep-going` to try running all default tasks after the changes
-  5. If this is a new project, you could create the GitHub repo with:
+  2. Install uv if needed: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+  3. Install dependencies with `uv sync`
+  4. Run `./run --help` to show the available actions
+  5. Run `./run main --keep-going` to try running all default tasks after the changes
+  6. Commit the new uv.lock file
+  7. If this is a new project, you could create the GitHub repo with:
 
       ```sh
-      gh repo create "{{ package_name_kebab }}" --source=. --remote=origin --push --homepage="{{ repository_url }}"
+      gh repo create "{{ project_name }}" --source=. --remote=origin --push --homepage="{{ repository_url }}"
       ```
+
+  For more details, see the MIGRATION.md guide.
 
 # ====== QUESTIONS ======
 development_branch:
