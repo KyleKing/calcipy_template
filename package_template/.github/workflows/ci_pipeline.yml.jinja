@@ -10,7 +10,7 @@ name: CI Pipeline
       - .github/workflows/ci_pipeline.yml
       - {{ package_name_py }}/**
       - tests/**
-      - poetry.lock
+      - uv.lock
       - pyproject.toml
 
 jobs:{% raw %}
@@ -28,7 +28,7 @@ jobs:{% raw %}
           python-version: ${{ matrix.python-version }}
 
       - name: Run static linters
-        run: poetry run calcipy-lint lint.check
+        run: uv run calcipy-lint lint.check
 
   test:
     runs-on: ${{ matrix.os }}
@@ -44,7 +44,7 @@ jobs:{% raw %}
           python-version: ${{ matrix.python-version }}
 
       - name: Run test
-        run: poetry run calcipy-test test.pytest
+        run: uv run calcipy-test test.pytest
 
   typecheck:
     runs-on: ${{ matrix.os }}
@@ -60,9 +60,9 @@ jobs:{% raw %}
           python-version: ${{ matrix.python-version }}
 
       - name: Run typecheck
-        run: poetry run calcipy-types types.mypy
+        run: uv run calcipy-types types.mypy
 
       # Based on: https://github.com/jakebailey/pyright-action/issues/10#issuecomment-1455220629
-      - name: Add Poetry Python to Path
-        run: echo "$(poetry env info --path)/bin" >> $GITHUB_PATH
+      - name: Add uv Python to Path
+        run: echo "$(uv run python -c 'import sys; print(sys.prefix)')/bin" >> $GITHUB_PATH
       - uses: jakebailey/pyright-action@v2{% endraw %}

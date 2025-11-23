@@ -10,6 +10,37 @@ def _log(message: str | list[str]) -> None:
     print(message)  # noqa: T201
 
 
+def migrate_from_poetry_to_uv() -> None:
+    """Migrate from Poetry to uv by removing Poetry-specific files."""
+    _log('Checking for Poetry migration...')
+
+    # Remove Poetry-specific files
+    poetry_files = ['poetry.lock', 'poetry.toml']
+    for file_name in poetry_files:
+        pth = Path(file_name)
+        if pth.is_file():
+            _log(f'Removing Poetry file: {pth}')
+            pth.unlink()
+
+    # Remove .venv to allow recreation with uv
+    venv_path = Path('.venv')
+    if venv_path.is_dir():
+        _log('Removing .venv directory (will be recreated with uv sync)')
+        shutil.rmtree(venv_path)
+
+    # Update .pre-commit-config.yaml if it exists and has poetry references
+    precommit_path = Path('.pre-commit-config.yaml')
+    if precommit_path.is_file():
+        content = precommit_path.read_text(encoding='utf-8')
+        if 'poetry.lock' in content or 'poetry run' in content:
+            _log('Updating .pre-commit-config.yaml references from poetry to uv')
+            content = content.replace('poetry\\.lock', 'uv\\.lock')
+            content = content.replace('poetry run', 'uv run')
+            precommit_path.write_text(content, encoding='utf-8')
+
+    _log('Poetry to uv migration complete.')
+
+
 def cleanup() -> None:
     """Remove files and folders that are no longer used."""
     remove_list = Path('remove-if-found.txt')
@@ -56,6 +87,7 @@ def delete_myself() -> None:
 
 if __name__ == '__main__':
     _log('Running self-deleting post-setup script.')
+    migrate_from_poetry_to_uv()
     cleanup()
     validate_configuration()
     delete_myself()
