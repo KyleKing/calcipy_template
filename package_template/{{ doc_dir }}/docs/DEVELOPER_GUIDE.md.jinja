@@ -5,11 +5,10 @@
 ```sh
 git clone {{ repository_url }}.git
 cd {{ project_name }}
-poetry install --sync
-poetry run calcipy-pack pack.install-extras
+uv sync --all-extras
 
 # See the available tasks
-poetry run calcipy
+uv run calcipy
 # Or use a local 'run' file (so that 'calcipy' can be extended)
 ./run
 
@@ -20,22 +19,26 @@ poetry run calcipy
 ./run lint.fix test
 ```
 
-## Publishing
+### Maintenance
 
-For testing, create an account on [TestPyPi](https://test.pypi.org/legacy/). Replace `...` with the API token generated on TestPyPi or PyPi respectively
+Dependency upgrades can be accomplished with:
 
 ```sh
-poetry config repositories.testpypi https://test.pypi.org/legacy/
-poetry config pypi-token.testpypi ...
+uv lock --upgrade
+uv sync --all-extras
+```
 
+## Publishing
+
+For testing, create an account on [TestPyPi](https://test.pypi.org/legacy). Either set 'UV_PUBLISH_TOKEN' or input the generated token when prompted by the command.
+
+```sh
 ./run main pack.publish --to-test-pypi
-# If you didn't configure a token, you will need to provide your username and password to publish
 ```
 
 To publish to the real PyPi
 
 ```sh
-poetry config pypi-token.pypi ...
 ./run release
 
 # Or for a pre-release

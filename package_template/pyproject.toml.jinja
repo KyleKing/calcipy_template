@@ -1,6 +1,45 @@
 [build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
+build-backend = "uv_build"
+requires = ["uv_build>=0.9.26"]
+
+[dependency-groups]
+dev = [
+  "calcipy[dev]>=5.0.0",
+]
+
+[project]
+authors = [
+  {email = "{{ author_email }}", name = "{{ author_name }}"},
+]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+] # https://pypi.org/classifiers/
+dependencies = [
+  "corallium>=2.0.1",
+]
+description = "{{ project_description }}"
+keywords = ["calcipy_template"]
+license = "MIT"
+maintainers = []
+name = "{{ package_name_py }}"
+readme = "{{ doc_dir }}/README.md"
+requires-python = ">={{ minimum_python }}"
+version = "0.0.1"
+{% if extends_calcipy %}
+[project.scripts]
+{{ package_name_py }} = "{{ package_name_py }}.scripts:start"
+{% endif %}
+[project.urls]
+"Bug Tracker" = "{{ repository_url }}/issues"
+"Changelog" = "{{ repository_source_url }}/{{ doc_dir }}/docs/CHANGELOG.md"
+"Documentation" = "https://{{ cname }}"
+"Repository" = "{{ repository_url }}"
 
 [tool.commitizen]
 version = "0.0.1"
@@ -25,48 +64,13 @@ warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
 
-[tool.poetry]
-authors = ["{{ author_name }} <{{ author_email }}>"]
-classifiers = [
-  "Development Status :: 1 - Planning",
-  "License :: OSI Approved :: MIT License",
-  "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.9",
-] # https://pypi.org/classifiers/
-description = "{{ project_description }}"
-documentation = "https://{{ cname }}"
-keywords = ["calcipy_template"]
-license = "MIT"
-maintainers = []
-name = "{{ package_name_py }}"
-readme = "{{ doc_dir }}/README.md"
-repository = "{{ repository_url }}"
-version = "0.0.1"
-
-[tool.poetry.dependencies]
-python = "^{{ minimum_python }}"
-corallium = ">=2.0.1"
-
-[tool.poetry.group.dev.dependencies]
-calcipy = {extras = ["doc", "lint", "nox", "tags", "test", "types"], version = ">=5.0.0"}
-{% if extends_calcipy %}
-[tool.poetry.scripts]
-{{ package_name_py }} = "{{ package_name_py }}.scripts:start"
-{% endif %}
-[tool.poetry.urls]
-"Bug Tracker" = "{{ repository_url }}/issues"
-"Changelog" = "{{ repository_source_url }}/{{ doc_dir }}/docs/CHANGELOG.md"
-
 [tool.pyright]
 include = ["{{ package_name_py }}", "tests"]
 pythonVersion = "{{ minimum_python_short }}"
 
 [tool.ruff]
 # Docs: https://github.com/charliermarsh/ruff
-# Tip: poetry run python -m ruff rule RUF100
+# Tip: uv run ruff rule RUF100
 line-length = 120
 target-version = 'py{{ minimum_python_short | replace(".", "") }}'
 
@@ -79,6 +83,8 @@ ignore = [
   'CPY001', # Missing copyright notice at top of file
   'D203', # "1 blank line required before class docstring" (Conflicts with D211)
   'D213', # "Multi-line docstring summary should start at the second line" (Conflicts with D212)
+  'DOC201', # PLANNED: finish updating docstrings for Returns
+  'DOC501', # Raised exception `RuntimeError` missing from docstring
   'EM101', # Exception must not use a string literal, assign to variable first
   'FIX001', # Line contains FIXME
   'FIX002', # Line contains TODO
@@ -144,5 +150,8 @@ convention = "google"
 [tool.tomlsort]
 all = true
 in_place = true
-sort_first = ["python"]
 trailing_comma_inline_array = true
+
+[tool.uv]
+default-groups = ["dev"]
+required-version = ">=0.9.0"

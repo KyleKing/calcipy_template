@@ -1,26 +1,25 @@
 [build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
+build-backend = "uv_build"
+requires = ["uv_build>=0.9.7"]
+
+[project]
+authors = [{email = "dev.act.kyle@gmail.com", name = "Kyle King"}]
+dependencies = [
+  "tomlkit>=0.13.2",
+]
+description = "Project scaffold for Python packages built on calcipy. Utilizes copier to keep projects up to date"
+name = "calcipy_template"
+readme = "README.md"
+requires-python = ">=3.11"
+version = "3.1.2"
 
 [tool.commitizen]
 version = "3.1.2"
 version_files = ["pyproject.toml:^version"]
 
-[tool.poetry]
-authors = ["Kyle King <dev.act.kyle@gmail.com>"]
-description = "Project scaffold for Python packages built on calcipy. Utilizes copier to keep projects up to date"
-name = "calcipy_template"
-package-mode = false
-readme = "README.md"
-version = "3.1.2"
-
-[tool.poetry.dependencies]
-python = "^3.11"
-tomlkit = ">=0.13.2"
-
 [tool.ruff]
 # Docs: https://github.com/charliermarsh/ruff
-# Tip: poetry run python -m ruff rule RUF100
+# Tip: uv run ruff rule RUF100
 line-length = 120
 target-version = 'py310'
 
@@ -33,6 +32,8 @@ ignore = [
   'CPY001', # Missing copyright notice at top of file
   'D203', # "1 blank line required before class docstring" (Conflicts with D211)
   'D213', # "Multi-line docstring summary should start at the second line" (Conflicts with D212)
+  'DOC201', # PLANNED: finish updating docstrings for Returns
+  'DOC501', # Raised exception `RuntimeError` missing from docstring
   'EM101', # Exception must not use a string literal, assign to variable first
   'FIX001', # Line contains FIXME
   'FIX002', # Line contains TODO
@@ -120,5 +121,7 @@ convention = "google"
 [tool.tomlsort]
 all = true
 in_place = true
-sort_first = ["python"]
 trailing_comma_inline_array = true
+
+[tool.uv]
+required-version = ">=0.9.0"

@@ -12,17 +12,17 @@ _tasks:
   - python _copier_post_generation.py
 
 _message_after_copy: |
-  The 'mdformat_{{ plugin_name }}' package has been initialized!
+  The '{{ package_name_py }}' package has been initialized!
 
   1. Review the changes and commit
       1. Merge conflicts may either be '*.rej' files or as inline git diffs
-  2. Install dependencies with 'poetry install --sync'
+  2. Install dependencies with 'uv sync --all-extras'
   3. Run `./run --help` to show the available actions
   4. Run `./run main --keep-going` to try running all default tasks after the changes
   5. If this is a new project, you could create the GitHub repo with:
 
       ```sh
-      gh repo create "{{ package_name_kebab }}" --source=. --remote=origin --push --homepage="{{ repository_url }}"
+      gh repo create "{{ project_name }}" --source=. --remote=origin --push --homepage="{{ repository_url }}"
       ```
 
 # ====== QUESTIONS ======
