@@ -1,3 +1,10 @@
+## 4.0.0 (2026-01-19)
+
+### Feat
+
+- add trusted publisher workflow
+- support poetry to uv migration
+
 ## 3.1.2 (2025-11-21)
 
 ### Fix
