@@ -1,3 +1,9 @@
+## 4.0.4 (2026-01-22)
+
+### Fix
+
+- use presence of poetry.lock to indicate the need for migration
+
 ## 4.0.3 (2026-01-22)
 
 ### Fix
