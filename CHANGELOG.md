@@ -1,3 +1,9 @@
+## 4.0.2 (2026-01-22)
+
+### Fix
+
+- improve poetry-to-uv migration (and run)
+
 ## 4.0.1 (2026-01-22)
 
 ### Fix
