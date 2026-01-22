@@ -5,23 +5,41 @@
 """Migration Script for Poetry to uv conversion.
 
 Run this script to migrate an existing poetry-based project to uv.
-The script will self-delete after completion.
+The script will self-delete only if no migration is needed.
 
 Usage:
-    uv run _copier_migration.py
+    uv run _poetry_to_uv_migration.py
+
+If migration is performed, review changes carefully before running:
+    uv lock
+    uv sync --all-extras
 """
 
 from __future__ import annotations
 
 import re
+import sys
 from itertools import starmap
 from pathlib import Path
-
-import tomlkit
 
 
 def _log(message: str) -> None:
     print(f'[migration] {message}')  # noqa: T201
+
+
+def _check_if_migration_needed() -> bool:
+    """Check if migration is needed without importing tomlkit."""
+    pyproject_path = Path('pyproject.toml')
+    if not pyproject_path.is_file():
+        return False
+
+    content = pyproject_path.read_text(encoding='utf-8')
+
+    # Simple check: does it have [tool.poetry] and poetry backend?
+    has_poetry_section = '[tool.poetry]' in content
+    has_poetry_backend = 'poetry' in content and 'build-backend' in content
+
+    return has_poetry_section and has_poetry_backend
 
 
 def _should_skip_migration(doc: dict) -> str | None:
@@ -39,6 +57,8 @@ def _should_skip_migration(doc: dict) -> str | None:
 
 def _create_build_system() -> dict:
     """Create build-system table for uv."""
+    import tomlkit  # noqa: PLC0415
+
     build_system = tomlkit.table()
     build_system['build-backend'] = 'uv_build'
     build_system['requires'] = ['uv_build>=0.9.7']
@@ -60,7 +80,7 @@ def _format_dependency_spec(name: str, spec: str | dict) -> str:
 
     base = name
     if extras:
-        base = f'{name}[{",".join(extras)}]'
+        base = f"{name}[{','.join(extras)}]"
 
     result = f'{base}{version}'
     if markers:
@@ -121,6 +141,8 @@ def _format_python_version(version_spec: str) -> str:
 
 def _build_urls_table(poetry: dict) -> dict | None:
     """Build URLs table from poetry configuration."""
+    import tomlkit  # noqa: PLC0415
+
     if 'urls' in poetry:
         return poetry['urls']
 
@@ -135,6 +157,8 @@ def _build_urls_table(poetry: dict) -> dict | None:
 
 def _copy_tool_sections(source_doc: dict, target_doc: dict) -> None:
     """Copy non-poetry tool sections from source to target document."""
+    import tomlkit  # noqa: PLC0415
+
     if 'tool' not in source_doc:
         return
 
@@ -148,6 +172,8 @@ def _copy_tool_sections(source_doc: dict, target_doc: dict) -> None:
 
 def _add_uv_config(doc: dict) -> None:
     """Add uv configuration to document."""
+    import tomlkit  # noqa: PLC0415
+
     if 'tool' not in doc:
         doc.add('tool', tomlkit.table())
     doc['tool']['uv'] = tomlkit.table()
@@ -157,6 +183,8 @@ def _add_uv_config(doc: dict) -> None:
 
 def _build_project_section(poetry: dict) -> dict:
     """Build the project section from poetry configuration."""
+    import tomlkit  # noqa: PLC0415
+
     project = tomlkit.table()
 
     if authors := _convert_authors(poetry):
@@ -187,19 +215,25 @@ def _build_project_section(poetry: dict) -> dict:
     return project
 
 
-def _migrate_pyproject_toml() -> None:
-    """Convert pyproject.toml from Poetry to uv format."""
+def _migrate_pyproject_toml() -> bool:
+    """Convert pyproject.toml from Poetry to uv format.
+
+    Returns:
+        True if migration was performed, False otherwise.
+    """
+    import tomlkit  # noqa: PLC0415
+
     pyproject_path = Path('pyproject.toml')
     if not pyproject_path.is_file():
         _log('pyproject.toml not found, skipping')
-        return
+        return False
 
     content = pyproject_path.read_text(encoding='utf-8')
     doc = tomlkit.parse(content)
 
     if skip_reason := _should_skip_migration(doc):
         _log(skip_reason)
-        return
+        return False
 
     _log('Migrating pyproject.toml from Poetry to uv...')
 
@@ -219,6 +253,7 @@ def _migrate_pyproject_toml() -> None:
 
     pyproject_path.write_text(tomlkit.dumps(new_doc), encoding='utf-8')
     _log('pyproject.toml migrated successfully')
+    return True
 
 
 def _update_file_content(path: Path, replacements: list[tuple[str, str]]) -> bool:
@@ -238,11 +273,15 @@ def _update_file_content(path: Path, replacements: list[tuple[str, str]]) -> boo
     return False
 
 
-def _migrate_workflow_files() -> None:
-    """Update GitHub workflow files."""
+def _migrate_workflow_files() -> bool:
+    """Update GitHub workflow files.
+
+    Returns:
+        True if any file was updated, False otherwise.
+    """
     workflows_dir = Path('.github/workflows')
     if not workflows_dir.is_dir():
-        return
+        return False
 
     replacements = [
         ('poetry run ', 'uv run '),
@@ -251,9 +290,11 @@ def _migrate_workflow_files() -> None:
         ('cache: poetry', 'enable-cache: true'),
     ]
 
+    updated = False
     for workflow in workflows_dir.glob('*.yml'):
         if _update_file_content(workflow, replacements):
             _log(f'Updated {workflow}')
+            updated = True
 
     setup_action = Path('.github/actions/setup/action.yml')
     if setup_action.is_file():
@@ -261,9 +302,15 @@ def _migrate_workflow_files() -> None:
         if 'poetry' in content.lower() or 'pipx' in content.lower():
             _log(f'Action {setup_action} needs manual review for uv migration')
 
+    return updated
 
-def _migrate_pre_commit() -> None:
-    """Update .pre-commit-config.yaml."""
+
+def _migrate_pre_commit() -> bool:
+    """Update .pre-commit-config.yaml.
+
+    Returns:
+        True if file was updated, False otherwise.
+    """
     pre_commit_path = Path('.pre-commit-config.yaml')
     replacements = [
         ('poetry run ', 'uv run '),
@@ -277,10 +324,16 @@ def _migrate_pre_commit() -> None:
 
     if _update_file_content(pre_commit_path, replacements):
         _log('Updated .pre-commit-config.yaml')
+        return True
+    return False
 
 
-def _migrate_run_script() -> None:
-    """Update run script."""
+def _migrate_run_script() -> bool:
+    """Update run script.
+
+    Returns:
+        True if file was updated, False otherwise.
+    """
     run_path = Path('run')
     replacements = [
         ('poetry run ', 'uv run '),
@@ -288,10 +341,16 @@ def _migrate_run_script() -> None:
 
     if _update_file_content(run_path, replacements):
         _log('Updated run script')
+        return True
+    return False
 
 
-def _migrate_docs() -> None:
-    """Update documentation files."""
+def _migrate_docs() -> bool:
+    """Update documentation files.
+
+    Returns:
+        True if any file was updated, False otherwise.
+    """
     doc_dirs = [Path('docs'), Path('doc')]
     replacements = [
         ('poetry install --sync', 'uv sync --all-extras'),
@@ -300,25 +359,37 @@ def _migrate_docs() -> None:
         ('poetry config ', '# (uv uses UV_PUBLISH_TOKEN env var) '),
     ]
 
+    updated = False
     for doc_dir in doc_dirs:
         if not doc_dir.is_dir():
             continue
         for md_file in doc_dir.rglob('*.md'):
             if _update_file_content(md_file, replacements):
                 _log(f'Updated {md_file}')
+                updated = True
+    return updated
 
 
-def _cleanup_poetry_files() -> None:
-    """Remove Poetry-specific files."""
+def _cleanup_poetry_files() -> bool:
+    """Remove Poetry-specific files.
+
+    Returns:
+        True if any file was removed, False otherwise.
+    """
+    removed = False
     poetry_lock = Path('poetry.lock')
     if poetry_lock.is_file():
         _log('Removing poetry.lock')
         poetry_lock.unlink()
+        removed = True
 
     poetry_toml = Path('poetry.toml')
     if poetry_toml.is_file():
         _log('Removing poetry.toml')
         poetry_toml.unlink()
+        removed = True
+
+    return removed
 
 
 def _delete_myself() -> None:
@@ -334,31 +405,50 @@ def _delete_myself() -> None:
 
 def main() -> None:
     """Run the migration."""
-    try:
-        _log('Starting Poetry to uv migration...')
-        _log('')
+    # Check if migration is needed before importing tomlkit
+    if not _check_if_migration_needed():
+        _log('No Poetry migration needed - auto-deleting script')
+        _delete_myself()
+        return
 
-        _migrate_pyproject_toml()
-        _migrate_workflow_files()
-        _migrate_pre_commit()
-        _migrate_run_script()
-        _migrate_docs()
-        _cleanup_poetry_files()
+    _log('Starting Poetry to uv migration...')
+    _log('')
+
+    migration_performed = False
+
+    try:
+        # Track if any migration was performed
+        migration_performed |= _migrate_pyproject_toml()
+        migration_performed |= _migrate_workflow_files()
+        migration_performed |= _migrate_pre_commit()
+        migration_performed |= _migrate_run_script()
+        migration_performed |= _migrate_docs()
+        migration_performed |= _cleanup_poetry_files()
+
+        if not migration_performed:
+            _log('No changes were necessary - auto-deleting script')
+            _delete_myself()
+            return
 
         _log('')
         _log('Migration complete!')
         _log('')
-        _log('Next steps:')
-        _log('  1. Run: uv lock')
-        _log('  2. Run: uv sync --all-extras')
-        _log('  3. Test: ./run main')
-        _log('  4. Review changes and commit')
+        _log('IMPORTANT: Review all changes carefully before proceeding.')
+        _log('This script has been kept so you can re-run if needed.')
         _log('')
+        _log('Next steps:')
+        _log('  1. Review changes: git diff')
+        _log('  2. Run: uv lock')
+        _log('  3. Run: uv sync --all-extras')
+        _log('  4. Test: ./run main')
+        _log('  5. Commit changes and delete this script')
+        _log('')
+
     except Exception as err:
         _log(f'Migration error: {err}')
         _log('Migration may be incomplete. Please review manually.')
-    finally:
-        _delete_myself()
+        _log('This script has been kept for potential re-run.')
+        sys.exit(1)
 
 
 if __name__ == '__main__':

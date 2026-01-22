@@ -15,7 +15,7 @@ def cleanup() -> None:
     remove_list = Path('remove-if-found.txt')
     if not remove_list.is_file():
         return
-    for line in remove_list.read_text().split('\n'):
+    for line in remove_list.read_text(encoding='utf-8').split('\n'):
         if not line:
             continue
         pth = Path(line)

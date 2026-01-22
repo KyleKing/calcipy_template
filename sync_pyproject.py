@@ -11,10 +11,10 @@ def merge() -> None:
     """Merge ctt output into top-level pyproject.toml."""
     ctt_subdir = '.ctt/default'
     ctt_pyproject = Path(ctt_subdir) / 'pyproject.toml'
-    ctt_doc = tomlkit.parse(ctt_pyproject.read_text())
+    ctt_doc = tomlkit.parse(ctt_pyproject.read_text(encoding='utf-8'))
 
     tl_pyproject = Path('pyproject.toml')
-    tl_doc = tomlkit.parse(tl_pyproject.read_text())
+    tl_doc = tomlkit.parse(tl_pyproject.read_text(encoding='utf-8'))
 
     for key in ('ruff',):
         tl_doc['tool'][key] = ctt_doc['tool'][key]
@@ -24,7 +24,7 @@ def merge() -> None:
         per_file_ignores[f'package_template/{key}'] = per_file_ignores[key]
         per_file_ignores[f'{ctt_subdir}/{key}'] = per_file_ignores[key]
 
-    tl_pyproject.write_text(tomlkit.dumps(tl_doc))
+    tl_pyproject.write_text(tomlkit.dumps(tl_doc), encoding='utf-8')
 
 
 if __name__ == '__main__':
