@@ -1,3 +1,9 @@
+## 4.0.3 (2026-01-22)
+
+### Fix
+
+- handle corallium upgrade
+
 ## 4.0.2 (2026-01-22)
 
 ### Fix
