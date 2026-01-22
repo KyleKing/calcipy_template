@@ -4,8 +4,6 @@ from pathlib import Path
 
 import tomlkit
 
-# PLANNED: use this logic for Configapult when merging dependencies and versions!
-
 
 def merge() -> None:
     """Merge ctt output into top-level pyproject.toml."""

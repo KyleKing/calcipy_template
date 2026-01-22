@@ -4,7 +4,7 @@
 
 cp .ctt/default/.editorconfig .editorconfig
 
-poetry run python sync_pyproject.py
+uv run python sync_pyproject.py
 
 echo 'FYI: Occasionally sync the pre-commit config, but requires manual review:'
 echo '  cp .ctt/default/.pre-commit-config.yaml .pre-commit-config.yaml'
