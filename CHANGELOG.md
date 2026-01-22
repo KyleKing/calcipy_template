@@ -1,3 +1,9 @@
+## 4.0.1 (2026-01-22)
+
+### Fix
+
+- continue migration from poetry to uv
+
 ## 4.0.0 (2026-01-19)
 
 ### Feat
