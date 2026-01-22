@@ -28,18 +28,8 @@ def _log(message: str) -> None:
 
 
 def _check_if_migration_needed() -> bool:
-    """Check if migration is needed without importing tomlkit."""
-    pyproject_path = Path('pyproject.toml')
-    if not pyproject_path.is_file():
-        return False
-
-    content = pyproject_path.read_text(encoding='utf-8')
-
-    # Simple check: does it have [tool.poetry] and poetry backend?
-    has_poetry_section = '[tool.poetry]' in content
-    has_poetry_backend = 'poetry' in content and 'build-backend' in content
-
-    return has_poetry_section and has_poetry_backend
+    """Check if migration is needed by checking for poetry.lock."""
+    return Path('poetry.lock').is_file()
 
 
 def _should_skip_migration(doc: dict) -> str | None:
@@ -377,6 +367,7 @@ def _cleanup_poetry_files() -> bool:
         True if any file was removed, False otherwise.
     """
     removed = False
+    # NOTE: poetry.lock should only be handled by @package_template/_poetry_to_uv_migration.py
     poetry_lock = Path('poetry.lock')
     if poetry_lock.is_file():
         _log('Removing poetry.lock')
