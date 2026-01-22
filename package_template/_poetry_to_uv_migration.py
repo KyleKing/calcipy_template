@@ -1,24 +1,23 @@
+# /// script
+# dependencies = ["tomlkit>=0.13"]
+# requires-python = ">=3.9"
+# ///
 """Migration Script for Poetry to uv conversion.
 
 Run this script to migrate an existing poetry-based project to uv.
 The script will self-delete after completion.
 
 Usage:
-    python _copier_migration.py
+    uv run _copier_migration.py
 """
 
 from __future__ import annotations
 
 import re
-import sys
 from itertools import starmap
 from pathlib import Path
 
-try:
-    import tomlkit
-except ImportError:
-    print('tomlkit is required: pip install tomlkit')  # noqa: T201
-    sys.exit(1)
+import tomlkit
 
 
 def _log(message: str) -> None:
@@ -53,15 +52,20 @@ def _format_dependency_spec(name: str, spec: str | dict) -> str:
 
     version = spec.get('version', '>=0')
     extras = spec.get('extras', [])
-    if not extras:
-        return f'{name}{version}'
+    markers = spec.get('markers', '')
 
-    extras_str = ','.join(extras)
-    old_extras = ['doc', 'lint', 'nox', 'tags', 'test', 'types']
-    if name == 'calcipy' and set(extras) == set(old_extras):
+    old_calcipy_extras = {'doc', 'lint', 'nox', 'tags', 'test', 'types'}
+    if name == 'calcipy' and set(extras) == old_calcipy_extras:
         return 'calcipy[dev]>=5.0.0'
 
-    return f'{name}[{extras_str}]{version}'
+    base = name
+    if extras:
+        base = f'{name}[{",".join(extras)}]'
+
+    result = f'{base}{version}'
+    if markers:
+        result = f'{result}; {markers}'
+    return result
 
 
 def _convert_dev_dependencies(poetry: dict) -> list[str] | None:
@@ -319,35 +323,42 @@ def _cleanup_poetry_files() -> None:
 
 def _delete_myself() -> None:
     """Delete this script after completion."""
-    script_path = Path(__file__)
+    script_path = Path(__file__).resolve()
     if script_path.is_file():
-        script_path.unlink()
-        _log(f'Deleted migration script: {script_path.name}')
+        try:
+            script_path.unlink()
+            _log(f'Deleted migration script: {script_path.name}')
+        except OSError as err:
+            _log(f'Warning: Could not delete migration script: {err}')
 
 
 def main() -> None:
     """Run the migration."""
-    _log('Starting Poetry to uv migration...')
-    _log('')
+    try:
+        _log('Starting Poetry to uv migration...')
+        _log('')
 
-    _migrate_pyproject_toml()
-    _migrate_workflow_files()
-    _migrate_pre_commit()
-    _migrate_run_script()
-    _migrate_docs()
-    _cleanup_poetry_files()
+        _migrate_pyproject_toml()
+        _migrate_workflow_files()
+        _migrate_pre_commit()
+        _migrate_run_script()
+        _migrate_docs()
+        _cleanup_poetry_files()
 
-    _log('')
-    _log('Migration complete!')
-    _log('')
-    _log('Next steps:')
-    _log('  1. Run: uv lock')
-    _log('  2. Run: uv sync --all-extras')
-    _log('  3. Test: ./run main')
-    _log('  4. Review changes and commit')
-    _log('')
-
-    _delete_myself()
+        _log('')
+        _log('Migration complete!')
+        _log('')
+        _log('Next steps:')
+        _log('  1. Run: uv lock')
+        _log('  2. Run: uv sync --all-extras')
+        _log('  3. Test: ./run main')
+        _log('  4. Review changes and commit')
+        _log('')
+    except Exception as err:
+        _log(f'Migration error: {err}')
+        _log('Migration may be incomplete. Please review manually.')
+    finally:
+        _delete_myself()
 
 
 if __name__ == '__main__':

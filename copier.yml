@@ -9,6 +9,7 @@ _skip_if_exists:
   - LICENSE
 _tasks:
   - git init
+  - uv run _poetry_to_uv_migration.py
   - python _copier_post_generation.py
 
 _message_after_copy: |
