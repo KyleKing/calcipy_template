@@ -1,3 +1,10 @@
+## 4.0.5 (2026-01-22)
+
+### Fix
+
+- improve ruff rules
+- simplify the poetry-to-uv migration script
+
 ## 4.0.4 (2026-01-22)
 
 ### Fix
