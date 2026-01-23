@@ -17,7 +17,6 @@ If migration is performed, review changes carefully before running:
 
 from __future__ import annotations
 
-import sys
 from itertools import starmap
 from pathlib import Path
 
@@ -29,19 +28,6 @@ def _log(message: str) -> None:
 def _check_if_migration_needed() -> bool:
     """Check if migration is needed by checking for poetry.lock."""
     return Path('poetry.lock').is_file()
-
-
-def _should_skip_migration(doc: dict) -> str | None:
-    """Check if migration should be skipped, return reason if so."""
-    if 'tool' not in doc or 'poetry' not in doc.get('tool', {}):
-        return 'No [tool.poetry] section found, skipping pyproject.toml migration'
-
-    build_system = doc.get('build-system', {})
-    is_poetry_backend = 'poetry' in build_system.get('build-backend', '')
-    if not is_poetry_backend:
-        return 'Not using poetry backend, skipping pyproject.toml migration'
-
-    return None
 
 
 def _format_dependency_spec(name: str, spec: str | dict) -> str:
@@ -86,42 +72,46 @@ def _migrate_dependencies() -> bool:
     import tomlkit  # noqa: PLC0415
 
     pyproject_path = Path('pyproject.toml')
-    if not pyproject_path.is_file():
-        _log('pyproject.toml not found, skipping')
-        return False
-
     content = pyproject_path.read_text(encoding='utf-8')
     doc = tomlkit.parse(content)
-
-    if skip_reason := _should_skip_migration(doc):
-        _log(skip_reason)
-        return False
-
-    _log('Migrating dependencies from Poetry to uv format...')
-
-    poetry = doc['tool']['poetry']
     modified = False
 
     # Migrate main dependencies to [project.dependencies]
-    if 'dependencies' in poetry:
+    try:
+        _log('Migrating [project.dependencies]...')
+        poetry = doc['tool']['poetry']
         deps = _convert_dependencies(poetry['dependencies'])
         if deps:
             if 'project' not in doc:
                 doc.add('project', tomlkit.table())
-            doc['project']['dependencies'] = tomlkit.array(deps)
+
+            # Merge with existing dependencies
+            existing_deps = doc['project'].get('dependencies', [])
+            all_deps = list(existing_deps) + deps
+            doc['project']['dependencies'] = tomlkit.array(all_deps)
             modified = True
-            _log('Migrated [project.dependencies]')
+            _log(f'Migrated {len(deps)} dependencies to [project.dependencies]')
+    except (KeyError, AttributeError) as err:
+        _log(f'Skipping [project.dependencies]: {err}')
 
     # Migrate dev dependencies to [dependency-groups.dev]
-    if 'group' in poetry and 'dev' in poetry['group']:
-        dev_deps_dict = poetry['group']['dev'].get('dependencies', {})
-        if dev_deps_dict:
-            dev_deps = list(starmap(_format_dependency_spec, dev_deps_dict.items()))
+    try:
+        _log('Migrating [dependency-groups.dev]...')
+        poetry = doc['tool']['poetry']
+        dev_deps_dict = poetry['group']['dev']['dependencies']
+        dev_deps = list(starmap(_format_dependency_spec, dev_deps_dict.items()))
+        if dev_deps:
             if 'dependency-groups' not in doc:
                 doc.add('dependency-groups', tomlkit.table())
-            doc['dependency-groups']['dev'] = tomlkit.array(dev_deps)
+
+            # Merge with existing dev dependencies
+            existing_dev_deps = doc['dependency-groups'].get('dev', [])
+            all_dev_deps = list(existing_dev_deps) + dev_deps
+            doc['dependency-groups']['dev'] = tomlkit.array(all_dev_deps)
             modified = True
-            _log('Migrated [dependency-groups.dev]')
+            _log(f'Migrated {len(dev_deps)} dependencies to [dependency-groups.dev]')
+    except (KeyError, AttributeError) as err:
+        _log(f'Skipping [dependency-groups.dev]: {err}')
 
     if modified:
         pyproject_path.write_text(tomlkit.dumps(doc), encoding='utf-8')
@@ -139,38 +129,33 @@ def _cleanup_poetry_files() -> bool:
         True if any file was removed, False otherwise.
     """
     removed = False
-    poetry_lock = Path('poetry.lock')
-    if poetry_lock.is_file():
-        _log('Removing poetry.lock')
-        poetry_lock.unlink()
-        removed = True
 
-    poetry_toml = Path('poetry.toml')
-    if poetry_toml.is_file():
-        _log('Removing poetry.toml')
-        poetry_toml.unlink()
-        removed = True
+    try:
+        poetry_lock = Path('poetry.lock')
+        if poetry_lock.is_file():
+            _log('Removing poetry.lock')
+            poetry_lock.unlink()
+            removed = True
+    except OSError as err:
+        _log(f'Failed to remove poetry.lock: {err}')
+
+    try:
+        poetry_toml = Path('poetry.toml')
+        if poetry_toml.is_file():
+            _log('Removing poetry.toml')
+            poetry_toml.unlink()
+            removed = True
+    except OSError as err:
+        _log(f'Failed to remove poetry.toml: {err}')
 
     return removed
 
 
-def _delete_myself() -> None:
-    """Delete this script after completion."""
-    script_path = Path(__file__).resolve()
-    if script_path.is_file():
-        try:
-            script_path.unlink()
-            _log(f'Deleted migration script: {script_path.name}')
-        except OSError as err:
-            _log(f'Warning: Could not delete migration script: {err}')
-
-
 def main() -> None:
     """Run the migration."""
-    # Check if migration is needed before importing tomlkit
     if not _check_if_migration_needed():
-        _log('No Poetry migration needed - auto-deleting script')
-        _delete_myself()
+        _log('No poetry.lock found - migration not needed and self-deleting')
+        Path(__file__).unlink()
         return
 
     _log('Starting Poetry to uv dependency migration...')
@@ -178,36 +163,31 @@ def main() -> None:
 
     migration_performed = False
 
+    # Migrate dependencies
     try:
-        # Only migrate dependencies - template handles everything else
         migration_performed |= _migrate_dependencies()
-        migration_performed |= _cleanup_poetry_files()
-
-        if not migration_performed:
-            _log('No changes were necessary - auto-deleting script')
-            _delete_myself()
-            return
-
-        _log('')
-        _log('Migration complete!')
-        _log('')
-        _log('IMPORTANT: Review all changes carefully before proceeding.')
-        _log('This script has been kept so you can re-run if needed.')
-        _log('')
-        _log('Next steps:')
-        _log('  1. Review changes: git diff')
-        _log('  2. Update other project metadata manually if needed')
-        _log('  3. Run: uv lock')
-        _log('  4. Run: uv sync --all-extras')
-        _log('  5. Test: ./run main')
-        _log('  6. Commit changes and delete this script')
-        _log('')
-
     except Exception as err:
-        _log(f'Migration error: {err}')
-        _log('Migration may be incomplete. Please review manually.')
-        _log('This script has been kept for potential re-run.')
-        sys.exit(1)
+        _log(f'Error migrating dependencies: {err}')
+
+    # Cleanup poetry files
+    try:
+        migration_performed |= _cleanup_poetry_files()
+    except Exception as err:
+        _log(f'Error cleaning up poetry files: {err}')
+
+    if not migration_performed:
+        _log('No changes were made')
+        return
+
+    _log('')
+    _log('Migration complete!')
+    _log('')
+    _log('Next steps:')
+    _log('  1. Review changes: git diff')
+    _log('  2. Run: uv lock')
+    _log('  3. Run: uv sync --all-extras')
+    _log('  4. Delete this script when done')
+    _log('')
 
 
 if __name__ == '__main__':
