@@ -1,3 +1,14 @@
+## 4.0.6 (2026-01-24)
+
+### Fix
+
+- only publish on versioned tags
+- improve poetry-to-uv migration robustness
+
+### Refactor
+
+- clarify Code Tags
+
 ## 4.0.5 (2026-01-22)
 
 ### Fix
