@@ -1,11 +1,12 @@
+# ruff: noqa: RUF067
 """{{ package_name_py }}."""
 
 from ._runtime_type_check_setup import configure_runtime_type_checking_mode
 
 __version__ = '0.0.1'
-__pkg_name__ = '{{ package_name_py }}'  # noqa: RUF067
+__pkg_name__ = '{{ package_name_py }}'
 
-configure_runtime_type_checking_mode()  # noqa: RUF067
+configure_runtime_type_checking_mode()
 
 
 # == Above code must always be first ==

@@ -11,8 +11,7 @@ Usage:
     uv run _poetry_to_uv_migration.py
 
 If migration is performed, review changes carefully before running:
-    uv lock
-    uv sync --all-extras
+    uv sync
 """
 
 from __future__ import annotations
@@ -184,9 +183,8 @@ def main() -> None:
     _log('')
     _log('Next steps:')
     _log('  1. Review changes: git diff')
-    _log('  2. Run: uv lock')
-    _log('  3. Run: uv sync --all-extras')
-    _log('  4. Delete this script when done')
+    _log('  2. Run: uv sync')
+    _log('  3. Delete this script when done')
     _log('')
 
 
