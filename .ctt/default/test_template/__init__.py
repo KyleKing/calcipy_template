@@ -1,4 +1,3 @@
-# ruff: noqa: RUF067
 """test_template."""
 
 from ._runtime_type_check_setup import configure_runtime_type_checking_mode

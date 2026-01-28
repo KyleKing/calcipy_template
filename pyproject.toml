@@ -18,12 +18,16 @@ version_files = ["pyproject.toml:^version"]
 line-length = 120
 target-version = 'py310'
 
+[tool.ruff.format]
+quote-style = 'single'
+
 [tool.ruff.lint]
 ignore = [
   'ANN002', # Missing type annotation for `*args`
   'ANN003', # Missing type annotation for `**kwargs`
   'ANN401', # Dynamically typed expressions (typing.Any) are disallowed in `pop_key`
   'BLE001', # Do not catch blind exception: `Exception`
+  'COM812', # Conflicts with formatter
   'CPY001', # Missing copyright notice at top of file
   'D203', # "1 blank line required before class docstring" (Conflicts with D211)
   'D213', # "Multi-line docstring summary should start at the second line" (Conflicts with D212)
@@ -34,6 +38,7 @@ ignore = [
   'FIX002', # Line contains TODO
   'FIX004', # Line contains HACK
   'PLR0913', # Too many arguments in function definition (6 > 5)
+  'RUF067', # `__init__` module should only contain docstrings and re-exports
   'TC001', # Move application import `tail_jsonl.config.Config` into a type-checking block (Conflicts with Beartype)
   'TC002', # Move third-party import `rich.console.Console` into a type-checking block (Conflicts with Beartype)
   'TC003', # Move standard library import `argparse` into a type-checking block (Conflicts with Beartype)

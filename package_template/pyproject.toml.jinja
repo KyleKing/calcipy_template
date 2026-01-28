@@ -4,7 +4,7 @@ requires = ["uv_build>=0.9.26"]
 
 [dependency-groups]
 dev = [
-  "calcipy[dev]>=5.0.0",
+  "calcipy[recommended]>=6.0.0b2",
 ]
 
 [project]
@@ -22,7 +22,7 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
 ] # https://pypi.org/classifiers/
 dependencies = [
-  "corallium>=2.0.1",
+  "corallium>=2.2.0",
 ]
 description = "{{ project_description }}"
 keywords = ["calcipy_template"]
@@ -95,6 +95,7 @@ ignore = [
   'FIX002', # Line contains TODO
   'FIX004', # Line contains HACK
   'PLR0913', # Too many arguments in function definition (6 > 5)
+  'RUF067', # `__init__` module should only contain docstrings and re-exports
   'TC001', # Move application import `tail_jsonl.config.Config` into a type-checking block (Conflicts with Beartype)
   'TC002', # Move third-party import `rich.console.Console` into a type-checking block (Conflicts with Beartype)
   'TC003', # Move standard library import `argparse` into a type-checking block (Conflicts with Beartype)

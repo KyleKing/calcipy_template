@@ -85,11 +85,10 @@ repos:
         exclude: uv\.lock
         stages: ["pre-commit"]
   - repo: https://github.com/KyleKing/calcipy
-    rev: 6.0.0b1
+    rev: 6.0.0b2
     hooks:
       - id: copier-forbidden-files
       - id: lint-fix
         stages: ["pre-commit"]
       - id: tags
-        exclude: ^(\.ctt/|package_template/)
         stages: ["pre-push"]
