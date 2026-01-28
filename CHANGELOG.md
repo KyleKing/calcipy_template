@@ -1,3 +1,14 @@
+## 4.0.7 (2026-01-28)
+
+### Fix
+
+- only run testpypi on dispatch
+- run uv migration with git references
+
+### Refactor
+
+- minor cleanup
+
 ## 4.0.6 (2026-01-24)
 
 ### Fix
