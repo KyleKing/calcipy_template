@@ -1,3 +1,9 @@
+## 4.0.9 (2026-01-29)
+
+### Fix
+
+- add uv.lock to version files
+
 ## 4.0.8 (2026-01-29)
 
 ### Fix
