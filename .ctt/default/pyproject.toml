@@ -4,7 +4,7 @@ requires = ["uv_build>=0.9.26"]
 
 [dependency-groups]
 dev = [
-  "calcipy[recommended]>=6.0.0b2",
+  "calcipy[recommended]>=6.0.0b3",
 ]
 
 [project]

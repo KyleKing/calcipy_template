@@ -2,7 +2,7 @@
 
 ### Fix
 
-- migrate to calcipy 6.0.0b2
+- migrate to calcipy 6.0.0b3
 
 ## 4.0.7 (2026-01-28)
 
