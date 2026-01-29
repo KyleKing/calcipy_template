@@ -44,7 +44,7 @@ version = "0.0.1"
 
 [tool.commitizen]
 version = "0.0.1"
-version_files = ["pyproject.toml:^version", "{{ package_name_py }}/__init__.py:^__version"]
+version_files = ["pyproject.toml:^version", "{{ package_name_py }}/__init__.py:^__version", "uv.lock:^version"]
 
 [tool.mypy]
 check_untyped_defs = true
