@@ -6,6 +6,10 @@ inputs:
   os:
     default: ubuntu-latest
   pipx-packages:
+    description: (Deprecated) Use tool-packages instead. Space-separated list of tools to install
+    default: ""
+  tool-packages:
+    description: Space-separated list of tools to install with uv tool
     default: ""
   python-version:
     required: true
@@ -24,16 +28,20 @@ runs:{% raw %}
         cache-dependency-glob: "**/uv.lock"
         enable-cache: true
 
-    - name: Install tool packages '${{ inputs.pipx-packages }}'
-      if: inputs.pipx-packages != ''
+    - name: Install tool packages
+      if: inputs.tool-packages != '' || inputs.pipx-packages != ''
       run: |
-        for tool in ${{ inputs.pipx-packages }}; do
-          uv tool install $tool
+        # Support both tool-packages (new) and pipx-packages (deprecated)
+        packages="${{ inputs.tool-packages }} ${{ inputs.pipx-packages }}"
+        for tool in $packages; do
+          if [ -n "$tool" ]; then
+            uv tool install $tool
+          fi
         done
       shell: bash
 
     - name: Debug tools
-      if: inputs.pipx-packages != ''
+      if: inputs.tool-packages != '' || inputs.pipx-packages != ''
       run: |
         uv tool list
       shell: bash
