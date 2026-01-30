@@ -1,3 +1,9 @@
+## 4.0.10 (2026-01-30)
+
+### Fix
+
+- update CI workflow versions
+
 ## 4.0.9 (2026-01-29)
 
 ### Fix
