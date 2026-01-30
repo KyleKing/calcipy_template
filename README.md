@@ -5,6 +5,8 @@ Project scaffold for Python packages built on `calcipy` ([kyleking/calcipy](http
 ## Quick Start
 
 ```sh
+# Install uv if you haven't already
+brew install uv
 # Install copier globally with pipx or use your preferred method
 pipx install copier
 
