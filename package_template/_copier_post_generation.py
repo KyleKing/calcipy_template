@@ -14,21 +14,29 @@ def migrate_from_poetry_to_uv() -> None:
     """Migrate from Poetry to uv by removing Poetry-specific files."""
     _log('Checking for Poetry migration...')
 
-    # Remove Poetry-specific files
+    # Check if any Poetry files exist (only migrate if Poetry was used)
     poetry_files = ['poetry.lock', 'poetry.toml']
+    poetry_files_exist = any(Path(f).is_file() for f in poetry_files)
+    
+    if not poetry_files_exist:
+        _log('No Poetry files found - skipping Poetry migration.')
+        return
+
+    # Remove Poetry-specific files
     for file_name in poetry_files:
         pth = Path(file_name)
         if pth.is_file():
             _log(f'Removing Poetry file: {pth}')
             pth.unlink()
 
-    # Remove .venv to allow recreation with uv
+    # Remove .venv only if Poetry files were present
     venv_path = Path('.venv')
     if venv_path.is_dir():
         _log('Removing .venv directory (will be recreated with uv sync)')
         shutil.rmtree(venv_path)
 
     # Update .pre-commit-config.yaml if it exists and has poetry references
+    # Note: This is now managed by copier template updates
     precommit_path = Path('.pre-commit-config.yaml')
     if precommit_path.is_file():
         content = precommit_path.read_text(encoding='utf-8')

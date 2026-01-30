@@ -1,3 +1,3 @@
-[tools]
-python = ["3.10.15", "3.14.0"]
-uv = "latest"
+[tools]{% raw %}
+python = ["{{ minimum_python }}", "3.14.0"]
+uv = "latest"{% endraw %}

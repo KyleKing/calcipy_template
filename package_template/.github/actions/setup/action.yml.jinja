@@ -9,31 +9,34 @@ inputs:
     default: ""
   python-version:
     required: true
+  uv-version:
+    description: Version of uv to install
+    default: latest
 
 runs:{% raw %}
   using: composite
   steps:
-    - name: Install pipx packages '${{ inputs.pipx-packages }}'
-      if: inputs.pipx-packages != ''
-      run: |
-        for tool in ${{ inputs.pipx-packages }}; do
-          pipx install $tool
-        done
-      shell: bash
-
-    - name: Debug pipx
-      if: inputs.pipx-packages != ''
-      run: |
-        pipx ensurepath
-        pipx list
-      shell: bash
-
     - name: Setup uv and Python ${{ inputs.python-version }}
       uses: astral-sh/setup-uv@v7
       with:
         python-version: ${{ inputs.python-version }}
+        uv-version: ${{ inputs.uv-version }}
         cache-dependency-glob: "**/uv.lock"
         enable-cache: true
+
+    - name: Install tool packages '${{ inputs.pipx-packages }}'
+      if: inputs.pipx-packages != ''
+      run: |
+        for tool in ${{ inputs.pipx-packages }}; do
+          uv tool install $tool
+        done
+      shell: bash
+
+    - name: Debug tools
+      if: inputs.pipx-packages != ''
+      run: |
+        uv tool list
+      shell: bash
 
     - name: Install Project and Dependencies{% endraw %}
       run: |

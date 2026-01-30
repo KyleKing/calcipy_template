@@ -24,7 +24,7 @@ _message_after_copy: |
   Next steps:
   1. Review the changes and commit
       1. Merge conflicts may either be '*.rej' files or as inline git diffs
-  2. Install uv if needed: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+  2. Install uv if needed: `curl -LsSf https://astral.sh/uv/install.sh | sh` (or `brew install uv`)
   3. Install dependencies with `uv sync`
   4. Run `./run --help` to show the available actions
   5. Run `./run main --keep-going` to try running all default tasks after the changes
@@ -35,7 +35,7 @@ _message_after_copy: |
       gh repo create "{{ project_name }}" --source=. --remote=origin --push --homepage="{{ repository_url }}"
       ```
 
-  For more details, see the MIGRATION.md guide.
+  For more details, see the migration section in README.md.
 
 # ====== QUESTIONS ======
 development_branch:

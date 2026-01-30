@@ -1,5 +1,7 @@
 # Testing Strategy for calcipy_template
 
+> **Note:** This document describes the testing and regression strategy for maintaining this template itself. For end users of generated projects, see the README.md in your generated project.
+
 This document outlines the testing strategy for the calcipy_template, including how to use copier-template-tester (CTT) for regression testing.
 
 ## Overview

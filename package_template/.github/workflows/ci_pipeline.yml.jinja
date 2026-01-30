@@ -62,6 +62,7 @@ jobs:{% raw %}
       - name: Run typecheck
         run: uv run calcipy-types types.mypy
 
+      # pyright-action requires Python to be in PATH explicitly
       # Based on: https://github.com/jakebailey/pyright-action/issues/10#issuecomment-1455220629
       - name: Add uv Python to Path
         run: echo "$(uv run python -c 'import sys; print(sys.prefix)')/bin" >> $GITHUB_PATH

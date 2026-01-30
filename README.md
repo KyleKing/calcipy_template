@@ -2,13 +2,17 @@
 
 Project scaffold for Python packages built on `calcipy` ([kyleking/calcipy](https://github.com/KyleKing/calcipy)). Built with `copier` so projects can be kept up-to-date
 
-**Now using `uv` instead of Poetry!** See [MIGRATION.md](./MIGRATION.md) for migration details.
+**Now using `uv` instead of Poetry!** See the [Migration section](#migration-from-poetry-to-uv) below for details.
 
 ## Quick Start
 
 ```sh
 # Install uv if you haven't already
+# Option 1: Using the official installer (recommended)
 curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Option 2: Using Homebrew (macOS/Linux)
+brew install uv
 
 # Install copier globally with pipx or use your preferred method
 pipx install copier
@@ -26,6 +30,54 @@ copier update . --UNSAFE
 alias copier-update='copier update --UNSAFE --conflict=rej'
 alias copier-auto-update='copier-update --defaults'
 ```
+
+## Migration from Poetry to uv
+
+If you're updating an existing project using this template, the migration from Poetry to uv is automated:
+
+### What Happens Automatically
+
+When you run `copier update`, the `_copier_post_generation.py` script will:
+
+1. **Remove Poetry files:** `poetry.lock`, `poetry.toml`, and `.venv/`
+2. **Update configurations:** `.pre-commit-config.yaml` references are updated from `poetry.lock` → `uv.lock` and `poetry run` → `uv run`
+
+### Manual Steps After Update
+
+```sh
+# 1. Sync dependencies (creates .venv and uv.lock)
+uv sync
+
+# 2. Verify everything works
+./run --help
+./run main --keep-going
+
+# 3. Commit the changes
+git add .
+git commit -m "chore: migrate from Poetry to uv"
+```
+
+### Command Mapping
+
+| Poetry Command | uv Equivalent |
+|---|---|
+| `poetry install` | `uv sync` |
+| `poetry add <package>` | `uv add <package>` |
+| `poetry add --group dev <package>` | `uv add --dev <package>` |
+| `poetry remove <package>` | `uv remove <package>` |
+| `poetry run <command>` | `uv run <command>` |
+| `poetry show` | `uv pip list` |
+| `poetry lock` | `uv lock` |
+| `poetry update` | `uv lock --upgrade` |
+
+### Why uv?
+
+- **Speed:** 10-100x faster dependency resolution
+- **Standard:** Uses PEP 621 format (future-proof)
+- **Compatibility:** Full pip/PyPI ecosystem support
+- **Active:** Maintained by Astral (creators of Ruff)
+
+For detailed troubleshooting, see [uv documentation](https://docs.astral.sh/uv/).
 
 ## Alternatives
 
