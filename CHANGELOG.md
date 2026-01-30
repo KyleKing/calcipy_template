@@ -1,3 +1,10 @@
+## 4.0.11 (2026-01-30)
+
+### Fix
+
+- finish CI migration to uv
+- include GitHub Release on publish
+
 ## 4.0.10 (2026-01-30)
 
 ### Fix
