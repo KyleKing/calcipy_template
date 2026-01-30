@@ -34,6 +34,8 @@ runs:{% raw %}
         # Support both tool-packages (new) and pipx-packages (deprecated)
         packages="${{ inputs.tool-packages }} ${{ inputs.pipx-packages }}"
         for tool in $packages; do
+          # Trim whitespace and skip empty entries
+          tool=$(echo "$tool" | xargs)
           if [ -n "$tool" ]; then
             uv tool install $tool
           fi
