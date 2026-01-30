@@ -125,7 +125,7 @@ Personal Guide
 
 ### External Links
 
-Additional resources for Git best practices and commit message conventions:
+Additional resources for Git best practices and commit message conventions.
 
 - \[Git: The Simple Guide\]\[simple_git\]
 - \[Commit Messages\]\[gcmsg\] and [why use the present tense](https://news.ycombinator.com/item?id=8874177)
@@ -136,7 +136,7 @@ Additional resources for Git best practices and commit message conventions:
 
 ## Python
 
-This project follows standard Python conventions and uses automated tools for code quality:
+This project follows standard Python conventions and uses automated tools for code quality.
 
 - **Automated Tools**: We use `ruff` for linting and formatting, configured in `pyproject.toml`
 - **Type Hints**: Use type annotations where appropriate to improve code clarity and catch errors early
