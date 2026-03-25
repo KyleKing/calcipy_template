@@ -1,3 +1,9 @@
+## 4.0.13 (2026-03-25)
+
+### Fix
+
+- restrict commitizen version changes
+
 ## 4.0.12 (2026-03-24)
 
 ### Fix
