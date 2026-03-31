@@ -3,8 +3,8 @@
 # prek install -f
 # prek autoupdate
 # prek run --all-files copier-template-tester
-# prek run --all-files --hook-stage commit
-# prek run --all-files --hook-stage push
+# prek run --all-files --hook-stage pre-commit
+# prek run --all-files --hook-stage pre-push
 # prek run --last-commit
 # uv run calcipy lint.prek --no-update
 #
@@ -76,7 +76,7 @@ repos:
           - "prettier@4.0.0-alpha.8"
           - "prettier-plugin-sh"
         exclude: \.copier-answers\.yml|tests/.*/cassettes/.*\.yaml|__snapshots__/.*\.json
-        types_or: [html, javascript, json, shell, yaml]
+        types_or: [css, html, javascript, json, shell, yaml]
         stages: ["pre-commit"]
   - repo: https://github.com/pappasam/toml-sort
     rev: v0.24.3
@@ -84,11 +84,28 @@ repos:
       - id: toml-sort-fix
         exclude: uv\.lock
         stages: ["pre-commit"]
-  - repo: https://github.com/KyleKing/calcipy
-    rev: 6.0.0b3
+  - repo: local
     hooks:
       - id: copier-forbidden-files
+        entry: |
+          Found copier update rejection files; review them and remove them
+          (https://copier.readthedocs.io/en/stable/updating/)
+        files: \.rej$
+        language: fail
+        name: Copier Forbidden Files
       - id: lint-fix
+        description: "Run ruff and apply fixes"
+        entry: uvx --from 'calcipy[recommended]>=6.0.0b3' calcipy-lint lint.fix
+        language: system
+        name: Lint-Fix
+        require_serial: true
         stages: ["pre-commit"]
+        types: [python]
       - id: tags
+        description: "Create a `CODE_TAG_SUMMARY.md` with a table for TODO- and FIXME-style code comments"
+        entry: uvx --from 'calcipy[recommended]>=6.0.0b3' calcipy-tags tags
+        language: system
+        name: Tags
+        pass_filenames: false
+        require_serial: true
         stages: ["pre-push"]
