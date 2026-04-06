@@ -6,10 +6,10 @@ dependencies = [
 description = "Project scaffold for Python packages built on calcipy. Utilizes copier to keep projects up to date"
 name = "calcipy_template"
 requires-python = ">=3.11"
-version = "4.0.13"
+version = "4.0.14"
 
 [tool.commitizen]
-version = "4.0.13"
+version = "4.0.14"
 version_files = ["pyproject.toml:^version"]
 
 [tool.ruff]
