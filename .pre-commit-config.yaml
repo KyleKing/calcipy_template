@@ -95,7 +95,7 @@ repos:
         name: Copier Forbidden Files
       - id: lint-fix
         description: "Run ruff and apply fixes"
-        entry: uvx --from 'calcipy[recommended]>=6.0.0b3' calcipy-lint lint.fix
+        entry: uvx --from 'calcipy[recommended]>=6.0.1' calcipy-lint lint.fix
         language: system
         name: Lint-Fix
         require_serial: true
@@ -103,7 +103,7 @@ repos:
         types: [python]
       - id: tags
         description: "Create a `CODE_TAG_SUMMARY.md` with a table for TODO- and FIXME-style code comments"
-        entry: uvx --from 'calcipy[recommended]>=6.0.0b3' calcipy-tags tags
+        entry: uvx --from 'calcipy[recommended]>=6.0.1' calcipy-tags tags
         language: system
         name: Tags
         pass_filenames: false
