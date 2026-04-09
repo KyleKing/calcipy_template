@@ -98,7 +98,7 @@ repos:
         types: [python]
       - id: tags
         description: "Create a `CODE_TAG_SUMMARY.md` with a table for TODO- and FIXME-style code comments"
-        entry: uv run calcipy-tags tags
+        entry: uv run calcipy-tags tags --doc-sub-dir=.
         language: system
         name: Tags
         pass_filenames: false

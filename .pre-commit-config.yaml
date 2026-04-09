@@ -103,7 +103,7 @@ repos:
         types: [python]
       - id: tags
         description: "Create a `CODE_TAG_SUMMARY.md` with a table for TODO- and FIXME-style code comments"
-        entry: uvx --from 'calcipy[recommended]>=6.0.1' calcipy-tags tags
+        entry: uvx --from 'calcipy[recommended]>=6.0.1' calcipy-tags tags --doc-sub-dir=.
         language: system
         name: Tags
         pass_filenames: false
