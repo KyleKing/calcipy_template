@@ -18,7 +18,7 @@ default_install_hook_types: ["commit-msg", "pre-commit", "pre-push"]
 
 repos:
   - repo: https://github.com/kyleking/copier-template-tester
-    rev: 2.2.0
+    rev: 2.5.0
     hooks:
       - id: copier-template-tester
   # Sync below config with 'package_template'
@@ -47,7 +47,7 @@ repos:
       - id: trailing-whitespace
         exclude: __snapshots__/.*\.ambr
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.12.1
+    rev: v4.16.4
     hooks:
       - id: commitizen
   - repo: https://github.com/executablebooks/mdformat
@@ -79,7 +79,7 @@ repos:
         types_or: [css, html, javascript, json, shell, yaml]
         stages: ["pre-commit"]
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.24.3
+    rev: v0.24.4
     hooks:
       - id: toml-sort-fix
         exclude: uv\.lock
