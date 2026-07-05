@@ -1,3 +1,9 @@
+## 5.0.1 (2026-07-05)
+
+### Fix
+
+- **docs**: use project_name for Trusted Publisher repository field
+
 ## 5.0.0 (2026-07-05)
 
 ### Feat
