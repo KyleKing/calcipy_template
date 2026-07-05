@@ -51,7 +51,7 @@ Repository Settings → Environments:
 
 PyPI: https://pypi.org/manage/project/test_template/settings/publishing/
 - Owner: `user_ctt`
-- Repository: `test_template`
+- Repository: `test-template`
 - Workflow: `publish.yml`
 - Environment: `pypi`
     - Or environment `testpypi` (for [TestPyPI](https://test.pypi.org/manage/account/publishing))
