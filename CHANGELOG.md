@@ -1,3 +1,10 @@
+## 5.0.0 (2026-07-05)
+
+### Feat
+
+- **docs**: support Zensical migration in generated projects
+- add CDNJS update checker script and design plan
+
 ## 4.0.14 (2026-04-06)
 
 ### Fix
