@@ -3,31 +3,14 @@
 
 # See Dependabot logs in: https://github.com/<owner>/<repo>/network/updates (under "Insights" tab)
 #
-# FYI: May need to replace tags with hashes to get the tags as comments (https://github.com/dependabot/dependabot-core/issues/4691)
+# Actions pinned under package_template/**/*.jinja aren't covered here: they're wrapped in
+# {% raw %} blocks Dependabot can't parse, and live only as a rendered mirror under .ctt/default
+# that regenerates from the jinja source (reverting any bump made there). See
+# .github/workflows/freshness-check.yml, which patches those pins directly.
 version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
-    schedule:
-      interval: "monthly"
-    groups:
-      all-dependencies:
-        update-types:
-          - "major"
-          - "minor"
-          - "patch"
-  - package-ecosystem: "github-actions"
-    directory: "/.ctt/default/.github/actions/setup"
-    schedule:
-      interval: "monthly"
-    groups:
-      all-dependencies:
-        update-types:
-          - "major"
-          - "minor"
-          - "patch"
-  - package-ecosystem: "github-actions"
-    directory: "/.ctt/default/.github/workflows"
     schedule:
       interval: "monthly"
     groups:
