@@ -42,6 +42,17 @@ copier copy --UNSAFE ../calcipy_template .
 copier update . --UNSAFE --conflict=rej --defaults
 ```
 
+## Keeping Pinned GitHub Actions Fresh
+
+`package_template`'s workflows pin actions by commit SHA with the version as a trailing comment (e.g. `actions/checkout@<sha> # v6.1.0`). Dependabot can't see these: they're wrapped in `{% raw %}` blocks, and pointing it at the rendered `.ctt/default` mirror doesn't work either, since that mirror regenerates from the jinja source and reverts any bump made there. A scheduled [`freshness-check.yml`](.github/workflows/freshness-check.yml) workflow handles this instead, and the same check can be run locally without waiting for its Monday schedule:
+
+```sh
+mise run freshness              # report drift only
+mise run freshness -- --apply   # patch drifted pins (SHA + version comment) in place
+```
+
+Regenerate `.ctt/default` afterward (`ctt`) so the copier-template-tester pre-commit hook stays green.
+
 ## Releases
 
 Any push to the repository `main` branch will trigger a version bump based on [`commitizen` rules (`fix`, `feat`, etc.)](https://commitizen-tools.github.io/commitizen/)
