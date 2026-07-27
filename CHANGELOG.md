@@ -1,3 +1,13 @@
+## 5.0.3 (2026-07-27)
+
+### Fix
+
+- **prek**: exclude ctt per-case copier answers files
+
+### Refactor
+
+- **lint**: select ruff rules by name instead of code
+
 ## 5.0.2 (2026-07-27)
 
 ### Fix
