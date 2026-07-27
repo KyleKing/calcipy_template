@@ -1,3 +1,9 @@
+## 5.0.2 (2026-07-27)
+
+### Fix
+
+- **lint**: ignore RUF105 so the lint-fix hook converges
+
 ## 5.0.1 (2026-07-05)
 
 ### Fix
