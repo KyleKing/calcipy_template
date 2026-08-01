@@ -20,4 +20,6 @@ Run `./run main` before reporting work as done.
 - ruff formats and lints; mypy and pyright must both pass
 - Commit messages follow Conventional Commits; commitizen bumps versions from them
 
-A directory may add its own `AGENTS.md` to extend or override this file for the code under it. Template updates never overwrite any `AGENTS.md`.
+This file is template-owned and `copier update` keeps it current. Put project-specific guidance in `AGENTS.local.md` (loaded below when present) or in a nested `AGENTS.md` scoped to its directory.
+
+@AGENTS.local.md

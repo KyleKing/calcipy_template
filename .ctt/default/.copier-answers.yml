@@ -8,7 +8,7 @@ author_email: ctt@ctt.ctt
 author_name: Carl The Template
 author_username: user_ctt
 cname: test-template.user_ctt.me
-copyright_date: '2022'
+copyright_date: '2026'
 development_branch: main
 doc_dir: docs
 extends_calcipy: false
