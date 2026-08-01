@@ -11,14 +11,14 @@ Run `./run main` before reporting work as done.
 
 ## Layout
 
-- Source lives in `{{ package_name_py }}/`; tests live under `tests/`
+- Source lives in `{{ package_name_py }}/` and tests under `tests/`
 - Docs live in `{{ doc_dir }}/docs/` and build with mkdocs
 
 ## Conventions
 
-- Python runs through uv (`uv run <tool>`); never install tools globally for this project
-- ruff formats and lints; mypy and pyright must both pass
-- Commit messages follow Conventional Commits; commitizen bumps versions from them
+- Python runs through uv (`uv run <tool>`). Never install tools globally for this project
+- ruff formats and lints, and mypy and pyright must both pass
+- Commit messages follow Conventional Commits and commitizen bumps versions from them
 
 This file is template-owned and `copier update` keeps it current. Put project-specific guidance in `AGENTS.local.md` (loaded below when present) or in a nested `AGENTS.md` scoped to its directory.
 
