@@ -6,6 +6,8 @@ _answers_file: .copier-answers.yml
 _subdirectory: package_template
 _skip_if_exists:
   - ./{{ doc_dir }}/README.md
+  - AGENTS.md
+  - "**/AGENTS.md"
   - LICENSE
 _tasks:
   - git init

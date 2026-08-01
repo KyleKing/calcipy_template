@@ -1,0 +1,23 @@
+# Agent guidelines
+
+## Commands
+
+- `./run main` runs the default gates: lint, auto-format, and test coverage
+- `./run lint.fix test` fixes lint findings and runs the tests
+- `./run --help` lists every available calcipy task
+- `uv run pytest tests -k <pattern>` runs a subset directly when that is faster
+
+Run `./run main` before reporting work as done.
+
+## Layout
+
+- Source lives in `test_template/`; tests live under `tests/`
+- Docs live in `docs/docs/` and build with mkdocs
+
+## Conventions
+
+- Python runs through uv (`uv run <tool>`); never install tools globally for this project
+- ruff formats and lints; mypy and pyright must both pass
+- Commit messages follow Conventional Commits; commitizen bumps versions from them
+
+A directory may add its own `AGENTS.md` to extend or override this file for the code under it. Template updates never overwrite any `AGENTS.md`.
