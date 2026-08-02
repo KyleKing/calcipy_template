@@ -16,7 +16,7 @@ version_files = ["pyproject.toml:^version"]
 # Docs: https://github.com/charliermarsh/ruff
 # Tip: uv run ruff rule unused-noqa
 line-length = 120
-target-version = 'py310'
+target-version = 'py311'
 
 [tool.ruff.format]
 quote-style = 'single'
