@@ -1,3 +1,14 @@
+## 5.1.0 (2026-08-02)
+
+### Feat
+
+- template-owned AGENTS.md with AGENTS.local.md for project guidance
+- ship AGENTS.md with CLAUDE.md pointer, preserve per-directory AGENTS.md
+
+### Fix
+
+- switch to mdformat-slw for markdown
+
 ## 5.0.3 (2026-07-27)
 
 ### Fix
