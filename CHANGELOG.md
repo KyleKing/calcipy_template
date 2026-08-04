@@ -1,3 +1,10 @@
+## 5.1.1 (2026-08-04)
+
+### Fix
+
+- correct the mdformat-slw version
+- migrate ruff noqa codes to named rules
+
 ## 5.1.0 (2026-08-02)
 
 ### Feat
