@@ -6,7 +6,7 @@ thin registry/CLI (see yak-shears' `scripts/check_freshness.py`) that imports th
 
 import json
 import re
-import subprocess  # noqa: S404
+import subprocess  # ruff:ignore[suspicious-subprocess-import]
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -28,7 +28,7 @@ def fetch_github_release(owner: str, repo: str) -> str | None:
     url = f'https://api.github.com/repos/{owner}/{repo}/releases?per_page=10'
     req = urllib.request.Request(url, headers={'Accept': 'application/vnd.github.v3+json'})
     try:
-        with urllib.request.urlopen(req, timeout=10) as response:  # noqa: S310
+        with urllib.request.urlopen(req, timeout=10) as response:  # ruff:ignore[suspicious-url-open-usage]
             releases = json.load(response)
     except urllib.error.URLError:
         return None
@@ -50,7 +50,7 @@ def fetch_github_commit(owner: str, repo: str, branch: str = 'master') -> str | 
     url = f'https://api.github.com/repos/{owner}/{repo}/commits/{branch}'
     req = urllib.request.Request(url, headers={'Accept': 'application/vnd.github.v3+json'})
     try:
-        with urllib.request.urlopen(req, timeout=10) as response:  # noqa: S310
+        with urllib.request.urlopen(req, timeout=10) as response:  # ruff:ignore[suspicious-url-open-usage]
             data = json.load(response)
     except urllib.error.URLError:
         return None
@@ -111,7 +111,7 @@ def patch_pin(file_path: Path, old: str, new: str) -> None:
 def run_uv_outdated() -> str:
     """Return the raw output of `uv tree --outdated --universal`."""
     result = subprocess.run(
-        ['uv', 'tree', '--outdated', '--universal'],  # noqa: S607
+        ['uv', 'tree', '--outdated', '--universal'],  # ruff:ignore[start-process-with-partial-path]
         capture_output=True,
         text=True,
         check=False,

@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 def _log(message: str | list[str]) -> None:
-    print(message)  # noqa: T201
+    print(message)  # ruff:ignore[print]
 
 
 def cleanup() -> None:

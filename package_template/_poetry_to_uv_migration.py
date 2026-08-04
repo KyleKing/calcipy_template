@@ -16,13 +16,13 @@ The script will self-delete when no migration is needed.
 from __future__ import annotations
 
 import shutil
-import subprocess  # noqa: S404 # Required for git operations with controlled input
+import subprocess  # ruff:ignore[suspicious-subprocess-import] # Required for git operations with controlled input
 from itertools import starmap
 from pathlib import Path
 
 
 def _log(message: str) -> None:
-    print(f'[migration] {message}')  # noqa: T201
+    print(f'[migration] {message}')  # ruff:ignore[print]
 
 
 def _get_git_file_content(file_path: str, ref: str = 'HEAD') -> str | None:
@@ -40,7 +40,7 @@ def _get_git_file_content(file_path: str, ref: str = 'HEAD') -> str | None:
         return None
 
     try:
-        result = subprocess.run(  # noqa: S603 # git path from shutil.which, ref/file_path controlled
+        result = subprocess.run(  # ruff:ignore[subprocess-without-shell-equals-true] # git path from shutil.which, ref/file_path controlled
             [git_path, 'show', f'{ref}:{file_path}'],
             capture_output=True,
             text=True,
@@ -58,7 +58,7 @@ def _check_if_migration_needed() -> bool:
     if not content:
         return False
 
-    import tomlkit  # noqa: PLC0415
+    import tomlkit  # ruff:ignore[import-outside-top-level]
 
     try:
         doc = tomlkit.parse(content)
@@ -143,7 +143,7 @@ def _apply_dependencies_to_pyproject(
     Returns:
         True if modifications were made, False otherwise
     """
-    import tomlkit  # noqa: PLC0415
+    import tomlkit  # ruff:ignore[import-outside-top-level]
 
     pyproject_path = Path('pyproject.toml')
     if not pyproject_path.is_file():
@@ -189,7 +189,7 @@ def _migrate_dependencies_from_git() -> bool:
     Returns:
         True if migration was performed, False otherwise.
     """
-    import tomlkit  # noqa: PLC0415
+    import tomlkit  # ruff:ignore[import-outside-top-level]
 
     _log('Reading Poetry config from git history...')
     git_content = _get_git_file_content('pyproject.toml')

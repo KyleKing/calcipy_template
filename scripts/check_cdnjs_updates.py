@@ -27,7 +27,7 @@ def fetch_github_release(owner: str, repo: str) -> dict[str, Any] | None:
     req.add_header('Accept', 'application/vnd.github.v3+json')
 
     try:
-        with urllib.request.urlopen(req, timeout=10) as response:  # noqa: S310 (hardcoded https URL)
+        with urllib.request.urlopen(req, timeout=10) as response:  # ruff:ignore[suspicious-url-open-usage] (hardcoded https URL)
             return json.load(response)
     except urllib.error.HTTPError:
         return None
