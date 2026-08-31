@@ -20,6 +20,7 @@ class Site {
   /// Regex with exactly one capture group around the version.
   pattern: String
   expect: Int(this > 0) = 1
+  window: Int(this > 0) = 1
 }
 
 /// Keeps taking updates below `max`, so a known break blocks only the majors
@@ -47,6 +48,9 @@ local docsYml = "package_template/.github/workflows/update_docs.yml.jinja"
 local setupAction = "package_template/.github/actions/setup/action.yml.jinja"
 local rootBumpYml = ".github/workflows/bump_version.yml"
 local rootFreshnessYml = ".github/workflows/freshness.yml"
+local mkdocsYml = "package_template/mkdocs.yml.jinja"
+local rootPreCommit = ".pre-commit-config.yaml"
+local pkgPreCommit = "package_template/.pre-commit-config.yaml"
 
 /// A `uses: owner/repo@<sha> # <tag>` GitHub Action pin, one capture group
 /// spanning the sha and the tag together, since github-action patches both
@@ -55,6 +59,15 @@ local function actionPin(action: String, sourceFile: String, count: Int): Site =
   file = sourceFile
   pattern = #"\#(action)@([0-9a-f]{40} # v[\d.]+)"#
   expect = count
+}
+
+/// A pre-commit hook's `rev:` line, one below its `repo:` URL, matched as a
+/// two-line window anchored on the repo URL so the rev can't be confused
+/// with another hook's.
+local function hookPin(repoUrl: String, versionPattern: String, sourceFile: String): Site = new {
+  file = sourceFile
+  pattern = #"repo: https://github\.com/\#(repoUrl)\n\s*rev: \#(versionPattern)"#
+  window = 2
 }
 
 tools: Mapping<String, Tool> = new {
@@ -94,6 +107,19 @@ tools: Mapping<String, Tool> = new {
       actionPin("actions/checkout", rootFreshnessYml, 1)
     }
   }
+  ["commitizen"] = new {
+    resolver = "github-release"
+    resolverName = "commitizen-tools/commitizen"
+    sites = new {
+      hookPin("commitizen-tools/commitizen", #"v([\d.]+)"#, rootPreCommit)
+      hookPin("commitizen-tools/commitizen", #"v([\d.]+)"#, pkgPreCommit)
+    }
+  }
+  ["copier-template-tester"] = new {
+    resolver = "github-release"
+    resolverName = "kyleking/copier-template-tester"
+    sites = new { hookPin("kyleking/copier-template-tester", #"([\d.]+)"#, rootPreCommit) }
+  }
   ["create-pull-request"] = new {
     resolver = "github-action"
     resolverName = "peter-evans/create-pull-request"
@@ -108,6 +134,14 @@ tools: Mapping<String, Tool> = new {
     resolver = "github-action"
     resolverName = "jdx/mise-action"
     sites = new { actionPin("jdx/mise-action", rootFreshnessYml, 1) }
+  }
+  ["pre-commit-hooks"] = new {
+    resolver = "github-release"
+    resolverName = "pre-commit/pre-commit-hooks"
+    sites = new {
+      hookPin("pre-commit/pre-commit-hooks", #"v([\d.]+)"#, rootPreCommit)
+      hookPin("pre-commit/pre-commit-hooks", #"v([\d.]+)"#, pkgPreCommit)
+    }
   }
   ["pyright-action"] = new {
     resolver = "github-action"
@@ -131,6 +165,24 @@ tools: Mapping<String, Tool> = new {
       actionPin("astral-sh/setup-uv", publishYml, 2)
       actionPin("astral-sh/setup-uv", setupAction, 1)
       actionPin("astral-sh/setup-uv", rootFreshnessYml, 1)
+    }
+  }
+  ["tablesort"] = new {
+    resolver = "cdnjs"
+    resolverName = "tablesort@tristen/tablesort"
+    sites = new {
+      new Site {
+        file = mkdocsYml
+        pattern = #"cdnjs\.cloudflare\.com/ajax/libs/tablesort/([\d.]+)/tablesort\.min\.js"#
+      }
+    }
+  }
+  ["toml-sort"] = new {
+    resolver = "github-release"
+    resolverName = "pappasam/toml-sort"
+    sites = new {
+      hookPin("pappasam/toml-sort", #"v([\d.]+)"#, rootPreCommit)
+      hookPin("pappasam/toml-sort", #"v([\d.]+)"#, pkgPreCommit)
     }
   }
   ["upload-artifact"] = new {
