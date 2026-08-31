@@ -1,3 +1,13 @@
+## 5.3.0 (2026-08-31)
+
+### Feat
+
+- **ci**: self-test the template and hand pins to doneram
+
+### Fix
+
+- raise the minimum Python to the floor calcipy actually requires
+
 ## 5.2.0 (2026-08-31)
 
 ### Feat
