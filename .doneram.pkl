@@ -8,6 +8,12 @@
 // `release/v1` branch rather than a tag, and a branch ref has no release to
 // resolve against. Move that pin by hand when upstream advertises a new tip.
 //
+// mirrors-prettier is absent too: it's deliberately pinned to a 4.0.0 alpha,
+// and doneram's constraint syntax has no way to express "track alphas of
+// this exact version" today, only a ceiling on top of #.#.# releases. Move
+// that pin by hand until prettier 4 leaves alpha or doneram's config gains a
+// constraint pattern.
+//
 // A site that matches a different number of times than `expect` fails the run.
 // A pattern that silently stops matching is how a pin goes stale unnoticed.
 //
@@ -130,6 +136,14 @@ tools: Mapping<String, Tool> = new {
     resolverName = "actions/download-artifact"
     sites = new { actionPin("actions/download-artifact", publishYml, 3) }
   }
+  ["mdformat"] = new {
+    resolver = "github-release"
+    resolverName = "executablebooks/mdformat"
+    sites = new {
+      hookPin("executablebooks/mdformat", #"([\d.]+)"#, rootPreCommit)
+      hookPin("executablebooks/mdformat", #"([\d.]+)"#, pkgPreCommit)
+    }
+  }
   ["mise-action"] = new {
     resolver = "github-action"
     resolverName = "jdx/mise-action"
@@ -165,6 +179,14 @@ tools: Mapping<String, Tool> = new {
       actionPin("astral-sh/setup-uv", publishYml, 2)
       actionPin("astral-sh/setup-uv", setupAction, 1)
       actionPin("astral-sh/setup-uv", rootFreshnessYml, 1)
+    }
+  }
+  ["shellcheck-py"] = new {
+    resolver = "github-release"
+    resolverName = "shellcheck-py/shellcheck-py"
+    sites = new {
+      hookPin("shellcheck-py/shellcheck-py", #"v([\d.]+)"#, rootPreCommit)
+      hookPin("shellcheck-py/shellcheck-py", #"v([\d.]+)"#, pkgPreCommit)
     }
   }
   ["tablesort"] = new {
