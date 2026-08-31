@@ -1,3 +1,9 @@
+## 5.3.2 (2026-08-31)
+
+### Fix
+
+- **ci**: lock actionlint download URLs so mise can install it
+
 ## 5.3.1 (2026-08-31)
 
 ### Fix
