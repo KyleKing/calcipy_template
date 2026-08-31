@@ -6,12 +6,6 @@
 // `release/v1` branch rather than a tag, and a branch ref has no release to
 // resolve against. Move that pin by hand when upstream advertises a new tip.
 //
-// mirrors-prettier is absent too: it's deliberately pinned to a 4.0.0 alpha,
-// and doneram's constraint syntax has no way to express "track alphas of
-// this exact version" today, only a ceiling on top of #.#.# releases. Move
-// that pin by hand until prettier 4 leaves alpha or doneram's config gains a
-// constraint pattern.
-//
 // A site that matches a different number of times than `expect` fails the
 // run. A pattern that silently stops matching is how a pin goes stale
 // unnoticed.
@@ -33,6 +27,9 @@ class Tool {
   /// Name to query when it differs from the map key, e.g. "pipx:commitizen".
   resolverName: String?
   sites: Listing<Site>
+  /// Overrides the default `#.#.#` constraint, for a pin that only ever
+  /// ships with a suffix (a prerelease tracked on purpose).
+  pattern: String?
 }
 
 local ciYml = ".github/workflows/ci_pipeline.yml"
@@ -91,6 +88,12 @@ tools: Mapping<String, Tool> = new {
     resolver = "github-release"
     resolverName = "executablebooks/mdformat"
     sites = new { hookPin("executablebooks/mdformat", #"([\d.]+)"#) }
+  }
+  ["mirrors-prettier"] = new {
+    resolver = "github-release"
+    resolverName = "pre-commit/mirrors-prettier"
+    pattern = "4.0.0-alpha.*"
+    sites = new { hookPin("pre-commit/mirrors-prettier", #""v(4\.0\.0-alpha\.\d+)""#) }
   }
   ["mise-action"] = new {
     resolver = "github-action"
