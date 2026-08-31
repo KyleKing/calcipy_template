@@ -42,6 +42,11 @@ def _find_pins(files: list[Path]) -> dict[tuple[str, str, str], list[Path]]:
     return pins
 
 
+def _display(label: str, sha: str) -> str:
+    """Label a pin for the report; branch refs need their SHA to say anything useful."""
+    return label if _RELEASE_LABEL_PATTERN.match(label) else f'{label}@{sha[:7]}'
+
+
 def _resolve_latest(owner_repo: str, sha: str, label: str) -> tuple[str, str] | None:
     """Return the (new_sha, new_label) a pin should move to, or None if already current.
 
@@ -86,11 +91,12 @@ def check(*, apply: bool) -> tuple[list[CheckResult], list[str]]:
         resolved = _resolve_latest(owner_repo, sha, label)
         drifted = resolved is not None
         new_sha, new_label = resolved or (sha, label)
-        results.append(CheckResult(owner_repo, pin_files[0].name, label, new_label, drifted))
+        current_display, latest_display = _display(label, sha), _display(new_label, new_sha)
+        results.append(CheckResult(owner_repo, pin_files[0].name, current_display, latest_display, drifted))
 
         if not drifted:
             continue
-        upgrades.append(f'{owner_repo}: {label} -> {new_label}')
+        upgrades.append(f'{owner_repo}: {current_display} -> {latest_display}')
         if apply:
             old_pin = f'{owner_repo}@{sha} # {label}'
             new_pin = f'{owner_repo}@{new_sha} # {new_label}'
