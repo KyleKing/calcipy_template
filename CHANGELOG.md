@@ -1,3 +1,14 @@
+## 5.2.0 (2026-08-31)
+
+### Feat
+
+- **ci**: verify the published package installs from PyPI
+
+### Fix
+
+- **ci**: quote GITHUB_PATH and silence the intentional APPLY_FLAG split
+- **freshness**: show SHAs for branch-pinned actions
+
 ## 5.1.1 (2026-08-04)
 
 ### Fix
