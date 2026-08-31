@@ -1,3 +1,9 @@
+## 5.3.1 (2026-08-31)
+
+### Fix
+
+- **ci**: lock actionlint so the workflow lint job can install it
+
 ## 5.3.0 (2026-08-31)
 
 ### Feat
