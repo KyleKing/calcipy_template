@@ -1,3 +1,12 @@
+## 5.4.0 (2026-08-31)
+
+### Feat
+
+- track mirrors-prettier's pinned 4.0.0 alpha
+- track mdformat and shellcheck-py pre-commit hook pins
+- template the doneram config and freshness workflow into generated projects
+- track CDNJS and pre-commit hook pins in doneram config
+
 ## 5.3.2 (2026-08-31)
 
 ### Fix
