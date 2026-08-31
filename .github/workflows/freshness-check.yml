@@ -48,6 +48,8 @@ jobs:
         env:
           APPLY_FLAG: ${{ (inputs.dry_run != true && github.event_name != 'pull_request') && '--apply' || '' }}
         run: |
+          # APPLY_FLAG is empty or `--apply`, so quoting it would pass an empty argument
+          # shellcheck disable=SC2086
           uv run python scripts/check_freshness.py $APPLY_FLAG --output /tmp/freshness.json
           delimiter="FRESHNESS_BODY_EOF_${RANDOM}_${RANDOM}"
           {
