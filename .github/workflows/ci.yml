@@ -1,0 +1,55 @@
+---
+name: CI
+
+"on":
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ctt:
+    name: Generated output is up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+      - name: Regenerate .ctt/
+        run: uvx --from copier-template-tester ctt
+      - name: Fail if generated output drifted from the template
+        run: git diff --exit-code -- .ctt
+
+  actionlint:
+    name: Workflow YAML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+      # yamllint reads YAML syntax only, so runner labels, expression syntax,
+      # and embedded shell are actionlint's job.
+      - name: Lint every workflow, template source and render alike
+        run: mise exec -- actionlint .github/workflows/*.yml .ctt/*/.github/workflows/*.yml
+
+  generated:
+    name: Generated project gates
+    runs-on: ubuntu-latest
+    needs: ctt
+    defaults:
+      run:
+        working-directory: .ctt/default
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+      - name: Install dependencies
+        run: uv sync
+      - name: Run static linters
+        run: uv run calcipy-lint lint.check
+      - name: Run tests
+        run: uv run calcipy-test test.pytest

@@ -1,7 +1,8 @@
 [tasks.freshness]
-description = "Check pinned GitHub Action versions in package_template for drift (pass '-- --apply' to patch)"
-run = "uv run python scripts/check_freshness.py"
+description = "Check pinned tool and GitHub Action versions for drift (pass '-- --apply' to patch)"
+run = "doneram check"
 
 [tools]
+actionlint = "1.7.12"
 # For running pre-commit with calcipy
 "pipx:calcipy" = {extras = "recommended", version = "6.0.1"}
