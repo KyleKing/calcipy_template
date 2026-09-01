@@ -5,6 +5,7 @@ _min_copier_version: 9.0.0
 _answers_file: .copier-answers.yml
 _subdirectory: package_template
 _skip_if_exists:
+  - .doneram.pkl
   - ./{{ doc_dir }}/README.md
   - LICENSE
 _tasks:

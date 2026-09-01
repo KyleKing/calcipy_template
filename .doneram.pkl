@@ -51,7 +51,9 @@ local docsYml = "package_template/.github/workflows/update_docs.yml.jinja"
 local setupAction = "package_template/.github/actions/setup/action.yml.jinja"
 local rootBumpYml = ".github/workflows/bump_version.yml"
 local rootFreshnessYml = ".github/workflows/freshness.yml"
+local pkgFreshnessYml = "package_template/.github/workflows/freshness.yml"
 local mkdocsYml = "package_template/mkdocs.yml.jinja"
+local pkgMiseToml = "package_template/mise.toml.jinja"
 local rootPreCommit = ".pre-commit-config.yaml"
 local pkgPreCommit = "package_template/.pre-commit-config.yaml"
 
@@ -69,7 +71,7 @@ local function actionPin(action: String, sourceFile: String, count: Int): Site =
 /// with another hook's.
 local function hookPin(repoUrl: String, versionPattern: String, sourceFile: String): Site = new {
   file = sourceFile
-  pattern = #"repo: https://github\.com/\#(repoUrl)\n\s*rev: \#(versionPattern)"#
+  pattern = #"repo: https://github\.com/\#(repoUrl)\n\s*rev: "?\#(versionPattern)"?"#
   window = 2
 }
 
@@ -108,6 +110,7 @@ tools: Mapping<String, Tool> = new {
       actionPin("actions/checkout", docsYml, 1)
       actionPin("actions/checkout", rootBumpYml, 1)
       actionPin("actions/checkout", rootFreshnessYml, 1)
+      actionPin("actions/checkout", pkgFreshnessYml, 1)
     }
   }
   ["commitizen"] = new {
@@ -126,7 +129,26 @@ tools: Mapping<String, Tool> = new {
   ["create-pull-request"] = new {
     resolver = "github-action"
     resolverName = "peter-evans/create-pull-request"
-    sites = new { actionPin("peter-evans/create-pull-request", rootFreshnessYml, 1) }
+    sites = new {
+      actionPin("peter-evans/create-pull-request", rootFreshnessYml, 1)
+      actionPin("peter-evans/create-pull-request", pkgFreshnessYml, 1)
+    }
+  }
+  ["doneram"] = new {
+    resolver = "github-action"
+    resolverName = "kyleking/doneram"
+    sites = new {
+      actionPin("kyleking/doneram", rootFreshnessYml, 1)
+      actionPin("kyleking/doneram", pkgFreshnessYml, 1)
+    }
+  }
+  ["doneram-version"] = new {
+    resolver = "github-release"
+    resolverName = "kyleking/doneram"
+    sites = new {
+      new Site { file = rootFreshnessYml; pattern = #"version: v([\d.]+)"# }
+      new Site { file = pkgFreshnessYml; pattern = #"version: v([\d.]+)"# }
+    }
   }
   ["download-artifact"] = new {
     resolver = "github-action"
@@ -146,14 +168,29 @@ tools: Mapping<String, Tool> = new {
     resolverName = "pre-commit/mirrors-prettier"
     pattern = "4.0.0-alpha.*"
     sites = new {
-      hookPin("pre-commit/mirrors-prettier", #""v(4\.0\.0-alpha\.\d+)""#, rootPreCommit)
-      hookPin("pre-commit/mirrors-prettier", #""v(4\.0\.0-alpha\.\d+)""#, pkgPreCommit)
+      hookPin("pre-commit/mirrors-prettier", #"v(4\.0\.0-alpha\.\d+)"#, rootPreCommit)
+      hookPin("pre-commit/mirrors-prettier", #"v(4\.0\.0-alpha\.\d+)"#, pkgPreCommit)
     }
   }
   ["mise-action"] = new {
     resolver = "github-action"
     resolverName = "jdx/mise-action"
-    sites = new { actionPin("jdx/mise-action", rootFreshnessYml, 1) }
+    sites = new {
+      actionPin("jdx/mise-action", rootFreshnessYml, 1)
+      actionPin("jdx/mise-action", pkgFreshnessYml, 1)
+    }
+  }
+  ["pkl"] = new {
+    sites = new {
+      new Site {
+        file = miseToml
+        pattern = #"pkl = "([\d.]+)""#
+      }
+      new Site {
+        file = pkgMiseToml
+        pattern = #"pkl = "([\d.]+)""#
+      }
+    }
   }
   ["pre-commit-hooks"] = new {
     resolver = "github-release"
@@ -167,11 +204,6 @@ tools: Mapping<String, Tool> = new {
     resolver = "github-action"
     resolverName = "jakebailey/pyright-action"
     sites = new { actionPin("jakebailey/pyright-action", ciYml, 1) }
-  }
-  ["setup-go"] = new {
-    resolver = "github-action"
-    resolverName = "actions/setup-go"
-    sites = new { actionPin("actions/setup-go", rootFreshnessYml, 1) }
   }
   ["setup-python"] = new {
     resolver = "github-action"

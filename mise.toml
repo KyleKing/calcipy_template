@@ -6,3 +6,4 @@ run = "doneram check"
 actionlint = "1.7.12"
 # For running pre-commit with calcipy
 "pipx:calcipy" = {extras = "recommended", version = "6.0.1"}
+pkl = "0.32.1"
