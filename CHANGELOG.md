@@ -1,3 +1,9 @@
+## 5.5.1 (2026-09-01)
+
+### Fix
+
+- lock pkl for the platforms CI installs on
+
 ## 5.5.0 (2026-09-01)
 
 ### Feat
