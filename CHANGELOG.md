@@ -1,3 +1,9 @@
+## 5.5.0 (2026-09-01)
+
+### Feat
+
+- **doneram**: own generated pins in the template, ship a local-pins config
+
 ## 5.4.0 (2026-08-31)
 
 ### Feat
